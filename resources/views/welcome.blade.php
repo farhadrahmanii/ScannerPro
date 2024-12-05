@@ -5,12 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>Scanner Project</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="icon" href="assets/images/favicon-32x32.png" type="image/png" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!--plugins-->
     <link href="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
@@ -53,19 +55,19 @@
                                         <p class="mb-0">Please log in to your account</p>
                                     </div>
                                     <div class="form-body">
-                                        <form class="row g-3">
+                                        <form method="POST" action="{{route('login')}}" class="row g-3">
+                                            @csrf
                                             <div class="col-12">
-                                                <label for="inputEmailAddress" class="form-label">Email</label>
-                                                <input type="email" class="form-control" id="inputEmailAddress"
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" name="email" class="form-control" id="email"
                                                     placeholder="jhon@example.com">
                                             </div>
                                             <div class="col-12">
-                                                <label for="inputChoosePassword" class="form-label">Password</label>
+                                                <label for="password" class="form-label">Password</label>
                                                 <div class="input-group" id="show_hide_password">
                                                     <input type="password" class="form-control border-end-0"
-                                                        id="inputChoosePassword" value="12345678"
-                                                        placeholder="Enter Password"> <a href="javascript:;"
-                                                        class="input-group-text bg-transparent"><i
+                                                        id="password" name="password" placeholder="Enter Password"> <a
+                                                        href="javascript:;" class="input-group-text bg-transparent"><i
                                                             class='bx bx-hide'></i></a>
                                                 </div>
                                             </div>
