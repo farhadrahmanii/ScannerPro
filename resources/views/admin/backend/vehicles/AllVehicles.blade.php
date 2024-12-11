@@ -13,18 +13,18 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-        <div class="breadcrumb-title pe-3">All Drivers</div>
+        <div class="breadcrumb-title pe-3">All Vehicles</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="p-0 mb-0 breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Driver</li>
+                    <li class="breadcrumb-item active" aria-current="page">Vehicles</li>
                 </ol>
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.driver')}}" class="px-5 btn btn-primary">Add Driver</a>
+            <a href="{{route('add.vehicle')}}" class="px-5 btn btn-primary">Add Vehicles</a>
         </div>
     </div>
     <!--end breadcrumb-->
@@ -36,49 +36,54 @@
                     <thead>
                         <tr>
                             <th>Sl</th>
-                            <th>Driver ID</th>
-                            <th>Name</th>
-                            <th>Father Name</th>
-                            <th>National ID</th>
-                            <th>Passport No</th>
-                            <th>Contact Information</th>
-                            <th>Nationality</th>
-                            <th>Transport Company</th>
-                            <th>Tranport Company TIN</th>
+                            <th>ID</th>
+                            <th>Vehicle Make</th>
+                            <th>Model</th>
+                            <th>Year</th>
+                            <th>Capacity (Ton)</th>
+                            <th>Vehicle Type</th>
+                            <th>Plate #</th>
+                            <th>VIN</th>
+                            <th>Vehicle Colour</th>
+                            <th>Extended Body Type</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($drivers as $key => $drive)
+                        @foreach ($vehicles as $key => $vehicle)
                             <tr>
                                 <td>
                                     {{ $key + 1}}
                                 </td>
                                 <td>
-                                    {{ $drive->id}}
+                                    {{ $vehicle->id}}
                                 </td>
                                 <td>
-                                    {{ $drive->name}}
+                                    {{ $vehicle->vehicle_make}}
                                 </td>
                                 <td>
-                                    {{ $drive->father_name}}
+                                    {{ $vehicle->vehicle_model}}
                                 </td>
                                 <td>
-                                    {{ $drive->national_id}}
+                                    {{ $vehicle->year}}
                                 </td>
                                 <td>
-                                    {{ $drive->passport_no}}
+                                    {{ $vehicle->capacity}}
                                 </td>
                                 <td>
-                                    {{ $drive->contact_information}}
+                                    {{ $vehicle->type}}
                                 </td>
                                 <td>
-                                    {{ $drive->nationality}}
+                                    {{ $vehicle->plate_number}}
                                 </td>
                                 <td>
-                                    {{ $drive->transport_company}}
+                                    {{ $vehicle->vin}}
                                 </td>
                                 <td>
-                                    {{ $drive->transport_company_tin}}
+                                    {{ $vehicle->colour}}
+                                </td>
+                                <td>
+                                    {{ $vehicle->extended_body_type}}
                                 </td>
                                 <td>
                                     <a href="" class="btn btn-danger"><i class="bx bx-trash"></i></a>
@@ -86,19 +91,22 @@
                                 </td>
                             </tr>
                         @endforeach
+
                     </tbody>
                     <tfoot>
                         <tr>
                             <th>Sl</th>
-                            <th>Driver ID</th>
-                            <th>Name</th>
-                            <th>Father Name</th>
-                            <th>National ID</th>
-                            <th>Passport No</th>
-                            <th>Contact Information</th>
-                            <th>Nationality</th>
-                            <th>Transport Company</th>
-                            <th>Tranport Company TIN</th>
+                            <th>ID</th>
+                            <th>Vehicle Make</th>
+                            <th>Model</th>
+                            <th>Year</th>
+                            <th>Capacity (Ton)</th>
+                            <th>Vehicle Type</th>
+                            <th>Plate #</th>
+                            <th>VIN</th>
+                            <th>Vehicle Colour</th>
+                            <th>Extended Body Type</th>
+                            <th>Action</th>
                         </tr>
                     </tfoot>
                 </table>

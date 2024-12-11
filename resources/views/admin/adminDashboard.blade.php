@@ -22,6 +22,11 @@
     <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+
+    <!-- Font awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <!-- Font awesome Icons -->
+
     <!-- Data table -->
     <link href="{{asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css')}}" rel="stylesheet" />
     <!--End  Data table -->
@@ -34,8 +39,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/header-colors.css') }}" />
     <title>Scanners Project</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-    <!-- @vite('resources/css/app.css') -->
-
+    @vite('resources/css/app.css')
 </head>
 
 <body>

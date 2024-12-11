@@ -25,32 +25,45 @@
                 </div>
                 <div class="menu-title">Drivers</div>
             </a>
+        </li>
+        <li>
+
             <!-- <li class="menu-label"></li> -->
-            <a href="javascript:;">
-                <div class="parent-icon"><i class="fadeIn animated bx bx-bus-school"></i>
+            <a href="{{ route('all.vehicles') }}">
+                <div class="parent-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                 </div>
                 <div class="menu-title">Vehicles</div>
             </a>
+        </li>
+        <li>
+
             <!-- <li class="menu-label"></li> -->
-            <a href="javascript:;">
+            <a href="{{route('all.transactions')}}">
                 <div class="parent-icon"><i class="fadeIn animated"><img src="{{asset('images/icons/transaction.png')}}"
-                            class="logo-icon" width="10px" /></i>
+                            class="logo-icon" width="100px" /></i>
                 </div>
                 <div class="menu-title">Transactions</div>
             </a>
+        </li>
 
         </li>
         <li class="menu-label">System Settings</li>
-        <a href="javascript:;">
-            <div class="parent-icon"><i class="fadeIn animated bx bx-current-location"></i>
-            </div>
-            <div class="menu-title">Sites</div>
-        </a>
+        <li>
 
+            <a href="{{ route('province.site')}}">
+                <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
+                </div>
+                <div class="menu-title">Province Sites</div>
+            </a>
+        </li>
+        <li>
 
-
-
-
+            <a href="{{route('users.list')}}">
+                <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
+                </div>
+                <div class="menu-title">Users</div>
+            </a>
+        </li>
 
 
 

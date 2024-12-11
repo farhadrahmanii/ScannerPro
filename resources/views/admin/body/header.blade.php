@@ -84,19 +84,6 @@
                                     </div>
                                 </a>
 
-                                <a class="dropdown-item" href="javascript:;">
-                                    <div class="d-flex align-items-center">
-                                        <div class="user-online">
-                                            <img src="assets/images/avatars/avatar-8.png" class="msg-avatar"
-                                                alt="user avatar">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="msg-name">Peter Costanzo <span class="msg-time float-end">6 hrs
-                                                    ago</span></h6>
-                                            <p class="msg-info">It was popularised in the 1960s</p>
-                                        </div>
-                                    </div>
-                                </a>
                             </div>
                             <a href="javascript:;">
                                 <div class="text-center msg-footer">

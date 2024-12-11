@@ -45,4 +45,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function province()
+    {
+        return $this->belongsTo(Provinces::class, 'province_id', 'id');
+    }
 }
