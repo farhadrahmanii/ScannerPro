@@ -1,18 +1,24 @@
 <?php
 
+use App\Http\Controllers\Backend\driverController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 
 Route::middleware(admin::class)->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('admin.adminDashboard');
     })->name('dashboard');
+
+    Route::controller(driverController::class)->group(function(){
+        Route::get('/all/drivers', 'AllDrivers')->name('all.drivers');
+    });
+
 });
 
 

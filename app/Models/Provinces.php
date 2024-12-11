@@ -9,4 +9,5 @@ class Provinces extends Model
 {
     /** @use HasFactory<\Database\Factories\ProvincesFactory> */
     use HasFactory;
+    protected $guarded = [];
 }

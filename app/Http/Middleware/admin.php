@@ -22,7 +22,7 @@ class admin
 
         $role = Auth::user()->role;
 
-        if ($role == 'user') {
+        if ($role == 'admin') {
             return $next($request);
         } else {
             Auth::logout();
