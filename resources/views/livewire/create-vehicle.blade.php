@@ -90,7 +90,11 @@
             <div class="gap-3 d-md-flex d-grid align-items-center">
                 <button type="submit" wire:click.prevent="save" class="px-4 btn btn-primary">
                     <span wire:loading.remove>Save</span>
-                    <span wire:loading>Saving...</span>
+                    <span wire:loading>
+                        <div class="spinner-border spinner-border-sm">
+                        </div>
+                        Loading...
+                    </span>
                 </button>
                 <a href="#" class="px-4 btn btn-light">Cancel</a>
             </div>

@@ -40,6 +40,7 @@
                             <th>email</th>
                             <th>province</th>
                             <th>role</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -61,6 +62,18 @@
                                 <td>
                                     {{ $user['province']['Province_name']}}
                                 </td>
+                                <td>
+                                    <div class="form-check-success form-check form-switch">
+                                        <input class="form-check-input status-toggle large-checkbox" type="checkbox"
+                                            id="flexSwitchCheckCheckedDanger" data-user-id="4">
+                                        <label class="form-check-label" for="flexSwitchCheckCheckedDanger"></label>
+                                    </div>
+                                </td>
+                                <td>
+
+                                    <a href="/edit/admin/user/{{$user->id}}" wire:navigate class="btn btn-info"><i
+                                            class="bx bx-edit"></i></a>
+                                </td>
 
                             </tr>
                         @endforeach
@@ -75,6 +88,7 @@
                             <th>email</th>
                             <th>province</th>
                             <th>role</th>
+                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </tfoot>

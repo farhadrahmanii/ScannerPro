@@ -57,7 +57,10 @@ Route::middleware(admin::class)->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/all/users', 'AllUsers')->name('users.list');
         Route::get('/add/admin/user', 'AddAdminUsers')->name('add.admin.user');
+        Route::get('/edit/admin/user/{id}', 'EditAdminUser')->name('edit.admin.user');
+        Route::post('/update/admin/user', 'UpdateAdminUser')->name('update.admin.user');
     });
+
 
     // All Admin Users Routes Routes here
     Route::controller(ProvinceSiteController::class)->group(function () {

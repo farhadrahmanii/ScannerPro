@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->unsignedBigInteger('province_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);
+            $table->string('photo', 500)->nullable();
             $table->enum('role', ['admin', 'user', 'slipPrinter'])->default('user')->nullable();
             $table->rememberToken();
             $table->timestamps();
