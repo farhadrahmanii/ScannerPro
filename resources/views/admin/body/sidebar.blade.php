@@ -45,8 +45,6 @@
                 <div class="menu-title">Transactions</div>
             </a>
         </li>
-
-        </li>
         <li class="menu-label">System Settings</li>
         <li>
 
@@ -63,6 +61,26 @@
                 </div>
                 <div class="menu-title">Users</div>
             </a>
+        </li>
+        <!-- Role and Permission Links -->
+        <li class="menu-label">Roles And Permissions</li>
+
+        <li>
+            <a href="#" class="has-arrow">
+                <div class="parent-icon"><i class='bx bx-cart'></i>
+                </div>
+                <div class="menu-title">Roles</div>
+            </a>
+            <ul>
+                <li> <a href="{{ route('all.permissions') }}"><i class='bx bx-radio-circle'></i>All Permissions</a>
+                </li>
+                <li> <a href="#"><i class='bx bx-radio-circle'></i>All Role</a>
+                <li> <a href="#"><i class='bx bx-radio-circle'></i>All Role And Permissions</a>
+                </li>
+                <li> <a href="ecommerce-add-new-products.html"><i class='bx bx-radio-circle'></i>Add Roles in
+                        Permissions</a>
+                </li>
+            </ul>
         </li>
 
 

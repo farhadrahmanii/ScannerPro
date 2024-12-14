@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\ProvinceSiteController;
 use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VehicleController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\AllPermissions;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin;
 
@@ -53,7 +54,7 @@ Route::middleware(admin::class)->group(function () {
         Route::get('/add/transactions', 'AddTransactions')->name('add.transactions');
     });
 
-    // All Admin Users Routes Routes here
+    // All Admin Users Routes here
     Route::controller(AdminController::class)->group(function () {
         Route::get('/all/users', 'AllUsers')->name('users.list');
         Route::get('/add/admin/user', 'AddAdminUsers')->name('add.admin.user');
@@ -62,9 +63,17 @@ Route::middleware(admin::class)->group(function () {
     });
 
 
-    // All Admin Users Routes Routes here
+    // All Admin Users Routes here
     Route::controller(ProvinceSiteController::class)->group(function () {
         Route::get('/all/province/site', 'AllProvinceSites')->name('province.site');
+    });
+
+
+
+
+    // All Admin Role and Permissions for Users Routes here
+    Route::controller(AllPermissions::class)->group(function () {
+        Route::get('/all/permission', '')->name('all.permissions');
     });
 
 });

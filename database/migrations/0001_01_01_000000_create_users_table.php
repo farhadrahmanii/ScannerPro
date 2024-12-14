@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->string('password', 255);
             $table->string('photo', 500)->nullable();
             $table->enum('role', ['admin', 'user', 'slipPrinter'])->default('user')->nullable();
+            $table->string('status')->default('0');
             $table->rememberToken();
             $table->timestamps();
         });

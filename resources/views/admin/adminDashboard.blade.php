@@ -234,7 +234,8 @@
         // });
     </script>
     <!-- End Data Table Scripts -->
-
+    <!-- Toaster for Livewire -->
+    <x-toaster-hub /> <!-- 👈 -->
 </body>
 
 </html>

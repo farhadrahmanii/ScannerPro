@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Driver;
 use Livewire\Component;
+use Masmerise\Toaster\Toaster;
 
 class CreateDriver extends Component
 {
@@ -38,11 +39,8 @@ class CreateDriver extends Component
             'transport_company' => $this->transport_company,
             'transport_company_tin' => $this->transport_company_tin,
         ]);
-        $notification = array(
-            'alert-type' => 'success',
-            'message' => 'The Driver is registered Successfully'
-        );
-        return redirect()->route('all.drivers')->with($notification);
+        flash()->success('The Driver is registered Successfully');
+        return redirect()->route('all.drivers');
     }
     public function render()
     {
