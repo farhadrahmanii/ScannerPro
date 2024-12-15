@@ -47,13 +47,23 @@
         </li>
         <li class="menu-label">System Settings</li>
         <li>
-
             <a href="{{ route('province.site')}}">
                 <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
                 </div>
-                <div class="menu-title">Province Sites</div>
+                <div class="menu-title">Province</div>
             </a>
         </li>
+
+        <li>
+
+            <a href="{{ route('site')}}">
+                <div class="parent-icon"><i class='bx bx-current-location'></i>
+                </div>
+                <div class="menu-title">Sites</div>
+            </a>
+        </li>
+
+
         <li>
 
             <a href="{{route('users.list')}}">

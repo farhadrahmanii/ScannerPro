@@ -12,4 +12,9 @@ class Site extends Model
 
 
     protected $guarded = [];
+
+    public function province()
+    {
+        return $this->belongsTo(Provinces::class, 'p_id', 'id');
+    }
 }

@@ -24,58 +24,14 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.admin.user')}}" class="px-5 btn btn-primary">Add Provinces Site</a>
+            <a href="{{route('add.province')}}" class="px-5 btn btn-primary">Add Provinces Site</a>
         </div>
     </div>
     <!--end breadcrumb-->
     <hr />
-    <div class="card">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Sl</th>
-                            <th>Name</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($provinces as $key => $site)
-                            <tr>
-                                <td>
-                                    {{$key + 1}}
-                                </td>
-                                <td>
-                                    {{ $site->Province_name }}
-                                </td>
-                                <td>
-                                    <a href="" class="btn btn-danger"><i class="bx bx-trash"></i></a>
-                                    <a href="" class="btn btn-info"><i class="bx bx-edit"></i></a>
-                                </td>
-
-                            </tr>
-                        @endforeach
-
-
-
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Sl</th>
-                            <th>Name</th>
-                            <th>Actions</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-    </div>
+    <livewire:province-livewire lazy />
 
 </div>
 
-<script>
-
-</script>
 
 @endsection

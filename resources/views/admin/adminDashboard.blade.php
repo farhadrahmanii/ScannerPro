@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    @livewireStyles
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -236,6 +236,7 @@
     <!-- End Data Table Scripts -->
     <!-- Toaster for Livewire -->
     <x-toaster-hub /> <!-- 👈 -->
+    @livewireScripts
 </body>
 
 </html>

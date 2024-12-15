@@ -15,4 +15,8 @@ class Provinces extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function site()
+    {
+        return $this->hasMany(Site::class);
+    }
 }

@@ -17,80 +17,34 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('all.permission')}}" class="px-5 btn btn-primary">Cancel</a>
+            <a href="" class="px-5 btn btn-primary">Cancel</a>
         </div>
     </div>
     <!--end breadcrumb-->
     <hr />
+    <livewire:add-permissionlivewire lazy />
 
-    <div class="card">
-        <div class="p-4 card-body">
-            <h5 class="mb-4">Add Permissions</h5>
-            <form class="row g-3" method="POST" id="myForm" enctype="multipart/form-data"
-                action="{{route('store.permission')}}">
-                @csrf
-                <div class="form-group col-md-6">
-                    <label for="name" class="form-label">Permission Name</label>
-                    <input type="text" id="input1" name="name" class="form-control rounded-lg
-                    @error('name')
-                        in-valid
-                    @enderror
-                    " id="name" placeholder="Data Science" required>
-                    @error('name')
-                        <span class="text-red-500 text-bold">{{$message}}</span>
-                    @enderror
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="group_name" class="form-label">Category</label>
-                    <select id="input1" name="group_name" class="form-control rounded-lg
-                    @error('group_name')
-                        in-valid
-                    @enderror
-                    " id="group_name" placeholder="Data Science" required>
-                        <option selected disabled>Select Category</option>
-                        <option value="Caategory">Category</option>
-                        <option value="Coupon">Coupon</option>
-                        <option value="Setting">Setting</option>
-                        <option value="Report">Report</option>
-                        <option value="Review">Review</option>
-                        <option value="All User">All User</option>
-                        <option value="Blog">Blog</option>
-                        <option value="Role and Permission">Role and Permission</option>
-                    </select>
-                    @error('group_name')
-                        <span class="text-red-500 text-bold">{{$message}}</span>
-                    @enderror
-                </div>
 
-                <div class="col-md-12">
-                    <div class="gap-3 d-md-flex d-grid align-items-center">
-                        <button type="submit" class="px-4 btn btn-primary">Submit</button>
-                        <a href="{{route('all.subcategory')}}" class="px-4 btn btn-light">Cancel</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
 <script>
     $(document).ready(function () {
         $('#myForm').validate({
             rules: {
-                subcategory_name: {
+                group_name: {
                     required: true,
                 },
-                category_id: {
+                name: {
                     required: true,
                 },
 
             },
             messages: {
-                subcategory_name: {
-                    required: 'Please Enter category name',
+                group_name: {
+                    required: 'Please Enter Group name',
                 },
 
-                category_id: {
-                    required: 'Please Select SubCategory',
+                name: {
+                    required: 'Please Select Permission Name',
                 },
 
 
