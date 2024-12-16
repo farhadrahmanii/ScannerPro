@@ -10,6 +10,22 @@
                 <span class="text-red-500 text-bold">{{ $message }}</span>
             @enderror
         </div>
+        <div class="form-group col-md-6">
+            <label for="driver_id" class="form-label">Driver</label>
+            <select id="driver_id" name="driver_id" wire:model="driver_id"
+                class="form-control rounded-lg @error('driver') is-invalid @enderror">
+                <option value="" selected disabled>Select Driver</option>
+                @foreach ($drivers as $driver)
+                    <option value="{{ $driver->id }}">{{ $driver->name }}</option>
+                @endforeach
+
+                <!-- Add more options as needed -->
+            </select>
+            @error('driver_id')
+                <span class="text-red-500 text-bold">{{ $message }}</span>
+            @enderror
+        </div>
+
 
         <div class="form-group col-md-6">
             <label for="vehicle_model" class="form-label">Model</label>

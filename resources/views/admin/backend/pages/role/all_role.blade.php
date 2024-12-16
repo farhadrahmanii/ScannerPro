@@ -22,6 +22,7 @@
     </div>
     <!--end breadcrumb-->
     <hr />
+
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
@@ -40,9 +41,11 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{$item->name}}</td>
                                 <td>
-                                    <a href="{{route('edit.role', $item->id)}}" class="btn btn-info">Edit</a>
-                                    <a href="{{route('delete.role', $item->id)}}" class="btn btn-danger"
-                                        id="delete">Delete</a>
+                                    <a href="{{ route('edit.role', $item->id) }}" class="btn btn-info">Edit</a>
+                                    <button type="button" class="btn btn-danger" wire:click="deleteRole({{ $item->id }})"
+                                        onclick="return confirm('Are you sure you want to delete this role?');">
+                                        Delete
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach

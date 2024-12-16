@@ -28,6 +28,12 @@
                                 {{ $vehicle->id}}
                             </td>
                             <td>
+                                {{ $vehicle->driver->name}}
+                            </td>
+                            <td>
+                                {{ $vehicle->vehicle_make}}
+                            </td>
+                            <td>
                                 {{ $vehicle->vehicle_make}}
                             </td>
                             <td>

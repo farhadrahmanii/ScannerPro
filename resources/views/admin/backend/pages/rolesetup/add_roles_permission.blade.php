@@ -22,7 +22,7 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('all.permission')}}" class="px-5 btn btn-primary">Cancel</a>
+            <a href="{{route('all.permissions')}}" class="px-5 btn btn-primary">Cancel</a>
         </div>
     </div>
     <!--end breadcrumb-->
@@ -78,7 +78,6 @@
                                             $permissions = App\Models\User::getPermissionByGroupName($group->group_name)
                                         @endphp
                                         @foreach ($permissions as $permission)
-
                                             <div class="form-check form-check-success">
                                                 <input class="form-check-input" type="checkbox" value="{{$permission->id}}"
                                                     name="permission[]" id="CheckSuccess{{$permission->id}}">
@@ -95,7 +94,7 @@
                 <div class="col-md-12">
                     <div class="gap-3 d-md-flex d-grid align-items-center">
                         <button type="submit" class="px-4 btn btn-primary">Submit</button>
-                        <a href="{{route('all.subcategory')}}" class="px-4 btn btn-light">Cancel</a>
+                        <a href="{{route('all.permissions')}}" class="px-4 btn btn-light">Cancel</a>
                     </div>
                 </div>
             </form>

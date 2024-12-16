@@ -7,13 +7,10 @@
                         <th>Sl</th>
                         <th>Driver ID</th>
                         <th>Name</th>
-                        <th>Father Name</th>
-                        <th>National ID</th>
-                        <th>Passport No</th>
-                        <th>Contact Information</th>
-                        <th>Nationality</th>
+                        <th>Contact Info</th>
                         <th>Transport Company</th>
                         <th>Tranport Company TIN</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,19 +26,7 @@
                                 {{ $drive->name}}
                             </td>
                             <td>
-                                {{ $drive->father_name}}
-                            </td>
-                            <td>
-                                {{ $drive->national_id}}
-                            </td>
-                            <td>
-                                {{ $drive->passport_no}}
-                            </td>
-                            <td>
                                 {{ $drive->contact_information}}
-                            </td>
-                            <td>
-                                {{ $drive->nationality}}
                             </td>
                             <td>
                                 {{ $drive->transport_company}}
@@ -50,8 +35,28 @@
                                 {{ $drive->transport_company_tin}}
                             </td>
                             <td>
-                                <a href="" class="btn btn-danger"><i class="bx bx-trash"></i></a>
-                                <a href="" class="btn btn-info"><i class="bx bx-edit"></i></a>
+
+                                <div class="col">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-info">Actions</button>
+                                        <button type="button"
+                                            class="btn btn-info split-bg-info dropdown-toggle dropdown-toggle-split"
+                                            data-bs-toggle="dropdown" aria-expanded="false"> <span
+                                                class="visually-hidden">Toggle Dropdown</span>
+                                        </button>
+                                        <ul class="dropdown-menu" style="">
+                                            <li><a class="dropdown-item" href="#">Edit</a>
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">View</a>
+                                            </li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" href="#">Add Vehicle</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
@@ -61,13 +66,10 @@
                         <th>Sl</th>
                         <th>Driver ID</th>
                         <th>Name</th>
-                        <th>Father Name</th>
-                        <th>National ID</th>
-                        <th>Passport No</th>
-                        <th>Contact Information</th>
-                        <th>Nationality</th>
+                        <th>Contact Info</th>
                         <th>Transport Company</th>
                         <th>Tranport Company TIN</th>
+                        <th>Actions</th>
                     </tr>
                 </tfoot>
             </table>

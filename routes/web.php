@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VehicleController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\AllPermissions;
+use App\Livewire\EditRolelivewire;
 use App\Livewire\Provinces\AllProvinces;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin;
@@ -74,12 +75,26 @@ Route::middleware(admin::class)->group(function () {
 
 
 
-
     // All Admin Role and Permissions for Users Routes here
     Route::controller(RoleAndPermissions::class)->group(function () {
         Route::get('/all/permission', 'AllPermissions')->name('all.permissions');
         Route::get('/add/permission', 'AddPermission')->name('add.permission');
+        Route::get('/all/roles', 'AllRole')->name('all.roles');
+        Route::get('/add/role', 'AddRole')->name('add.role');
+        Route::get('/edit/role/{id}', 'EditRole')->name('edit.role');
     });
+
+    // Add Roles 
+    Route::controller(RoleAndPermissions::class)->group(function () {
+
+        Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
+        Route::post('/roles/permission/store', 'RolePermissionStore')->name('role.permission.store');
+        Route::get('/all/roles/permissions', 'AllRolePermission')->name('all.roles.permission');
+        Route::get('/edit/role/permission/{id}', 'AdminEditRolePermission')->name('edit.rolepermission');
+        Route::post('/update/role/permission/{id}', 'AdminUpdateRolePermission')->name('update.rolepermission');
+    });
+
+
 
 });
 

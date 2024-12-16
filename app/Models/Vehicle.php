@@ -11,4 +11,10 @@ class Vehicle extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
 }

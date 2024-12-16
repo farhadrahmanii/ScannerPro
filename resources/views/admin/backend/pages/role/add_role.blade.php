@@ -17,38 +17,13 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('all.permission')}}" class="px-5 btn btn-primary">Cancel</a>
+            <a href="" class="px-5 btn btn-primary">Cancel</a>
         </div>
     </div>
     <!--end breadcrumb-->
     <hr />
 
-    <div class="card">
-        <div class="p-4 card-body">
-            <h5 class="mb-4">Add Permissions</h5>
-            <form class="row g-3" method="POST" id="myForm" enctype="multipart/form-data"
-                action="{{route('store.role')}}">
-                @csrf
-                <div class="form-group col-md-6">
-                    <label for="name" class="form-label">Role Name</label>
-                    <input type="text" id="input1" name="name" class="form-control rounded-lg
-                    @error('name')
-                        in-valid
-                    @enderror
-                    " id="name" placeholder="Manager" required>
-                    @error('name')
-                        <span class="text-red-500 text-bold">{{$message}}</span>
-                    @enderror
-                </div>
-                <div class="col-md-12">
-                    <div class="gap-3 d-md-flex d-grid align-items-center">
-                        <button type="submit" class="px-4 btn btn-primary">Submit</button>
-                        <a href="{{route('all.roles')}}" class="px-4 btn btn-light">Cancel</a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
+    <livewire:add-rolelivewire lazy />
 </div>
 <script>
     $(document).ready(function () {

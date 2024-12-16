@@ -2,12 +2,14 @@
 
 namespace App\Livewire;
 
+use App\Models\Driver;
 use App\Models\Vehicle;
 use Livewire\Component;
 
 class CreateVehicle extends Component
 {
     public $vehicle_make = "";
+    public $driver_id;
     public $vehicle_model = "";
     public $year = "";
     public $capacity = "";
@@ -22,6 +24,7 @@ class CreateVehicle extends Component
         // dd($request->all());
         $this->validate([
             'vehicle_make' => 'required|string|max:255',
+            'driver_id' => 'numeric|required|max:255',
             'vehicle_model' => 'required|string|max:255',
             'year' => 'required|string|max:255',
             'capacity' => 'required|string|max:255',
@@ -33,6 +36,7 @@ class CreateVehicle extends Component
         ]);
         Vehicle::create([
             'vehicle_make' => $this->vehicle_make,
+            'driver_id' => $this->driver_id,
             'vehicle_model' => $this->vehicle_model,
             'year' => $this->year,
             'capacity' => $this->capacity,
@@ -42,14 +46,17 @@ class CreateVehicle extends Component
             'colour' => $this->colour,
             'extended_body_type' => $this->extended_body_type,
         ]);
-        $notification = array(
-            'alert-type' => 'success',
-            'message' => 'Vehicle Registerd Successfully! ',
-        );
-        return redirect()->route('all.vehicles')->with($notification);
+        flash()->success('Vehicle Registerd Successfully!');
+        return redirect()->route('all.vehicles');
+    }
+    public function mount()
+    {
+
+
     }
     public function render()
     {
-        return view('livewire.create-vehicle');
+        $drivers = Driver::all();
+        return view('livewire.create-vehicle', compact('drivers'));
     }
 }

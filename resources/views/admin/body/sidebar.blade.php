@@ -84,11 +84,12 @@
             <ul>
                 <li> <a href="{{ route('all.permissions') }}"><i class='bx bx-radio-circle'></i>All Permissions</a>
                 </li>
-                <li> <a href="#"><i class='bx bx-radio-circle'></i>All Role</a>
-                <li> <a href="#"><i class='bx bx-radio-circle'></i>All Role And Permissions</a>
+                <li> <a href="{{route('all.roles')}}"><i class='bx bx-radio-circle'></i>All Role</a>
+                <li> <a href="{{route('all.roles.permission')}}"><i class='bx bx-radio-circle'></i>All Roles In
+                        Permission</a>
                 </li>
-                <li> <a href="ecommerce-add-new-products.html"><i class='bx bx-radio-circle'></i>Add Roles in
-                        Permissions</a>
+                <li> <a href="{{route('add.roles.permission')}}"><i class='bx bx-radio-circle'></i>Roles In
+                        Permission</a>
                 </li>
             </ul>
         </li>
