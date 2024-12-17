@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Vehicle;
 use Illuminate\Http\Request;
 use App\Models\Driver;
 class driverController extends Controller
@@ -48,4 +49,15 @@ class driverController extends Controller
         );
         return redirect()->route('all.drivers')->with($notification);
     } // End of Method
+    public function DriverDetails($id)
+    {
+        $driver = Driver::findOrFail($id);
+        $vehicles = Vehicle::where('driver_id', $id)->get();
+        return view('admin.backend.drivers.driverDetails', compact('driver', 'vehicles'));
+    }
+    public function EditDriver($id)
+    {
+        $driver = Driver::findOrFail($id);
+        return view('admin.backend.drivers.editDriver', compact('driver'));
+    }
 }

@@ -45,14 +45,17 @@
                                                 class="visually-hidden">Toggle Dropdown</span>
                                         </button>
                                         <ul class="dropdown-menu" style="">
-                                            <li><a class="dropdown-item" href="#">Edit</a>
+                                            <li><a class="dropdown-item"
+                                                    href="{{route('edit.driver', $drive->id)}}">Edit</a>
                                             </li>
-                                            <li><a class="dropdown-item" href="#">View</a>
+                                            <li><a class="dropdown-item"
+                                                    href="{{route('driver.details', $drive->id)}}">View</a>
                                             </li>
                                             <li>
                                                 <hr class="dropdown-divider">
                                             </li>
-                                            <li><a class="dropdown-item" href="#">Add Vehicle</a>
+                                            <li><a class="dropdown-item" href="{{route('add.vehicle', $drive->id)}}">Add
+                                                    Vehicle</a>
                                             </li>
                                         </ul>
                                     </div>

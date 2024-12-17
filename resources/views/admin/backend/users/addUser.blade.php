@@ -26,6 +26,6 @@
     <!--end breadcrumb-->
     <hr />
 
-    <livewire:createuser />
+    <livewire:create-user lazy />
 </div>
 @endsection

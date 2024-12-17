@@ -8,6 +8,7 @@ use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VehicleController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\AllPermissions;
+use App\Livewire\CreateVehicle;
 use App\Livewire\EditRolelivewire;
 use App\Livewire\Provinces\AllProvinces;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,9 @@ Route::middleware(admin::class)->group(function () {
         Route::get('/all/drivers', 'AllDrivers')->name('all.drivers');
         Route::get('/add/driver', 'AddDriver')->name('add.driver');
         Route::post('/add/driver/store', 'AddDriverStore')->name('add.store.driver');
+        Route::get('driver/details/{id}', 'DriverDetails')->name('driver.details');
+        Route::get('edit/driver/{id}', 'EditDriver')->name('edit.driver');
+
     });
 
 
@@ -43,7 +47,7 @@ Route::middleware(admin::class)->group(function () {
     // All Vehicle Routes here
     Route::controller(VehicleController::class)->group(function () {
         Route::get('/all/vehicles', 'AllVehicles')->name('all.vehicles');
-        Route::get('/add/vehicle', 'AddVehicles')->name('add.vehicle');
+        Route::get('/add/vehicle/to/driver/{id}', 'AddVehiclesToDriver')->name('add.vehicle');
         Route::post('/store/vehicle', 'StoreVehicle')->name('add.vehicle.store');
     });
 
@@ -93,7 +97,6 @@ Route::middleware(admin::class)->group(function () {
         Route::get('/edit/role/permission/{id}', 'AdminEditRolePermission')->name('edit.rolepermission');
         Route::post('/update/role/permission/{id}', 'AdminUpdateRolePermission')->name('update.rolepermission');
     });
-
 
 
 });

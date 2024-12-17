@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper" data-simplebar="true">
     <div class="sidebar-header">
         <div>
-            <img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" alt="logo icon">
+            <img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" width="" alt="logo icon">
         </div>
         <div>
             <h4 class="logo-text">Admin</h4>
@@ -35,6 +35,7 @@
                 <div class="menu-title">Vehicles</div>
             </a>
         </li>
+
         <li>
 
             <!-- <li class="menu-label"></li> -->
@@ -77,7 +78,7 @@
 
         <li>
             <a href="#" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
+                <div class="parent-icon"><i class='lni lni-protection'></i>
                 </div>
                 <div class="menu-title">Roles</div>
             </a>

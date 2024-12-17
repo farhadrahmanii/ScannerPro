@@ -1,39 +1,23 @@
 @extends('admin.adminDashboard')
 @section('admin')
-
-
+<!-- Jquery is loaded Here  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
-<style>
-    .large-checkbox {
-        transform: scale(1.5);
-    }
-</style>
-
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-        <div class="breadcrumb-title pe-3">All Vehicles</div>
+        <div class="breadcrumb-title pe-3">Driver</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="p-0 mb-0 breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Vehicles</li>
+                    <li class="breadcrumb-item active" aria-current="page">Driver Details</li>
                 </ol>
             </nav>
         </div>
+
     </div>
     <!--end breadcrumb-->
-    <hr />
-    <livewire:vehicle-list lazy />
-
+    <livewire:driver-detailslivewire :driverId="$driver->id" lazy />
 </div>
-
-<script>
-
-</script>
-
-
-
 @endsection

@@ -68,15 +68,18 @@
 
             <div class="form-group col-md-3">
                 <label for="role" class="form-label">Role</label>
-                <input type="text" id="input1" wire:model="role" name="role" class="form-control rounded-lg
-                    @error('role')
-                        is-invalid
-                    @enderror
-                    " id="role" placeholder="Data Science">
+                <select class="form-control rounded-lg
+        @error('role') is-invalid @enderror" id="role" wire:model="role" name="role">
+                    <option value="">Select Role</option> <!-- Default option -->
+                    @foreach ($roles as $role)
+                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                    @endforeach
+                </select>
                 @error('role')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
+                    <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
+
 
             <div class="form-group col-md-3">
                 <label for="photo" class="form-label">Photo</label>

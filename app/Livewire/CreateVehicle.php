@@ -9,8 +9,9 @@ use Livewire\Component;
 class CreateVehicle extends Component
 {
     public $vehicle_make = "";
-    public $driver_id;
+    public $driverId;
     public $vehicle_model = "";
+    public $driverName;
     public $year = "";
     public $capacity = "";
     public $type = "";
@@ -24,7 +25,7 @@ class CreateVehicle extends Component
         // dd($request->all());
         $this->validate([
             'vehicle_make' => 'required|string|max:255',
-            'driver_id' => 'numeric|required|max:255',
+            'driverId' => 'numeric|required|max:255',
             'vehicle_model' => 'required|string|max:255',
             'year' => 'required|string|max:255',
             'capacity' => 'required|string|max:255',
@@ -36,7 +37,7 @@ class CreateVehicle extends Component
         ]);
         Vehicle::create([
             'vehicle_make' => $this->vehicle_make,
-            'driver_id' => $this->driver_id,
+            'driver_id' => $this->driverId,
             'vehicle_model' => $this->vehicle_model,
             'year' => $this->year,
             'capacity' => $this->capacity,
@@ -47,12 +48,12 @@ class CreateVehicle extends Component
             'extended_body_type' => $this->extended_body_type,
         ]);
         flash()->success('Vehicle Registerd Successfully!');
-        return redirect()->route('all.vehicles');
+        return redirect()->route('all.drivers');
     }
-    public function mount()
+
+    public function placeholder()
     {
-
-
+        return view('livewire.form-loading');
     }
     public function render()
     {

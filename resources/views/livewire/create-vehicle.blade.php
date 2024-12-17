@@ -10,22 +10,23 @@
                 <span class="text-red-500 text-bold">{{ $message }}</span>
             @enderror
         </div>
-        <div class="form-group col-md-6">
-            <label for="driver_id" class="form-label">Driver</label>
-            <select id="driver_id" name="driver_id" wire:model="driver_id"
-                class="form-control rounded-lg @error('driver') is-invalid @enderror">
-                <option value="" selected disabled>Select Driver</option>
-                @foreach ($drivers as $driver)
-                    <option value="{{ $driver->id }}">{{ $driver->name }}</option>
-                @endforeach
 
-                <!-- Add more options as needed -->
-            </select>
-            @error('driver_id')
+
+
+        <input type="hidden" id="driverId" name="driverId" wire:model="driverId"
+            class="form-control rounded-lg @error('driverId') is-invalid @enderror" placeholder="{{ $driverName }}">
+        @error('driverId')
+            <span class="text-red-500 text-bold">{{ $message }}</span>
+        @enderror
+
+        <div class="form-group col-md-6">
+            <label for="driverId" class="form-label">Driver</label>
+            <input type="text" id="driverName" name="driverName" wire:model="driverName" disabled
+                class="form-control rounded-lg @error('driverId') is-invalid @enderror" placeholder="{{ $driverName }}">
+            @error('driverName')
                 <span class="text-red-500 text-bold">{{ $message }}</span>
             @enderror
         </div>
-
 
         <div class="form-group col-md-6">
             <label for="vehicle_model" class="form-label">Model</label>

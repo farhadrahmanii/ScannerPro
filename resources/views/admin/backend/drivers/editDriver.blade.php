@@ -26,7 +26,7 @@
     <div class="card">
         <div class="p-4 card-body">
             <h5 class="mb-4">Add Driver</h5>
-            <livewire:create-driver lazy />
+            <livewire:edit-driver lazy :driverId="$driver->id" />
         </div>
     </div>
 </div>

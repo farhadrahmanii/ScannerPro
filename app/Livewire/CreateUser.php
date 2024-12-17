@@ -3,9 +3,11 @@
 namespace App\Livewire;
 
 use App\Models\User;
-use Livewire\Component;
 use Livewire\Attributes\Validate;
+use Livewire\Component;
 use Livewire\WithFileUploads;
+use Spatie\Permission\Models\Role;
+
 class CreateUser extends Component
 {
     use WithFileUploads;
@@ -17,6 +19,8 @@ class CreateUser extends Component
     public $role = "";
     #[Validate('image|max:1024')]
     public $photo = "";
+    public $roles = [];
+
     public function save()
     {
 
@@ -32,7 +36,7 @@ class CreateUser extends Component
         if ($this->photo) {
             $filePath = $this->photo->store('uploads/photos', 'public');
         }
-        User::create([
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password),
@@ -40,11 +44,26 @@ class CreateUser extends Component
             'role' => $this->role,
             'photo' => isset($filePath) ? $filePath : null,
         ]);
+        if ($this->role) {
+            $findedRole = Role::find($this->role);
+            if ($findedRole) {
+                $user->assignRole($findedRole);
+            }
+        }
+
         $notification = array(
             'alert-type' => 'success',
             'message' => 'User Registerd Successfully! ',
         );
         return redirect()->route('users.list')->with($notification);
+    }
+    public function mount()
+    {
+        $this->roles = Role::all();
+    }
+    public function placeholder()
+    {
+        return view('livewire.form-loading');
     }
     public function render()
     {
