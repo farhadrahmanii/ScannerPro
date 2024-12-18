@@ -24,7 +24,7 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.province')}}" class="px-5 btn btn-primary">Add Provinces Site</a>
+            <a href="{{route('add.province')}}" class="px-5 btn btn-primary" wire:navigate>Add Provinces Site</a>
         </div>
     </div>
     <!--end breadcrumb-->

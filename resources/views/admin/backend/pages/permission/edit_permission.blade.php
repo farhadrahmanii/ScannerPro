@@ -26,8 +26,7 @@
     <div class="card">
         <div class="p-4 card-body">
             <h5 class="mb-4">Edit Permissions</h5>
-            <form class="row g-3" method="POST" id="myForm" enctype="multipart/form-data"
-                action="{{route('update.permission')}}">
+            <form class="row g-3" method="POST" id="myForm" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="id" value="{{$permission->id}}">
                 <div class="form-group col-md-6">

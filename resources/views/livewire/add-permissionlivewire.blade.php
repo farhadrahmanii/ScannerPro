@@ -22,11 +22,14 @@
                     @enderror
                     " id="group_name" placeholder="Data Science">
                     <option selected disabled>Select Permission Category</option>
-                    <option value="Caategory">User</option>
+                    <option value="Category">User</option>
+                    <option value="Site Manager">Site Manager</option>
                     <option value="Coupon">Driver</option>
                     <option value="Setting">Vehicle</option>
                     <option value="Report">Report</option>
+                    <option value="Transactions">Transactions</option>
                     <option value="Review">Review</option>
+                    <option value="Print">print</option>
                     <option value="All User">All User</option>
                     <option value="Role and Permission">Role and Permission</option>
                 </select>
@@ -42,7 +45,7 @@
                         <span wire:loading.remove>Save</span>
                         <span wire:loading>Saving...</span>
                     </button>
-                    <a href="" class="px-4 btn btn-light">Cancel</a>
+                    <a href="{{route('all.permissions')}}" class="px-4 btn btn-light">Cancel</a>
                 </div>
             </div>
         </form>

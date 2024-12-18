@@ -77,7 +77,7 @@
         <div class="col-md-12">
             <div class="gap-3 d-md-flex d-grid align-items-center">
                 <button type="submit" wire:click.prevent="save" wire:loading.attr="disabled"
-                    class="px-4 btn btn-primary">
+                    class="px-4 btn btn-primary" wire:navigate>
                     <span wire:loading.remove>Save</span>
                     <span wire:loading>Saving...</span>
                 </button>
@@ -85,85 +85,46 @@
             </div>
         </div>
     </form>
+
+    <script>
+        $(document).ready(function () {
+            // Initialize jQuery Validation
+            $('#myForm').validate({
+                rules: {
+                    name: { required: true },
+                    father_name: { required: true },
+                    national_id: { required: true },
+                    contact_information: { required: true },
+                    nationality: { required: true },
+                    transport_company: { required: true },
+                    transport_company_tin: { required: true }
+                },
+                messages: {
+                    name: { required: 'Please Enter Driver Name' },
+                    father_name: { required: 'Please Enter Father Name' },
+                    national_id: { required: 'Please Enter National ID' },
+                    contact_information: { required: 'Please Enter Contact Information' },
+                    nationality: { required: 'Please Enter Nationality' },
+                    transport_company: { required: 'Please Enter Transport Company' },
+                    transport_company_tin: { required: 'Please Enter Transport Company TIN' }
+                },
+                errorElement: 'span',
+                errorPlacement: function (error, element) {
+                    error.addClass('invalid-feedback');
+                    element.closest('.form-group').append(error);
+                },
+                highlight: function (element) {
+                    $(element).addClass('is-invalid');
+                },
+                unhighlight: function (element) {
+                    $(element).removeClass('is-invalid');
+                },
+                submitHandler: function () {
+                    // Trigger the Livewire save method
+                    @this.save(); // This will call the `save()` method in Livewire
+                }
+            });
+        });
+
+    </script>
 </div>
-
-<script>
-    $(document).ready(function () {
-        // Initialize jQuery Validation
-        $('#myForm').validate({
-            rules: {
-                name: {
-                    required: true,
-                },
-                father_name: {
-                    required: true,
-                },
-                national_id: {
-                    required: true,
-                },
-                contact_information: {
-                    required: true,
-                },
-                nationality: {
-                    required: true,
-                },
-                transport_company: {
-                    required: true,
-                },
-                transport_company_tin: {
-                    required: true,
-                },
-            },
-            messages: {
-                name: {
-                    required: 'Please Enter Driver Name',
-                },
-                father_name: {
-                    required: 'Please Enter Father Name',
-                },
-                national_id: {
-                    required: 'Please Enter National ID',
-                },
-                contact_information: {
-                    required: 'Please Enter Contact Information',
-                },
-                nationality: {
-                    required: 'Please Enter Nationality',
-                },
-                transport_company: {
-                    required: 'Please Enter Transport Company',
-                },
-                transport_company_tin: {
-                    required: 'Please Enter Transport Company TIN',
-                },
-            },
-            errorElement: 'span',
-            errorPlacement: function (error, element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight: function (element, errorClass, validClass) {
-                $(element).addClass('is-invalid');
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).removeClass('is-invalid');
-            },
-            submitHandler: function (form) {
-                // If validation passes, trigger Livewire's save method
-                @this.save();
-            }
-        });
-    });
-</script>
-
-<script>
-    $(document).ready(function () {
-        $('#image').change(function (e) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#showImage').attr('src', e.target.result);
-            };
-            reader.readAsDataURL(e.target.files[0]);
-        });
-    });
-</script>

@@ -39,8 +39,15 @@ class CreateDriver extends Component
             'transport_company' => $this->transport_company,
             'transport_company_tin' => $this->transport_company_tin,
         ]);
+        // Notification here
         flash()->success('The Driver is registered Successfully');
         return redirect()->route('all.drivers');
+        // return $this->redirect('/all/drivers', navigate: true);
+
+    }
+    public function placeholder()
+    {
+        return view('livewire.form-loading');
     }
     public function render()
     {

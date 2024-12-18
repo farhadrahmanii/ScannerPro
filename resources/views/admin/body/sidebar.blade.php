@@ -20,53 +20,65 @@
         </li>
         <li class="menu-label"></li>
         <li>
-            <a href="{{route('all.drivers')}}">
-                <div class="parent-icon"> <i class="fadeIn animated bx bx-taxi"></i>
-                </div>
-                <div class="menu-title">Drivers</div>
-            </a>
+            @if (Auth::user()->can('driver.list'))
+                <a href="{{route('all.drivers')}}">
+                    <div class="parent-icon"> <i class="fadeIn animated bx bx-taxi"></i>
+                    </div>
+                    <div class="menu-title">Drivers</div>
+                </a>
+            @endif
         </li>
         <li>
 
             <!-- <li class="menu-label"></li> -->
-            <a href="{{ route('all.vehicles') }}">
+            @if (Auth::user()->can(''))
+
+            @endif
+            <!-- <a href="{{ route('all.vehicles') }}">
                 <div class="parent-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                 </div>
                 <div class="menu-title">Vehicles</div>
-            </a>
+            </a> -->
         </li>
 
         <li>
 
             <!-- <li class="menu-label"></li> -->
-            <a href="{{route('all.transactions')}}">
-                <div class="parent-icon"><i class="fadeIn animated"><img src="{{asset('images/icons/transaction.png')}}"
-                            class="logo-icon" width="100px" /></i>
-                </div>
-                <div class="menu-title">Transactions</div>
-            </a>
+            @if (Auth::user()->can('transaction.list'))
+
+                <a href="{{route('all.transactions')}}">
+                    <div class="parent-icon"><i class="fadeIn animated"><img src="{{asset('images/icons/transaction.png')}}"
+                                class="logo-icon" width="100px" /></i>
+                    </div>
+                    <div class="menu-title">Transactions</div>
+                </a>
+            @endif
         </li>
         <li class="menu-label">System Settings</li>
         <li>
-            <a href="{{ route('province.site')}}">
-                <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
-                </div>
-                <div class="menu-title">Province</div>
-            </a>
+            @if (Auth::user()->can('site.list'))
+                <a href="{{ route('province.site')}}">
+                    <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
+                    </div>
+                    <div class="menu-title">Province</div>
+                </a>
+            @endif
         </li>
 
         <li>
 
-            <a href="{{ route('site')}}">
-                <div class="parent-icon"><i class='bx bx-current-location'></i>
-                </div>
-                <div class="menu-title">Sites</div>
-            </a>
+            @if (Auth::user()->can('site.list'))
+                <a href="{{ route('site')}}">
+                    <div class="parent-icon"><i class='bx bx-current-location'></i>
+                    </div>
+                    <div class="menu-title">Sites</div>
+                </a>
+            @endif
         </li>
 
 
         <li>
-
+            
             <a href="{{route('users.list')}}">
                 <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
                 </div>
@@ -75,7 +87,6 @@
         </li>
         <!-- Role and Permission Links -->
         <li class="menu-label">Roles And Permissions</li>
-
         <li>
             <a href="#" class="has-arrow">
                 <div class="parent-icon"><i class='lni lni-protection'></i>
@@ -83,9 +94,15 @@
                 <div class="menu-title">Roles</div>
             </a>
             <ul>
-                <li> <a href="{{ route('all.permissions') }}"><i class='bx bx-radio-circle'></i>All Permissions</a>
+                @if (Auth::user()->can('Permission.list'))
+                    <li> <a href="{{ route('all.permissions') }}"><i class='bx bx-radio-circle'></i>All Permissions</a>
+                    </li>
+                @endif
+
+                <li>
+                    <a href="{{route('all.roles')}}"><i class='bx bx-radio-circle'></i>All Role</a>
                 </li>
-                <li> <a href="{{route('all.roles')}}"><i class='bx bx-radio-circle'></i>All Role</a>
+
                 <li> <a href="{{route('all.roles.permission')}}"><i class='bx bx-radio-circle'></i>All Roles In
                         Permission</a>
                 </li>

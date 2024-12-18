@@ -24,7 +24,9 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.driver')}}" class="px-5 btn btn-primary">Add Driver</a>
+            @if (Auth::user()->can('create.driver'))
+                <a href="{{route('add.driver')}}" class="px-5 btn btn-primary" wire:navigate>Add Driver</a>
+            @endif
         </div>
     </div>
     <!--end breadcrumb-->

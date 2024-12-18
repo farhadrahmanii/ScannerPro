@@ -17,7 +17,7 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="" class="px-5 btn btn-primary">Cancel</a>
+            <a href="{{route('all.drivers')}}" class="px-5 btn btn-primary" wire:navigate>Cancel</a>
         </div>
     </div>
     <!--end breadcrumb-->
@@ -30,52 +30,5 @@
         </div>
     </div>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#myForm').validate({
-            rules: {
-                vehicle_name: {
-                    required: true,
-                },
-                image: {
-                    required: true,
-                },
 
-            },
-            messages: {
-                vehicle_name: {
-                    required: 'Please Enter category name',
-                },
-                image: {
-                    required: 'Please Add Image',
-                },
-
-
-            },
-            errorElement: 'span',
-            errorPlacement: function (error, element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight: function (element, errorClass, validClass) {
-                $(element).addClass('is-invalid');
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).removeClass('is-invalid');
-            },
-        });
-    });
-</script>
-<script>
-
-    $(document).ready(function () {
-        $('#image').change(function (e) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#showImage').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });
-</script>
 @endsection

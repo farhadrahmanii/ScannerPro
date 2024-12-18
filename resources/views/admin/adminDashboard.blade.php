@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/header-colors.css') }}" />
     <title>Scanners Project</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+
     @vite('resources/css/app.css')
 </head>
 
@@ -236,7 +237,9 @@
     <!-- End Data Table Scripts -->
     <!-- Toaster for Livewire -->
     <x-toaster-hub /> <!-- 👈 -->
+
     @livewireScripts
+
 </body>
 
 </html>

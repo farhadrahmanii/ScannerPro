@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\Provinces;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,13 +18,13 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-            'province_id' => 1,
-            'site_id' => 2,
-            'role' => 'user'
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        //     'province_id' => 1,
+        //     'site_id' => 2,
+        //     'role' => 'user'
+        // ]);
         Provinces::factory()->count(10)->sequence(
             ['Province_name' => 'Kabul'],
             ['Province_name' => 'Herat'],
@@ -34,6 +36,18 @@ class DatabaseSeeder extends Seeder
             ['Province_name' => 'Badakhshan'],
             ['Province_name' => 'Paktia'],
             ['Province_name' => 'Baghlan']
+        )->create();
+        Category::factory()->count(10)->sequence(
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()],
+            ['category_name' => fake()->name()]
         )->create();
 
 

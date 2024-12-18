@@ -11,11 +11,12 @@
                 </thead>
                 <tbody>
                     @foreach ($provinces as $key => $site)
-                        <tr>
+                        <tr wire:transition>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $site->Province_name }}</td>
                             <td>
                                 <a href="javascript:void(0);" id="delete" class="btn btn-danger"
+                                    wire:confirm="Are you sure you want to delete {{$site->Province_name}} Provinces?"
                                     wire:click="deleteProvince({{ $site->id }})">
                                     <i class="bx bx-trash"></i>
                                 </a>

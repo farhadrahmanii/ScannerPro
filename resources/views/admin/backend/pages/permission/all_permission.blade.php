@@ -17,7 +17,9 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.permission')}}" class="px-5 btn btn-primary">Add Permissions</a>
+            @if (Auth::user()->can('permission.create'))
+                <a href="{{route('add.permission')}}" wire:navigate class="px-5 btn btn-primary">Add Permissions</a>
+            @endif
         </div>
     </div>
     <!--end breadcrumb-->

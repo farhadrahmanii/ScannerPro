@@ -8,7 +8,7 @@ use Livewire\Component;
 class ProvinceLivewire extends Component
 {
     public $provinces = []; // Declare property to hold province data
-
+    protected $listeners = ['deleteProvince' => 'deleteProvince'];
     public function mount()
     {
         // Fetch provinces during component initialization
@@ -18,14 +18,14 @@ class ProvinceLivewire extends Component
     {
         return view('livewire.loading');
     }
-    public function deleteProvince($id)
+    public function deleteProvince($siteId)
     {
-        // Find and delete the province
-        $province = Provinces::findOrFail($id);
-        $province->delete();
-
-        // Flash message (Livewire)
-        session()->flash('message', 'The Province is Deleted Successfully');
+        $site = Provinces::find($siteId);
+        if ($site) {
+            $site->delete();
+            flash()->success('Province deleted successfully!');
+        }
+        return $this->redirect('/all/province', navigate: true);
     }
 
     public function render()

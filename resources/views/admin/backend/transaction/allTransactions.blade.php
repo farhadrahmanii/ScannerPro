@@ -24,64 +24,18 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.transactions')}}" class="px-5 btn btn-primary">Add Transactions</a>
+            <a href="{{route('add.transactions')}}" wire:navigate class="px-5 btn btn-primary">
+
+                <div wire:loading><button class="btn btn-primary" type="button" disabled=""> <span
+                            class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Loading...</button></div>
+                <span wire:loading.remove>Add Transactions</span>
+            </a>
         </div>
     </div>
     <!--end breadcrumb-->
     <hr />
-    <div class="card">
-        <div class="card-body">
-            <div class="table-responsive">
-                <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Sl</th>
-                            <th>Goods ID</th>
-                            <th>Transactions ID</th>
-                            <th>Bill of Landing</th>
-                            <th>Exporting Country</th>
-                            <th>Production Origin (optional)</th>
-                            <th>Item Name</th>
-                            <th>Category</th>
-                            <th>Total Tonnage</th>
-                            <th>Number of Items</th>
-                            <th>consignee Company</th>
-                            <th>consignee Company TIN</th>
-                            <th>Item list</th>
-                            <th>Delivery Location</th>
-                            <th>Scan Status</th>
-                            <th>Scan Time Stamp</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-
-
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Sl</th>
-                            <th>Goods ID</th>
-                            <th>Transactions ID</th>
-                            <th>Bill of Landing</th>
-                            <th>Exporting Country</th>
-                            <th>Production Origin (optional)</th>
-                            <th>Item Name</th>
-                            <th>Category</th>
-                            <th>Total Tonnage</th>
-                            <th>Number of Items</th>
-                            <th>consignee Company</th>
-                            <th>consignee Company TIN</th>
-                            <th>Item list</th>
-                            <th>Delivery Location</th>
-                            <th>Scan Status</th>
-                            <th>Scan Time Stamp</th>
-                        </tr>
-                    </tfoot>
-                </table>
-            </div>
-        </div>
-    </div>
+    <livewire:all-transaction lazy />
 
 </div>
 
