@@ -17,8 +17,8 @@
             </nav>
         </div>
         <div class="ms-auto">
-            @if (Auth::user()->can('permission.create'))
-                <a href="{{route('add.permission')}}" wire:navigate class="px-5 btn btn-primary">Add Permissions</a>
+            @if (Illuminate\Support\Facades\Auth::user()->can('permission.create'))
+                <a href="{{route('add.permission')}}" class="px-5 btn btn-primary" wire:navigate>Add Permissions</a>
             @endif
         </div>
     </div>

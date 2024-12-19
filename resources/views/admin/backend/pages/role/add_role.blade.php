@@ -17,7 +17,7 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="" class="px-5 btn btn-primary">Cancel</a>
+            <a href="{{route('all.roles')}}" class="px-5 btn btn-primary" wire:navigate>Cancel</a>
         </div>
     </div>
     <!--end breadcrumb-->

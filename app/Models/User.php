@@ -3,15 +3,18 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Provinces;
+use DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use DB;
 use Spatie\Permission\Traits\HasRoles;
+use Tapp\FilamentAuthenticationLog\Traits\LogsAuthentication;
+use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
+    use HasFactory, Notifiable, HasRoles, AuthenticationLoggable;
 
     /**
      * The attributes that are mass assignable.

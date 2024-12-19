@@ -15,7 +15,9 @@
                 </ol>
             </nav>
         </div>
-
+        <div class="ms-auto">
+            <a href="{{route('all.drivers')}}" class="px-5 btn btn-primary" wire:navigate>Cancel</a>
+        </div>
     </div>
     <!--end breadcrumb-->
     <livewire:driver-detailslivewire :driverId="$driver->id" lazy />

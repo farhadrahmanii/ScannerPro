@@ -18,7 +18,7 @@
                         onclick="return confirm('Are you sure you want to delete this role?');">
                         Delete
                     </button>
-                    <a href="{{ route('all.roles') }}" class="px-4 btn btn-light">Cancel</a>
+                    <a href="{{ route('all.roles') }}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
                 </div>
             </div>
         </form>

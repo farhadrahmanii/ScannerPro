@@ -17,7 +17,7 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.role')}}" class="px-5 btn btn-primary">Add Role</a>
+            <a href="{{route('add.role')}}" class="px-5 btn btn-primary" wire:navigate>Add Role</a>
         </div>
     </div>
     <!--end breadcrumb-->
@@ -41,7 +41,8 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{$item->name}}</td>
                                 <td>
-                                    <a href="{{ route('edit.role', $item->id) }}" class="btn btn-info">Edit</a>
+                                    <a href="{{ route('edit.role', $item->id) }}" class="btn btn-info"
+                                        wire:navigate>Edit</a>
                                     <button type="button" class="btn btn-danger" wire:click="deleteRole({{ $item->id }})"
                                         onclick="return confirm('Are you sure you want to delete this role?');">
                                         Delete

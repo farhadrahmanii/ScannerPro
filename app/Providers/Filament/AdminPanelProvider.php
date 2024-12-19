@@ -17,7 +17,10 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-
+use pxlrbt\FilamentActivityLog\FilamentActivityLogServiceProvider;
+use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
+use Tapp\FilamentAuthenticationLog\FilamentAuthenticationLogPlugin;
+use CharrafiMed\GlobalSearchModal\GlobalSearchModalPlugin;
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -53,6 +56,13 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
-            ]);
+            ])->plugins([
+                    FilamentAuthenticationLogPlugin::make(),
+                    FilamentSpatieLaravelBackupPlugin::make(),
+                    GlobalSearchModalPlugin::make()
+                        ->localStorageMaxItemsAllowed(20)
+                        ->RetainRecentIfFavorite(true)
+                        ->associateItemsWithTheirGroups()
+                ]);
     }
 }

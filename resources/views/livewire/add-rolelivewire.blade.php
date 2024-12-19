@@ -20,7 +20,7 @@
                         <span wire:loading.remove>Save</span>
                         <span wire:loading>Saving...</span>
                     </button>
-                    <a href="{{route('all.roles')}}" class="px-4 btn btn-light">Cancel</a>
+                    <a href="{{route('all.roles')}}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
                 </div>
             </div>
         </form>
