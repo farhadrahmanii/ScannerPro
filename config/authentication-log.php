@@ -29,7 +29,7 @@ return [
             'enabled' => env('NEW_DEVICE_NOTIFICATION', true),
 
             // Use torann/geoip to attempt to get a location
-            'location' => true,
+            'location' => false,
 
             // The Notification class to send
             'template' => \Rappasoft\LaravelAuthenticationLog\Notifications\NewDevice::class,

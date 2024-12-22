@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Category;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -34,7 +35,7 @@ class CreateTransaction extends Component
             'exporting_country' => 'required|string',
             'production_origin' => 'required|string',
             'item_name' => 'required|string',
-            'category_id' => 'required|string',
+            'category_id' => 'required|numeric',
             'total_tonnage' => 'required|string',
             'number_of_items' => 'required|string',
             'consignee_company' => 'required|string',
@@ -79,6 +80,7 @@ class CreateTransaction extends Component
 
     public function render()
     {
-        return view('livewire.create-transaction');
+        $categories = Category::all();
+        return view('livewire.create-transaction', compact('categories'));
     }
 }

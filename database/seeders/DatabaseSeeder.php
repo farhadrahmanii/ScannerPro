@@ -8,6 +8,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Database\Factories\CategoryFactory;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,13 +19,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        //     'province_id' => 1,
-        //     'site_id' => 2,
-        //     'role' => 'user'
-        // ]);
+        User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+            'province_id' => 1,
+            'status' => 1,
+            'site_id' => 2,
+            'role' => 'admin'
+        ]);
         Provinces::factory()->count(10)->sequence(
             ['Province_name' => 'Kabul'],
             ['Province_name' => 'Herat'],
@@ -50,6 +52,18 @@ class DatabaseSeeder extends Seeder
             ['category_name' => fake()->name()]
         )->create();
 
+        // Inside the run() method
+        $adminRole = Role::updateOrCreate(
+            ['name' => 'admin', 'guard_name' => 'web'],
+            ['name' => 'admin', 'guard_name' => 'web']
+        );
 
+        // Assign the role to the user
+        $user = User::where('email', 'test@example.com')->first();
+        if ($user) {
+            $user->assignRole('admin');
+        }
+
+        $this->call(PermissionsTableSeeder::class);
     }
 }

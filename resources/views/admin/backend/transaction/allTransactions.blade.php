@@ -25,7 +25,6 @@
         </div>
         <div class="ms-auto">
             <a href="{{route('add.transactions')}}" wire:navigate class="px-5 btn btn-primary">
-
                 <div wire:loading><button class="btn btn-primary" type="button" disabled=""> <span
                             class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                         Loading...</button></div>

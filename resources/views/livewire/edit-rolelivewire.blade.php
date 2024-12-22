@@ -15,9 +15,13 @@
                 <div class="gap-3 d-md-flex d-grid align-items-center">
                     <button type="submit" class="px-4 btn btn-primary">Save</button>
                     <button type="button" class="px-4 btn btn-danger" wire:click="deleteRole"
+                        wire:loading.attr="disabled"
                         onclick="return confirm('Are you sure you want to delete this role?');">
-                        Delete
+                        <span wire:loading.remove>Delete</span>
+                        <span wire:loading class="spinner-border spinner-border-sm" role="status"
+                            aria-hidden="true"></span>
                     </button>
+
                     <a href="{{ route('all.roles') }}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
                 </div>
             </div>

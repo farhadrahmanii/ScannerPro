@@ -62,35 +62,39 @@
                                             @csrf
                                             <div class="col-12">
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" name="email" class="form-control" id="email"
-                                                    placeholder="jhon@example.com">
+                                                <input type="email" name="email" class="form-control @error('email')
+                                                    is-invalid
+                                                @enderror" id="email" placeholder="jhon@example.com">
+
                                             </div>
                                             <div class="col-12">
                                                 <label for="password" class="form-label">Password</label>
                                                 <div class="input-group" id="show_hide_password">
-                                                    <input type="password" class="form-control border-end-0"
-                                                        id="password" name="password" placeholder="Enter Password"> <a
-                                                        href="javascript:;" class="input-group-text bg-transparent"><i
+                                                    <input type="password" class="form-control @error('password')
+                                                        is-invalid
+                                                    @enderror border-end-0" id="password" name="password"
+                                                        placeholder="Enter Password"> <a href="javascript:;"
+                                                        class="input-group-text bg-transparent"><i
                                                             class='bx bx-hide'></i></a>
-                                                    @error('password')
-                                                        <div
-                                                            class="alert alert-danger border-0 bg-danger alert-dismissible fade show py-2">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="font-35 text-white"><i
-                                                                        class="bx bxs-message-square-x"></i>
-                                                                </div>
-                                                                <div class="ms-3">
-                                                                    <h6 class="mb-0 text-white">Credentials!</h6>
-                                                                    <div class="text-white">Wrong Username Or Password!
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                                                aria-label="Close"></button>
-                                                        </div>
-                                                    @enderror
                                                 </div>
                                             </div>
+                                            @error('password')
+                                                <div
+                                                    class="alert alert-danger border-0 bg-danger alert-dismissible fade show py-2">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="font-35 text-white"><i
+                                                                class="bx bxs-message-square-x"></i>
+                                                        </div>
+                                                        <div class="ms-3">
+                                                            <h6 class="mb-0 text-white">Credentials!</h6>
+                                                            <div class="text-white">Wrong Username Or Password!
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                            @enderror
                                             <div class="col-md-6">
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"

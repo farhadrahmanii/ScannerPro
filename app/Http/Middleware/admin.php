@@ -22,9 +22,10 @@ class admin
 
         $role = Auth::user()->role;
 
-        if ($role == 'admin') {
+        if ($role == 'admin' && Auth::user()->status == '1') { // Correct comparison operator
             return $next($request);
         } else {
+            flash()->error('You are not authorized to access this page, You may Check your account is active or not?');
             Auth::logout();
             return redirect()->route('login');
         }

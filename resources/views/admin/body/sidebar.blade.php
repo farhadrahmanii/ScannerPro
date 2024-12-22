@@ -12,13 +12,12 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="">
+            <a href="{{route('dashboard')}}">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
             </a>
         </li>
-        <li class="menu-label"></li>
         <li>
             @if (Auth::user()->can('driver.list'))
                 <a href="{{route('all.drivers')}}">
@@ -78,7 +77,7 @@
 
 
         <li>
-            
+
             <a href="{{route('users.list')}}">
                 <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
                 </div>
@@ -106,9 +105,10 @@
                 <li> <a href="{{route('all.roles.permission')}}"><i class='bx bx-radio-circle'></i>All Roles In
                         Permission</a>
                 </li>
-                <li> <a href="{{route('add.roles.permission')}}"><i class='bx bx-radio-circle'></i>Roles In
+                <!-- <li> 
+                    <a href="{{route('add.roles.permission')}}"><i class='bx bx-radio-circle'></i>Roles In
                         Permission</a>
-                </li>
+                </li> -->
             </ul>
         </li>
 

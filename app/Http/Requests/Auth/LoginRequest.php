@@ -48,7 +48,7 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ], flash()->error('Incorrect Username Or Password!'));
         }
-        flash()->success(trans('Welcome to Scanner System!'));
+
         RateLimiter::clear($this->throttleKey());
     }
 

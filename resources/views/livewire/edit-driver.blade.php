@@ -75,10 +75,12 @@
         </div>
         <div class="col-md-12">
             <div class="gap-3 d-md-flex d-grid align-items-center">
+
                 <button type="submit" wire:click.prevent="update" wire:loading.attr="disabled"
                     class="px-4 btn btn-primary">
                     <span wire:loading.remove>Save</span>
-                    <span wire:loading>Saving...</span>
+                    <span wire:loading class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+
                 </button>
                 <a href="#" class="px-4 btn btn-light">Cancel</a>
             </div>

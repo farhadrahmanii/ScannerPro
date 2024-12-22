@@ -43,7 +43,9 @@
                     <button type="submit" wire:click.prevent="save" wire:loading.attr="disabled"
                         class="px-4 btn btn-primary">
                         <span wire:loading.remove>Save</span>
-                        <span wire:loading>Saving...</span>
+                        <span wire:loading class="spinner-border spinner-border-sm" role="status"
+                            aria-hidden="true"></span>
+
                     </button>
                     <a href="{{route('all.permissions')}}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
                 </div>

@@ -14,13 +14,13 @@ use App\Livewire\Provinces\AllProvinces;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin;
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('login');
 });
 
 
 Route::middleware(admin::class)->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/', function () {
         return view('admin.adminDashboard');
     })->name('dashboard');
 

@@ -80,14 +80,20 @@
 
             <div class="form-group col-md-3">
                 <label for="category_id" class="form-label">category</label>
-                <input type="text" id="category_id" wire:model="category_id" name="category_id" class="form-control rounded-lg
-                    @error('category_id')
-                        in-valid
-                    @enderror
-                    " id="category_id" placeholder="Data Science">
+                <select class="form-control rounded-lg @error('category_id')
+                    in-valid
+                @enderror" wire:model="category_id" name="category_id" id="category_id">
+                    <option>Select Category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                    @endforeach
+
+                    </option>
+                </select>
                 @error('category_id')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
+
             </div>
 
 
@@ -201,7 +207,7 @@
                             aria-hidden="true"></span>
 
                     </button>
-                    <a href="" class="px-4 btn btn-light">Cancel</a>
+                    <a href="{{route('all.transactions')}}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
                 </div>
             </div>
         </form>

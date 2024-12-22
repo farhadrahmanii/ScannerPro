@@ -32,14 +32,14 @@ class EditRolelivewire extends Component
         return $this->redirect('/all/roles', navigate: true);
     }
     // Delete Role Method
-    public function deleteRole()
+    public function deleteRole($roleId)
     {
-        $role = Role::findOrFail($this->roleId);
+        $role = Role::findOrFail($roleId);
         $role->delete();
 
         session()->flash('success', 'Role deleted successfully!');
         // return redirect()->route('all.roles');
-        return $this->redirect('all/roles', navigate: true);
+        return $this->redirect('/all/roles', navigate: true);
     }
     public function placeholder()
     {

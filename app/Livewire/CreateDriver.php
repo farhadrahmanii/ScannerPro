@@ -3,11 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\Driver;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Masmerise\Toaster\Toaster;
 
 class CreateDriver extends Component
 {
+    public $user;
     public $name = "";
     public $father_name = "";
     public $national_id = "";
@@ -20,6 +22,7 @@ class CreateDriver extends Component
     public function save()
     {
         $this->validate([
+            'user_id' => ['required', 'numeric'],
             'name' => ['required', 'string'],
             'father_name' => ['required', 'string'],
             'national_id' => ['required', 'string'],
@@ -29,7 +32,10 @@ class CreateDriver extends Component
             'transport_company' => ['required', 'string'],
             'transport_company_tin' => ['required', 'string'],
         ]);
+        // Check if the user exists
+        $this->user = Auth::user()->id;
         Driver::create([
+            'user_id' => $this->user_id,
             'name' => $this->name,
             'father_name' => $this->father_name,
             'national_id' => $this->national_id,

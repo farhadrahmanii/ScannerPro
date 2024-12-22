@@ -19,6 +19,12 @@ class AuthenticatedSessionController extends Controller
         return view('login');
     }
 
+    protected function authenticated(Request $request, $user)
+    {
+        // Redirect to dashboard if the user is authenticated
+        return redirect()->route('dashboard');
+    }
+
     /**
      * Handle an incoming authentication request.
      */
