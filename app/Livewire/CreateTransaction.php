@@ -11,6 +11,7 @@ class CreateTransaction extends Component
 {
     public $user;
     public $goods_id;
+    public $vehicle_id;
     public $transaction_id;
     public $bill_of_landing;
     public $exporting_country;
@@ -29,6 +30,7 @@ class CreateTransaction extends Component
     public function save()
     {
         $this->validate([
+            "vehicle_id" => "required",
             'goods_id' => 'required|string',
             'transaction_id' => 'required|string',
             'bill_of_landing' => 'required|string',
@@ -47,7 +49,8 @@ class CreateTransaction extends Component
         $user = Auth::user()->id;
         $transaction = Transaction::create([
             'user_id' => $user,
-            'goods_id' => $this->goods_id, // Add this line
+            'vehicle_id' => $this->vehicle_id,
+            'goods_id' => $this->goods_id,
             'transaction_id' => $this->transaction_id,
             'bill_of_landing' => $this->bill_of_landing,
             'exporting_country' => $this->exporting_country,

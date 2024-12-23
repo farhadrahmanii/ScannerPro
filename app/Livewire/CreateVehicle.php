@@ -8,6 +8,7 @@ use Livewire\Component;
 
 class CreateVehicle extends Component
 {
+    public $user;
     public $vehicle_make = "";
     public $driverId;
     public $vehicle_model = "";
@@ -23,6 +24,7 @@ class CreateVehicle extends Component
     public function save()
     {
         // dd($request->all());
+        $this->user = auth()->user()->id; // current logined user ID 
         $this->validate([
             'vehicle_make' => 'required|string|max:255',
             'driverId' => 'numeric|required|max:255',
@@ -36,6 +38,7 @@ class CreateVehicle extends Component
             'extended_body_type' => 'required|string|max:255',
         ]);
         Vehicle::create([
+            'user_id' => $this->user,
             'vehicle_make' => $this->vehicle_make,
             'driver_id' => $this->driverId,
             'vehicle_model' => $this->vehicle_model,

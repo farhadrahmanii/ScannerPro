@@ -52,4 +52,15 @@ class VehicleController extends Controller
         // );
         // return redirect()->route('all.vehicles')->with($notification);
     } // End of Method
+    public function AddTrasactionToVehicle($id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        return view('admin.backend.transaction.addTransaction', compact('vehicle'));
+    } // end of Methods
+
+    public function VehicleDetails($id)
+    {
+        $vehicle = Vehicle::findOrFail($id);
+        return view('admin.backend.vehicles.VehicleDetails', compact('vehicle'));
+    } // end of Methods
 }

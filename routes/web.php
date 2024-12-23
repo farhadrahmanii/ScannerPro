@@ -35,7 +35,6 @@ Route::middleware(admin::class)->group(function () {
         Route::post('/add/driver/store', 'AddDriverStore')->name('add.store.driver');
         Route::get('driver/details/{id}', 'DriverDetails')->name('driver.details');
         Route::get('edit/driver/{id}', 'EditDriver')->name('edit.driver');
-
     });
 
 
@@ -49,6 +48,8 @@ Route::middleware(admin::class)->group(function () {
         Route::get('/all/vehicles', 'AllVehicles')->name('all.vehicles');
         Route::get('/add/vehicle/to/driver/{id}', 'AddVehiclesToDriver')->name('add.vehicle');
         Route::post('/store/vehicle', 'StoreVehicle')->name('add.vehicle.store');
+        Route::get('/add/transaction/to/vehicle/{id}', 'AddTrasactionToVehicle')->name('add.transaction.to.vehicle');
+        Route::get('/vehicle/details/{id}', 'VehicleDetails')->name('vehicle.details');
     });
 
 
@@ -76,8 +77,6 @@ Route::middleware(admin::class)->group(function () {
         Route::get('/add/province', 'AddProvince')->name('add.province');
         Route::get('/all/site', 'allSites')->name('site');
     });
-
-
 
     // All Admin Role and Permissions for Users Routes here
     Route::controller(RoleAndPermissions::class)->group(function () {

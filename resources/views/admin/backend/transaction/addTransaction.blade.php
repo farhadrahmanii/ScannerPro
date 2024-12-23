@@ -23,7 +23,7 @@
     <!--end breadcrumb-->
     <hr />
 
-    <livewire:create-transaction lazy />
+    <livewire:create-transaction lazy :vehicle_id="$vehicle->id" />
 </div>
 <script>
     $(document).ready(function () {

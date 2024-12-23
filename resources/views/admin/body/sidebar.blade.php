@@ -21,7 +21,8 @@
         <li>
             @if (Auth::user()->can('driver.list'))
                 <a href="{{route('all.drivers')}}">
-                    <div class="parent-icon"> <i class="fadeIn animated bx bx-taxi"></i>
+                    <div class="parent-icon"> <img src="{{asset('images/icons/driver.png')}}" class="logo-icon"
+                            width="100px" />
                     </div>
                     <div class="menu-title">Drivers</div>
                 </a>
@@ -30,14 +31,13 @@
         <li>
 
             <!-- <li class="menu-label"></li> -->
-            @if (Auth::user()->can(''))
-
+            @if (Auth::user()->can('vehicle.list'))
+                <a href="{{ route('all.vehicles') }}">
+                    <div class="parent-icon"><i class="fa fa-truck" aria-hidden="true"></i>
+                    </div>
+                    <div class="menu-title">Vehicles</div>
+                </a>
             @endif
-            <!-- <a href="{{ route('all.vehicles') }}">
-                <div class="parent-icon"><i class="fa fa-truck" aria-hidden="true"></i>
-                </div>
-                <div class="menu-title">Vehicles</div>
-            </a> -->
         </li>
 
         <li>

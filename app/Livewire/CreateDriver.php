@@ -22,7 +22,6 @@ class CreateDriver extends Component
     public function save()
     {
         $this->validate([
-            'user_id' => ['required', 'numeric'],
             'name' => ['required', 'string'],
             'father_name' => ['required', 'string'],
             'national_id' => ['required', 'string'],
@@ -33,9 +32,10 @@ class CreateDriver extends Component
             'transport_company_tin' => ['required', 'string'],
         ]);
         // Check if the user exists
-        $this->user = Auth::user()->id;
+        $user = Auth::user()->id;
+        // dd($user);
         Driver::create([
-            'user_id' => $this->user_id,
+            'user_id' => $user,
             'name' => $this->name,
             'father_name' => $this->father_name,
             'national_id' => $this->national_id,

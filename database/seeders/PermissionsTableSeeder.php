@@ -24,7 +24,8 @@ class PermissionsTableSeeder extends Seeder
             ['name' => 'Permission.list', 'guard_name' => 'web', 'group_name' => 'Role and Permission'],
             ['name' => 'permission.create', 'guard_name' => 'web', 'group_name' => 'Role and Permission'],
             ['name' => 'permission.edit', 'guard_name' => 'web', 'group_name' => 'Role and Permission'],
-            ['name' => 'add.vehicle.to.driver', 'guard_name' => 'web', 'group_name' => 'Category'],
+            ['name' => 'vehicle.list', 'guard_name' => 'web', 'group_name' => 'Vehicle'],
+            ['name' => 'add.vehicle.to.driver', 'guard_name' => 'web', 'group_name' => 'driver'],
             ['name' => 'transaction.list', 'guard_name' => 'web', 'group_name' => 'Transactions'],
         ];
 
