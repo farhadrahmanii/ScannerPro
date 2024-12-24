@@ -239,7 +239,7 @@
     <x-toaster-hub /> <!-- 👈 -->
 
     @livewireScripts
-
+    @stack('scripts')
 </body>
 
 </html>

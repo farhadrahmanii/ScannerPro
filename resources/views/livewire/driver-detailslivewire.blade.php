@@ -80,7 +80,7 @@
                             </div>
                             <div class="col-md-5">
                                 <button type="button" class="btn btn-outline-success mb-1">Total Vehicle <span
-                                        class="badge bg-success">{{ count($vehicles)}}</span></button>
+                                        class="badge bg-success">{{ count($vehicles)}}</span> </button>
                             </div>
                         </div>
                         <hr>
@@ -88,7 +88,8 @@
                             <table class="table table-striped table-bordered" style="font-weight: 600;">
                                 <tbody>
                                     <button type="button" class="btn btn-outline-success mb-1">Vehicle <span
-                                            class="badge bg-danger">{{$key + 1}}</span>
+                                            class="badge bg-danger">{{$key + 1}}
+                                        </span> {{ $vehicle->created_at->diffForHumans() }}
                                     </button>
 
                                     <tr>

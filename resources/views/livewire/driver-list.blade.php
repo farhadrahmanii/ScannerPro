@@ -5,7 +5,6 @@
                 <thead>
                     <tr>
                         <th>Sl</th>
-                        <th>Driver ID</th>
                         <th>Name</th>
                         <th>Contact Info</th>
                         <th>Transport Company</th>
@@ -18,9 +17,6 @@
                         <tr>
                             <td>
                                 {{ $key + 1}}
-                            </td>
-                            <td>
-                                {{ $drive->id}}
                             </td>
                             <td>
                                 {{ $drive->name}}
@@ -39,19 +35,19 @@
                                 <div class="col">
                                     <div class="flex justify-center">
                                         <div x-data="{open: false, toggle() { if (this.open) {
-                                                                                                                                                            return this.close()
-                                                                                                                                                        }
+                                                                                                                                                                    return this.close()
+                                                                                                                                                                }
 
-                                                                                                                                                        this.$refs.button.focus()
+                                                                                                                                                                this.$refs.button.focus()
 
-                                                                                                                                                        this.open = true
-                                                                                                                                                    },
-                                                                                                                                                    close(focusAfter) {
-                                                                                                                                                        if (! this.open) return
-                                                                                                                                                        this.open = false
-                                                   focusAfter && focusAfter.focus()
-                                                                                                                                                    }
-                                                                                                                                                }"
+                                                                                                                                                                this.open = true
+                                                                                                                                                            },
+                                                                                                                                                            close(focusAfter) {
+                                                                                                                                                                if (! this.open) return
+                                                                                                                                                                this.open = false
+                                                           focusAfter && focusAfter.focus()
+                                                                                                                                                            }
+                                                                                                                                                        }"
                                             x-on:keydown.escape.prevent.stop="close($refs.button)"
                                             x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
                                             x-id="['dropdown-button']" class="relative">
@@ -107,7 +103,6 @@
                 <tfoot>
                     <tr>
                         <th>Sl</th>
-                        <th>Driver ID</th>
                         <th>Name</th>
                         <th>Contact Info</th>
                         <th>Transport Company</th>

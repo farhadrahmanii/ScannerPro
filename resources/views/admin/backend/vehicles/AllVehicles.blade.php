@@ -1,7 +1,6 @@
 @extends('admin.adminDashboard')
 @section('admin')
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
 <style>
@@ -26,14 +25,13 @@
     </div>
     <!--end breadcrumb-->
     <hr />
+
+    <!-- Livewire Search Component -->
+    <!-- <livewire:search-vehiclelivewire lazy /> -->
+
+    <!-- Livewire Vehicle List Component -->
     <livewire:vehicle-list lazy />
 
 </div>
-
-<script>
-
-</script>
-
-
 
 @endsection

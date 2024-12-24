@@ -112,13 +112,6 @@
                         </div>
                         <hr>
                         @foreach ($transactions as $key => $item)
-
-
-
-
-
-
-
                             <table class="table table-striped table-bordered" style="font-weight: 600;">
                                 <thead>
                                     <tr>
@@ -126,9 +119,7 @@
                                             Transaction <span class="badge bg-danger">{{$key + 1}}</span>
                                             {{ $item->created_at->diffForHumans() }}
                                         </button>
-
-
-
+ 
                                     </tr>
                                 </thead>
                                 <tbody>
