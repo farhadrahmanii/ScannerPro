@@ -24,7 +24,7 @@
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.admin.user')}}" class="px-5 btn btn-primary">Add User</a>
+            <a href="{{route('add.admin.user')}}" class="px-5 btn btn-primary" wire:navigate>Add User</a>
         </div>
     </div>
     <!--end breadcrumb-->

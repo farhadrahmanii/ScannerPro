@@ -30,6 +30,6 @@ class AddProvince extends Component
     public function render()
     {
         $sites = Site::all();
-        return view('livewire.add-province', compact('sites'));
+        return view('livewire.provinces.add-province', compact('sites'));
     }
 }

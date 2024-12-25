@@ -61,6 +61,6 @@ class CreateVehicle extends Component
     public function render()
     {
         $drivers = Driver::all();
-        return view('livewire.create-vehicle', compact('drivers'));
+        return view('livewire.vehicles.create-vehicle', compact('drivers'));
     }
 }

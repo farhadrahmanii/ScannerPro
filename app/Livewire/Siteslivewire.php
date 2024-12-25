@@ -15,6 +15,6 @@ class Siteslivewire extends Component
     public function render()
     {
         $sites = Site::all();
-        return view('livewire.siteslivewire', compact('sites'));
+        return view('livewire.provinces.siteslivewire', compact('sites'));
     }
 }

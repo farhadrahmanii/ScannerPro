@@ -32,6 +32,6 @@ class SearchVehiclelivewire extends Component
             })
             ->paginate(10);
 
-        return view('livewire.search-vehiclelivewire', compact('vehicles'));
+        return view('livewire.vehicles.search-vehiclelivewire', compact('vehicles'));
     }
 }

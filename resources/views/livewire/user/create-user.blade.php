@@ -55,13 +55,18 @@
             </div>
 
             <div class="form-group col-md-3">
-                <label for="province_id" class="form-label">Province ID</label>
-                <input type="number" id="input1" wire:model="province_id" name="province_id" class="form-control rounded-lg
-                    @error('province_id')
-                        is-invalid
-                    @enderror
-                    " id="province_id" placeholder="Data Science">
-                @error('province_id')
+                <label for="site_id" class="form-label">Province</label>
+                <select class="form-control rounded-lg @error('site_id')
+                    is-invalid
+                @enderror" wire:model="site_id" name="site_id" id="site_id">
+                    <option>Select Province</option>
+                    @foreach ($allSites as $site)
+                        <option value="{{ $site->id }}">{{ $site->site_name }}</option>
+                    @endforeach
+
+                    </option>
+                </select>
+                @error('site_id')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
             </div>
@@ -114,77 +119,10 @@
                             Loading...
                         </span>
                     </button>
-                    <a href="" class="px-4 btn btn-light">Cancel</a>
+                    <a href="{{ route('users.list')}}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
                 </div>
 
             </div>
         </form>
     </div>
 </div>
-
-<script>
-    $(document).ready(function () {
-        // Initialize form validation
-        $('#myForm').validate({
-            rules: {
-                name: {
-                    required: true
-                },
-                user_name: {
-                    required: true
-                },
-                email: {
-                    required: true,
-                    email: true
-                },
-                province_id: {
-                    required: true
-                },
-                role: {
-                    required: true
-                },
-                photo: {
-                    required: true,
-                    extension: "jpg|jpeg|png|gif"
-                }
-            },
-            messages: {
-                name: {
-                    required: 'Please enter your name'
-                },
-                user_name: {
-                    required: 'Please enter your username'
-                },
-                email: {
-                    required: 'Please enter your email',
-                    email: 'Please enter a valid email address'
-                },
-                province_id: {
-                    required: 'Please enter your province ID'
-                },
-                role: {
-                    required: 'Please enter your role'
-                },
-                photo: {
-                    required: 'Please upload a photo',
-                    extension: 'Only image files (jpg, jpeg, png, gif) are allowed'
-                }
-            },
-            errorElement: 'span',
-            errorPlacement: function (error, element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight: function (element) {
-                $(element).addClass('is-invalid');
-            },
-            unhighlight: function (element) {
-                $(element).removeClass('is-invalid');
-            },
-            submitHandler: function (form) {
-                // Trigger Livewire save method on successful validation
-                @this.save();
-            }
-        });
-    });
-</script>

@@ -14,6 +14,6 @@ class AllTransaction extends Component
     public function render()
     {
         $transactions = Transaction::all();
-        return view('livewire.all-transaction', compact('transactions'));
+        return view('livewire.transactions.all-transaction', compact('transactions'));
     }
 }

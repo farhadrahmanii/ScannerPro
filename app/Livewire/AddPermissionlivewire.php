@@ -31,6 +31,6 @@ class AddPermissionlivewire extends Component
     }
     public function render()
     {
-        return view('livewire.add-permissionlivewire');
+        return view('livewire.RoleAndPermissions.add-permissionlivewire');
     }
 }

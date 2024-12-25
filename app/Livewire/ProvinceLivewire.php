@@ -32,6 +32,6 @@ class ProvinceLivewire extends Component
     {
         $provinces = Provinces::all();
         // Return the view with the fetched data
-        return view('livewire.province-livewire', compact('provinces'));
+        return view('livewire.provinces.province-livewire', compact('provinces'));
     }
 }

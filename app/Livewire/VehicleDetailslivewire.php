@@ -26,6 +26,6 @@ class VehicleDetailslivewire extends Component
     }
     public function render()
     {
-        return view('livewire.vehicle-detailslivewire');
+        return view('livewire.vehicles.vehicle-detailslivewire');
     }
 }

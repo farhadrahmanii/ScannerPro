@@ -22,5 +22,10 @@ class ProvinceSiteController extends Controller
     public function allSites()
     {
         return view("admin.backend.sites.allSite");
-    }
+    } //All Site
+
+    public function AddSite()
+    {
+        return view("admin.backend.sites.addSite");
+    } //All Site
 }

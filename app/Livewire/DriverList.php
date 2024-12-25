@@ -15,6 +15,6 @@ class DriverList extends Component
     {
         $drivers = Driver::all();
 
-        return view('livewire.driver-list', compact('drivers'));
+        return view('livewire.drivers.driver-list', compact('drivers'));
     }
 }

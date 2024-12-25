@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Role;
 class AllRolesList extends Component
 {
     public $roleId;
-    
+
     public function deleteRole($roleId)
     {
         $role = Role::findOrFail($roleId);
@@ -26,6 +26,6 @@ class AllRolesList extends Component
     {
         $roles = Role::all();
 
-        return view('livewire.all-roles-list', compact("roles"));
+        return view('livewire.RoleAndPermissions.all-roles-list', compact("roles"));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Site;
 use App\Models\User;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -11,11 +12,12 @@ use Spatie\Permission\Models\Role;
 class CreateUser extends Component
 {
     use WithFileUploads;
+    public $allSites;
     public $name = "";
     public $user_name = "";
     public $email = "";
     public $password = "";
-    public $province_id;
+    public $site_id;
     public $role = "";
     #[Validate('image|max:1024')]
     public $photo = "";
@@ -29,7 +31,7 @@ class CreateUser extends Component
             'user_name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'password' => 'required|String|max:255',
-            'province_id' => 'required',
+            'site_id' => 'required',
             'role' => 'required|string|max:50',
             'photo' => 'image|mimes:jpg,jpeg,png|max:2048', // Max size in kilobytes
         ]);
@@ -40,7 +42,7 @@ class CreateUser extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password),
-            'province_id' => $this->province_id,
+            'site_id' => $this->site_id,
             'role' => $this->role,
             'photo' => isset($filePath) ? $filePath : null,
         ]);
@@ -51,15 +53,14 @@ class CreateUser extends Component
             }
         }
 
-        $notification = array(
-            'alert-type' => 'success',
-            'message' => 'User Registerd Successfully! ',
-        );
-        return redirect()->route('users.list')->with($notification);
+        flash()->success('Account for Miss/Mr.' . $this->name . ' Created successfully');
+        $this->reset();
+        return $this->redirect('/all/users', navigate: true);
     }
     public function mount()
     {
         $this->roles = Role::all();
+        $this->allSites = Site::all();
     }
     public function placeholder()
     {
@@ -67,6 +68,6 @@ class CreateUser extends Component
     }
     public function render()
     {
-        return view('livewire.create-user');
+        return view('livewire.user.create-user');
     }
 }

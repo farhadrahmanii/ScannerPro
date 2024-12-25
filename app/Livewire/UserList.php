@@ -30,6 +30,6 @@ class UserList extends Component
     {
         $users = User::with('province')->get();
         $provinces = Provinces::with('user')->get();
-        return view('livewire.user-list', compact("users", 'provinces'));
+        return view('livewire.user.user-list', compact("users", 'provinces'));
     }
 }

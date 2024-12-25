@@ -18,6 +18,6 @@ class VehicleList extends Component
     public function render()
     {
         $vehicles = Vehicle::with('driver')->paginate(10); // Use pagination and eager load driver
-        return view('livewire.vehicle-list', compact('vehicles'));
+        return view('livewire.vehicles.vehicle-list', compact('vehicles'));
     }
 }

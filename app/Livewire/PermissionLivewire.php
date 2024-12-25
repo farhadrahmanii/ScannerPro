@@ -15,6 +15,6 @@ class PermissionLivewire extends Component
     {
         $permissions = Permission::all();
 
-        return view('livewire.permission-livewire', compact("permissions"));
+        return view('livewire.RoleAndPermissions.permission-livewire', compact("permissions"));
     }
 }

@@ -84,6 +84,6 @@ class CreateTransaction extends Component
     public function render()
     {
         $categories = Category::all();
-        return view('livewire.create-transaction', compact('categories'));
+        return view('livewire.transactions.create-transaction', compact('categories'));
     }
 }

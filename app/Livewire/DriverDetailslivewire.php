@@ -27,6 +27,6 @@ class DriverDetailslivewire extends Component
 
     public function render()
     {
-        return view('livewire.driver-detailslivewire');
+        return view('livewire.drivers.driver-detailslivewire');
     }
 }

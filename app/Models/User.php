@@ -55,6 +55,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Provinces::class, 'province_id', 'id');
     }
+    public function site()
+    {
+        return $this->belongsTo(Site::class, 'site_id', 'id');
+    }
 
 
 

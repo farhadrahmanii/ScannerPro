@@ -12,7 +12,7 @@ class AddRolelivewire extends Component
     public $name;
     public function mount()
     {
-        
+
     }
 
     public function save()
@@ -35,6 +35,6 @@ class AddRolelivewire extends Component
     }
     public function render()
     {
-        return view('livewire.add-rolelivewire');
+        return view('livewire.RoleAndPermissions.add-rolelivewire');
     }
 }

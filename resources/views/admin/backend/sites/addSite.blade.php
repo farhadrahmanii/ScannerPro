@@ -19,17 +19,17 @@
                 <ol class="p-0 mb-0 breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Site</li>
+                    <li class="breadcrumb-item active" aria-current="page">Add Site</li>
                 </ol>
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('add.site')}}" class="px-5 btn btn-primary">Add Provinces Site</a>
+            <a href="{{route('site')}}" class="px-5 btn btn-primary" wire:navigate>Add Site</a>
         </div>
     </div>
     <!--end breadcrumb-->
     <hr />
-    <livewire:siteslivewire lazy />
+    <livewire:provinces.add-site lazy />
 
 </div>
 

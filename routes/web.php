@@ -76,6 +76,7 @@ Route::middleware(admin::class)->group(function () {
         Route::get('/all/province', 'AllProvinceSites')->name('province.site');
         Route::get('/add/province', 'AddProvince')->name('add.province');
         Route::get('/all/site', 'allSites')->name('site');
+        Route::get('/add/site', 'AddSite')->name('add.site');
     });
 
     // All Admin Role and Permissions for Users Routes here

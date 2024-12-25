@@ -48,6 +48,6 @@ class EditRolelivewire extends Component
 
     public function render()
     {
-        return view('livewire.edit-rolelivewire');
+        return view('livewire.RoleAndPermissions.edit-rolelivewire');
     }
 }

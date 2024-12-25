@@ -14,7 +14,6 @@ return new class extends Migration {
             $table->id();
             $table->string('name', 255);
             $table->string('email', 255)->unique();
-            $table->unsignedBigInteger('province_id')->nullable();
             $table->unsignedBigInteger('site_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password', 255);

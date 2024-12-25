@@ -19,14 +19,12 @@ class VehicleTable extends DataTableComponent
     {
         return [
             Column::make('Sl', 'id')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make('Driver Name', 'driver.name')
                 ->sortable()
                 ->searchable(),
             Column::make('Vehicle Make', 'vehicle_make')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make('Model', 'vehicle_model')
                 ->sortable()
                 ->searchable(),
@@ -34,9 +32,11 @@ class VehicleTable extends DataTableComponent
                 ->sortable()
                 ->searchable(),
             Column::make('Capacity (Ton)', 'capacity')
-                ->sortable()
-                ->searchable(),
+                ->sortable(),
             Column::make('Vehicle Type', 'type')
+                ->sortable(),
+            Column::make('System Code', 'system_code')
+                ->searchable()
                 ->sortable(),
             Column::make('Plate #', 'plate_number')
                 ->sortable(),
