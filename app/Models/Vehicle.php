@@ -29,7 +29,7 @@ class Vehicle extends Model
 
         static::creating(function ($vehicle) {
             do {
-                $vehicle->system_code = str_pad(mt_rand(10000000, 9999999999), 12, '0', STR_PAD_LEFT);
+                $vehicle->system_code = str_pad(mt_rand(10000000, 99999999), 8, '0', STR_PAD_LEFT);
             } while (\App\Models\Vehicle::where('system_code', $vehicle->system_code)->exists());
         });
     }

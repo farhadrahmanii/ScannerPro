@@ -12,7 +12,7 @@
                     @error('name')
                         is-invalid
                     @enderror
-                    " id="name" placeholder="Data Science">
+                    " id="name" placeholder="Ahmad">
                 @error('name')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
@@ -24,7 +24,7 @@
                     @error('user_name')
                         is-invalid
                     @enderror
-                    " id="user_name" placeholder="Data Science">
+                    " id="user_name" placeholder="ahmadi1">
                 @error('user_name')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
@@ -36,7 +36,7 @@
                     @error('email')
                         is-invalid
                     @enderror
-                    " id="email" placeholder="Data Science">
+                    " id="email" placeholder="example@gmail.com">
                 @error('email')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
@@ -48,28 +48,26 @@
                     @error('password')
                         is-invalid
                     @enderror
-                    " id="password" placeholder="Data Science">
+                    " id="password" placeholder="****************">
                 @error('password')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
             </div>
 
             <div class="form-group col-md-3">
-                <label for="site_id" class="form-label">Province</label>
-                <select class="form-control rounded-lg @error('site_id')
-                    is-invalid
-                @enderror" wire:model="site_id" name="site_id" id="site_id">
-                    <option>Select Province</option>
+                <label for="site_id" class="form-label">Select Site</label>
+                <select class="form-control rounded-lg @error('site_id') is-invalid @enderror" wire:model="site_id"
+                    name="site_id" id="site_id">
+                    <option value="" disabled selected>Select Province</option>
                     @foreach ($allSites as $site)
                         <option value="{{ $site->id }}">{{ $site->site_name }}</option>
                     @endforeach
-
-                    </option>
                 </select>
                 @error('site_id')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
+                    <span class="text-danger font-weight-bold">{{ $message }}</span>
                 @enderror
             </div>
+
 
             <div class="form-group col-md-3">
                 <label for="role" class="form-label">Role</label>

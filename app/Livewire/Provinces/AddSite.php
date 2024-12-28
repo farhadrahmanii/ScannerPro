@@ -18,7 +18,7 @@ class AddSite extends Component
         $this->provinces = Provinces::get();
     }
     protected $messages = [
-        'p_id.required' => 'Please Select Province ID first!',
+        'p_id.required' => 'Please Select Province first!',
         'site_name.required' => 'Enter Site Name!',
     ];
     public function save()

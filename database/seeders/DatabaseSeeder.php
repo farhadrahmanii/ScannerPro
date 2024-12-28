@@ -65,6 +65,9 @@ class DatabaseSeeder extends Seeder
         // }
 
         // $this->call(PermissionsTableSeeder::class);
-        $this->call(VehicleSeeder::class);
+        // $this->call(VehicleSeeder::class);
+        // $this->call(DriverSeeder::class);
+        $this->call(TransactionsSeeder::class);
+
     }
 }

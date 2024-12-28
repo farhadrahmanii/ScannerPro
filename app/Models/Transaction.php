@@ -16,4 +16,12 @@ class Transaction extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function vehicle()
+    {
+        return $this->belongsTo(Vehicle::class);
+    }
 }

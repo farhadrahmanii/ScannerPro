@@ -29,7 +29,7 @@ class CreateUser extends Component
         $this->validate([
             'name' => 'required|string|max:255',
             'user_name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255',
             'password' => 'required|String|max:255',
             'site_id' => 'required',
             'role' => 'required|string|max:50',
