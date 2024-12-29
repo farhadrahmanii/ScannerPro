@@ -15,17 +15,6 @@
                 @enderror
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="transaction_id" class="form-label">Transaction ID</label>
-                <input type="text" wire:model="transaction_id" id="transaction_id" name="transaction_id" class="form-control rounded-lg
-                    @error('transaction_id')
-                        in-valid
-                    @enderror
-                    " id="transaction_id" placeholder="Data Science">
-                @error('transaction_id')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
-                @enderror
-            </div>
 
             <div class="form-group col-md-3">
                 <label for="bill_of_landing" class="form-label">Bill of Landing</label>
@@ -188,7 +177,7 @@
 
             <div class="form-group col-md-3">
                 <label for="scan_time" class="form-label">Scan TimeStamp</label>
-                <input type="date" id="scan_time" wire:model="scan_time" name="scan_time" class="form-control rounded-lg
+                <input type="datetime-local" id="scan_time" wire:model="scan_time" name="scan_time" class="form-control rounded-lg
                     @error('scan_time')
                         in-valid
                     @enderror

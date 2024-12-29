@@ -24,4 +24,8 @@ class Transaction extends Model
     {
         return $this->belongsTo(Vehicle::class);
     }
+    // The Scan_time is DateTime it's defined
+    protected $casts = [
+        'scan_time' => 'datetime',
+    ];
 }

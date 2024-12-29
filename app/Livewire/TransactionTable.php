@@ -13,7 +13,16 @@ class TransactionTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')
+            ->setTableRowUrl(function ($row) {
+                return route('transaction.details', $row);
+            })
+            ->setTableRowUrlTarget(function ($row) {
+
+                return 'navigate';
+            });
+
+
     }
 
     public function columns(): array
@@ -43,6 +52,7 @@ class TransactionTable extends DataTableComponent
 
             Column::make('Number of Items', 'number_of_items')
                 ->sortable(),
+
 
             Column::make('Scan Status', 'scan_status')
                 ->sortable()

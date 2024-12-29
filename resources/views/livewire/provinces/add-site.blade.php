@@ -5,10 +5,10 @@
             action="#">
             @csrf
             <div class="form-group col-md-3">
-                <label for="p_id" class="form-label">Province</label>
-                <select class="form-control rounded-lg @error('p_id')
+                <label for="provinces_id" class="form-label">Province</label>
+                <select class="form-control rounded-lg @error('provinces_id')
                     is-invalid
-                @enderror" wire:model="p_id" name="p_id" id="p_id">
+                @enderror" wire:model="provinces_id" name="provinces_id" id="provinces_id">
                     <option>Select Province</option>
                     @foreach ($provinces as $province)
                         <option value="{{ $province->id }}">{{ $province->Province_name }}</option>
@@ -16,16 +16,35 @@
 
                     </option>
                 </select>
-                @error('p_id')
+                @error('provinces_id')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
             </div>
 
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-3">
                 <label for="site_name" class="form-label">Site Name</label>
                 <input type="text" id="site_name" wire:model="site_name"
                     class="form-control rounded-lg @error('site_name') is-invalid @enderror" placeholder="Kabul">
                 @error('site_name')
+                    <span class="text-red-500 text-bold">{{$message}}</span>
+                @enderror
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="site_manager" class="form-label">Site Manager</label>
+                <input type="text" id="site_manager" wire:model="site_manager"
+                    class="form-control rounded-lg @error('site_manager') is-invalid @enderror" placeholder="Ahmad">
+                @error('site_manager')
+                    <span class="text-red-500 text-bold">{{$message}}</span>
+                @enderror
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="site_manager_contact_details" class="form-label">Site Manager Contact Details</label>
+                <input type="text" id="site_manager_contact_details" wire:model="site_manager_contact_details"
+                    class="form-control rounded-lg @error('site_manager_contact_details') is-invalid @enderror"
+                    placeholder="07xxxxxxxx">
+                @error('site_manager_contact_details')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
             </div>

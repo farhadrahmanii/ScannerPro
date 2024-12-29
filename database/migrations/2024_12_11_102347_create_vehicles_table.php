@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('vin', 255);
             $table->string('colour', 255);
             $table->string('extended_body_type', 255);
+            $table->bigInteger('system_code')->default(0);
             $table->timestamps();
         });
     }

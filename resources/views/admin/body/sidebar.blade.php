@@ -12,7 +12,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="{{route('dashboard')}}">
+            <a href="{{route('dashboard')}}" wire:navigate>
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
@@ -20,7 +20,7 @@
         </li>
         <li>
             @if (Auth::user()->can('driver.list'))
-                <a href="{{route('all.drivers')}}">
+                <a href="{{route('all.drivers')}}" wire:navigate>
                     <div class="parent-icon"> <img src="{{asset('images/icons/driver.png')}}" class="logo-icon"
                             width="100px" />
                     </div>
@@ -32,7 +32,7 @@
 
             <!-- <li class="menu-label"></li> -->
             @if (Auth::user()->can('vehicle.list'))
-                <a href="{{ route('all.vehicles') }}">
+                <a href="{{ route('all.vehicles') }}" wire:navigate>
                     <div class="parent-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                     </div>
                     <div class="menu-title">Vehicles</div>
@@ -45,7 +45,7 @@
             <!-- <li class="menu-label"></li> -->
             @if (Auth::user()->can('transaction.list'))
 
-                <a href="{{route('all.transactions')}}">
+                <a href="{{route('all.transactions')}}" wire:navigate>
                     <div class="parent-icon"><i class="fadeIn animated"><img src="{{asset('images/icons/transaction.png')}}"
                                 class="logo-icon" width="100px" /></i>
                     </div>
@@ -56,7 +56,7 @@
         <li class="menu-label">System Settings</li>
         <li>
             @if (Auth::user()->can('site.list'))
-                <a href="{{ route('province.site')}}">
+                <a href="{{ route('province.site')}}" wire:navigate>
                     <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
                     </div>
                     <div class="menu-title">Province</div>
@@ -67,7 +67,7 @@
         <li>
 
             @if (Auth::user()->can('site.list'))
-                <a href="{{ route('site')}}">
+                <a href="{{ route('site')}}" wire:navigate>
                     <div class="parent-icon"><i class='bx bx-current-location'></i>
                     </div>
                     <div class="menu-title">Sites</div>
@@ -78,7 +78,7 @@
 
         <li>
 
-            <a href="{{route('users.list')}}">
+            <a href="{{route('users.list')}}" wire:navigate>
                 <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
                 </div>
                 <div class="menu-title">Users</div>
@@ -94,15 +94,17 @@
             </a>
             <ul>
                 @if (Auth::user()->can('Permission.list'))
-                    <li> <a href="{{ route('all.permissions') }}"><i class='bx bx-radio-circle'></i>All Permissions</a>
+                    <li> <a href="{{ route('all.permissions') }}" wire:navigate><i class='bx bx-radio-circle'></i>All
+                            Permissions</a>
                     </li>
                 @endif
 
                 <li>
-                    <a href="{{route('all.roles')}}"><i class='bx bx-radio-circle'></i>All Role</a>
+                    <a href="{{route('all.roles')}}" wire:navigate><i class='bx bx-radio-circle'></i>All Role</a>
                 </li>
 
-                <li> <a href="{{route('all.roles.permission')}}"><i class='bx bx-radio-circle'></i>All Roles In
+                <li> <a href="{{route('all.roles.permission')}}" wire:navigate><i class='bx bx-radio-circle'></i>All
+                        Roles In
                         Permission</a>
                 </li>
                 <!-- <li> 

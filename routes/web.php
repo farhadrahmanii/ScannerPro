@@ -60,6 +60,7 @@ Route::middleware(admin::class)->group(function () {
     Route::controller(TransactionController::class)->group(function () {
         Route::get('/all/transactions', 'AllTransactions')->name('all.transactions');
         Route::get('/add/transactions', 'AddTransactions')->name('add.transactions');
+        Route::get('/transaction/detail/{id}', 'TransactionsDetails')->name('transaction.details');
     });
 
     // All Admin Users Routes here

@@ -62,7 +62,7 @@
                                             @csrf
                                             <div class="col-12">
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" name="email" class="form-control @error('email')
+                                                <input type="email" name="email" value="{{old('email')}}" class="form-control @error('email')
                                                     is-invalid
                                                 @enderror" id="email" placeholder="jhon@example.com">
 
@@ -70,7 +70,7 @@
                                             <div class="col-12">
                                                 <label for="password" class="form-label">Password</label>
                                                 <div class="input-group" id="show_hide_password">
-                                                    <input type="password" class="form-control @error('password')
+                                                    <input type="password" value="{{old('password')}}" class="form-control @error('password')
                                                         is-invalid
                                                     @enderror border-end-0" id="password" name="password"
                                                         placeholder="Enter Password"> <a href="javascript:;"

@@ -15,6 +15,6 @@ class Site extends Model
 
     public function province()
     {
-        return $this->belongsTo(Provinces::class, 'p_id', 'id');
+        return $this->belongsTo(Provinces::class, 'provinces_id', 'id');
     }
 }

@@ -7,6 +7,8 @@
                         <th>Sl</th>
                         <th>Province Name</th>
                         <th>Site Name</th>
+                        <th>Site Manager</th>
+                        <th>Site Manager Contact Details</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -16,6 +18,8 @@
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $site->province->Province_name }}</td>
                             <td>{{ $site->site_name }}</td>
+                            <td>{{ $site->site_manager }}</td>
+                            <td>{{ $site->site_manager_contact_Details }}</td>
                             <td>
                                 <button type="button" id="delete" class="btn btn-danger"
                                     wire:click="deleteProvince({{ $site->id }})"
@@ -33,7 +37,10 @@
                 <tfoot>
                     <tr>
                         <th>Sl</th>
-                        <th>Name</th>
+                        <th>Province Name</th>
+                        <th>Site Name</th>
+                        <th>Site Manager</th>
+                        <th>Site Manager Contact Details</th>
                         <th>Actions</th>
                     </tr>
                 </tfoot>
