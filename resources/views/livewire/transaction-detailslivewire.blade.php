@@ -139,27 +139,61 @@
                                 <tr>
                                     <th scope="row" class="col-sm-5">ID</th>
                                     <td class="text-secondary">
+                                        {{ $transaction->vehicle->system_code }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Vehicle Make</th>
                                     <td class="text-secondary">
+                                        {{ $transaction->vehicle->vehicle_make }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Vehicle Model</th>
                                     <td class="text-secondary">
+                                        {{ $transaction->vehicle->vehicle_model }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Year</th>
                                     <td class="text-secondary">
-
+                                        {{ $transaction->vehicle->year }}
                                     </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">Capacity</th>
                                     <td class="text-secondary">
+                                        {{ $transaction->vehicle->capacity }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Type</th>
+                                    <td class="text-secondary">
+                                        {{ $transaction->vehicle->type }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Plate Number</th>
+                                    <td class="text-secondary">
+                                        {{ $transaction->vehicle->plate_number }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">VIN</th>
+                                    <td class="text-secondary">
+                                        {{ $transaction->vehicle->vin }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Colour</th>
+                                    <td class="text-secondary">
+                                        {{ $transaction->vehicle->colour }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Extended Body Type</th>
+                                    <td class="text-secondary">
+                                        {{ $transaction->vehicle->extended_body_type }}
                                     </td>
                                 </tr>
 
@@ -172,35 +206,57 @@
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-header">
-                        Contact and Company Informations
+                        Driver Informations
                     </div>
                     <div class="card-body">
                         <table class="table table-striped table-bordered">
                             <tbody>
                                 <tr>
-                                    <th scope="row">Type</th>
+                                    <th scope="row">Name</th>
                                     <td class="text-secondary">
+                                        {{ $transaction->vehicle->driver->name }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Plate Number</th>
+                                    <th scope="row">Father Name</th>
                                     <td class="text-secondary">
-
+                                        {{ $transaction->vehicle->driver->father_name }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">VIN</th>
+                                    <th scope="row">National ID</th>
                                     <td class="text-secondary">
+                                        {{ $transaction->vehicle->driver->national_id }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Colour</th>
+                                    <th scope="row">Passport #</th>
                                     <td class="text-secondary">
+                                        {{ $transaction->vehicle->driver->passport_no }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th scope="row">Extended Body Type</th>
+                                    <th scope="row">Contact Informations</th>
                                     <td class="text-secondary">
+                                        {{ $transaction->vehicle->driver->contact_information }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Nationality</th>
+                                    <td class="text-secondary">
+                                        {{ $transaction->vehicle->driver->nationality }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Transport Company</th>
+                                    <td class="text-secondary">
+                                        {{ $transaction->vehicle->driver->transport_company }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Transport Company TIN</th>
+                                    <td class="text-secondary">
+                                        {{ $transaction->vehicle->driver->transport_company_tin }}
                                     </td>
                                 </tr>
                             </tbody>

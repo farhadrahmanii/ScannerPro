@@ -23,4 +23,10 @@ class TransactionController extends Controller
         $transaction = Transaction::where('id', $id)->first();
         return view('admin.backend.transaction.TransactionDetails', compact('transaction'));
     } // End Of method
+
+    public function EditTransaction($id)
+    {
+        $transaction = Transaction::where('id', $id)->first();
+        return view('admin.backend.transaction.EditTransactions', compact('transaction'));
+    } // End Of method
 }

@@ -16,13 +16,7 @@ class TransactionTable extends DataTableComponent
         $this->setPrimaryKey('id')
             ->setTableRowUrl(function ($row) {
                 return route('transaction.details', $row);
-            })
-            ->setTableRowUrlTarget(function ($row) {
-
-                return 'navigate';
-            });
-
-
+            }); // Use '_self' to open in the same tab
     }
 
     public function columns(): array
@@ -53,11 +47,17 @@ class TransactionTable extends DataTableComponent
             Column::make('Number of Items', 'number_of_items')
                 ->sortable(),
 
-
             Column::make('Scan Status', 'scan_status')
                 ->sortable()
                 ->format(fn($value) => $value ? '✅ Scanned' : '❌ Not Scanned'),
 
+            Column::make('Actions', 'transaction_id') // Prevent row click behavior on this column
+                ->format(function ($value, $row) {
+                    return view('livewire.partials.transaction-actions', ['transaction' => $row]);
+                })
+                ->html()
+                ->unclickable(), // Ensure raw HTML is rendered if using Blade partials
         ];
     }
+
 }

@@ -24,6 +24,10 @@ class Transaction extends Model
     {
         return $this->belongsTo(Vehicle::class);
     }
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class);
+    }
     // The Scan_time is DateTime it's defined
     protected $casts = [
         'scan_time' => 'datetime',

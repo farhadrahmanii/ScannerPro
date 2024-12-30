@@ -25,8 +25,8 @@
         </div>
         <div class="ms-auto">
             @if (Auth::user()->can('create.driver'))
+                <a href="{{route('add.driver')}}" class="px-5 btn btn-primary" wire:navigate>Add Driver</a>
             @endif
-            <a href="{{route('add.driver')}}" class="px-5 btn btn-primary" wire:navigate>Add Driver</a>
         </div>
     </div>
     <!--end breadcrumb-->
