@@ -1,8 +1,3 @@
-@extends('admin.adminDashboard')
-@section('admin')
-
-
-
 <div class="page-content">
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
         <div class="col">
@@ -10,9 +5,9 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Total Orders</p>
+                            <p class="mb-0 text-secondary">Total Transactions</p>
                             <h4 class="my-1 text-info">4805</h4>
-                            <p class="mb-0 font-13">+2.5% from last week</p>
+                            <p class="mb-0 font-13">+2 In this Day</p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle bg-gradient-blues ms-auto"><i
                                 class='bx bxs-cart'></i>
@@ -28,7 +23,7 @@
                         <div>
                             <p class="mb-0 text-secondary">Total Revenue</p>
                             <h4 class="my-1 text-danger">$84,245</h4>
-                            <p class="mb-0 font-13">+5.4% from last week</p>
+                            <p class="mb-0 font-13">+5.4% in today</p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle bg-gradient-burning ms-auto">
                             <i class='bx bxs-wallet'></i>
@@ -42,9 +37,9 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Bounce Rate</p>
-                            <h4 class="my-1 text-success">34.6%</h4>
-                            <p class="mb-0 font-13">-4.5% from last week</p>
+                            <p class="mb-0 text-secondary">Today Registered Vehicles</p>
+                            <h4 class="my-1 text-success">34.6K</h4>
+                            <p class="mb-0 font-13">-4.5% in this Day</p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle bg-gradient-ohhappiness ms-auto">
                             <i class='bx bxs-bar-chart-alt-2'></i>
@@ -58,9 +53,9 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Total Customers</p>
+                            <p class="mb-0 text-secondary">Today Drivers Registered</p>
                             <h4 class="my-1 text-warning">8.4K</h4>
-                            <p class="mb-0 font-13">+8.4% from last week</p>
+                            <p class="mb-0 font-13">+8.4% today</p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle bg-gradient-orange ms-auto"><i
                                 class='bx bxs-group'></i>
@@ -70,14 +65,14 @@
             </div>
         </div>
     </div><!--end row-->
-
+    <!--  -->
     <div class="row">
-        <div class="col-12 col-lg-12 d-flex">
+        <div class="col-6 col-lg-6 d-flex">
             <div class="card radius-10 w-100">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
                         <div>
-                            <h6 class="mb-0">Sales Overview</h6>
+                            <h6 class="mb-0">Transactions Status</h6>
                         </div>
                         <div class="dropdown ms-auto">
                             <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i
@@ -279,4 +274,3 @@
     <!--end row-->
 
 </div>
-@endsection

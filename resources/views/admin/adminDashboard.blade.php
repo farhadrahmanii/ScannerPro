@@ -55,6 +55,7 @@
         <!--start page wrapper -->
         <div class="page-wrapper">
             @yield('admin')
+            @include('admin.index')
         </div>
         <!--end page wrapper -->
         <!--start overlay-->

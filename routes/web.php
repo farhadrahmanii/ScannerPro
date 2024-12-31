@@ -26,10 +26,6 @@ Route::middleware(admin::class)->group(function () {
         return view('admin.adminDashboard');
     })->name('dashboard');
 
-
-
-
-
     // All Driver Routes here
     Route::controller(driverController::class)->group(function () {
         Route::get('/all/drivers', 'AllDrivers')->name('all.drivers');
