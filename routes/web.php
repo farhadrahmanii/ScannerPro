@@ -14,6 +14,8 @@ use App\Livewire\Provinces\AllProvinces;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Admin;
 
+use App\Livewire\EditUserLivewire;
+
 Route::get('/login', function () {
     return view('login');
 });
@@ -64,6 +66,8 @@ Route::middleware(admin::class)->group(function () {
         Route::get('/all/users', 'AllUsers')->name('users.list');
         Route::get('/add/admin/user', 'AddAdminUsers')->name('add.admin.user');
         Route::get('/edit/admin/user/{id}', 'EditAdminUser')->name('edit.admin.user');
+
+        // Route::get('/edit/admin/user/{id}', EditUserLivewire::class);
         Route::post('/update/admin/user', 'UpdateAdminUser')->name('update.admin.user');
     });
 

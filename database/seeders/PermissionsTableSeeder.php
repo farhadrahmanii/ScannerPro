@@ -10,12 +10,16 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         $permissions = [
-            ['name' => 'user.list', 'guard_name' => 'web', 'group_name' => 'Category'],
-            ['name' => 'driver.list', 'guard_name' => 'web', 'group_name' => 'Coupon'],
-            ['name' => 'create.driver', 'guard_name' => 'web', 'group_name' => 'Coupon'],
-            ['name' => 'driver.edit', 'guard_name' => 'web', 'group_name' => 'Coupon'],
-            ['name' => 'view.driver', 'guard_name' => 'web', 'group_name' => 'Coupon'],
-            ['name' => 'transaction.view', 'guard_name' => 'web', 'group_name' => 'Report'],
+            ['name' => 'user.list', 'guard_name' => 'web', 'group_name' => 'HR'],
+            ['name' => 'user.create', 'guard_name' => 'web', 'group_name' => 'HR'],
+            ['name' => 'user.edit', 'guard_name' => 'web', 'group_name' => 'HR'],
+            ['name' => 'user.delete', 'guard_name' => 'web', 'group_name' => 'HR'],
+            ['name' => 'driver.list', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
+            ['name' => 'create.driver', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
+            ['name' => 'driver.edit', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
+            ['name' => 'view.driver', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
+            ['name' => 'delete.driver', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
+            ['name' => 'transaction.view', 'guard_name' => 'web', 'group_name' => 'Transactions'],
             ['name' => 'transaction.create', 'guard_name' => 'web', 'group_name' => 'Transactions'],
             ['name' => 'transaction.edit', 'guard_name' => 'web', 'group_name' => 'Transactions'],
             ['name' => 'site.list', 'guard_name' => 'web', 'group_name' => 'Site Manager'],

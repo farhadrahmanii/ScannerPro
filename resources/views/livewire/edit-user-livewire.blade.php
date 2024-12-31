@@ -2,13 +2,12 @@
     <div class="p-4 card-body">
         <h5 class="mb-4">Add User</h5>
 
-
         <form class="row g-3" method="POST" action="" id="myForm" enctype="multipart/form-data" action="">
             @csrf
 
             <div class="form-group col-md-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" id="input1" wire:model="name" name="name" class="form-control rounded-lg
+                <input type="text" id="name" wire:model="name" name="name" class="form-control rounded-lg
                     @error('name')
                         is-invalid
                     @enderror
@@ -18,10 +17,9 @@
                 @enderror
             </div>
 
-
             <div class="form-group col-md-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" id="input1" wire:model="email" name="email" class="form-control rounded-lg
+                <input type="email" id="email" wire:model="email" name="email" class="form-control rounded-lg
                     @error('email')
                         is-invalid
                     @enderror
@@ -60,11 +58,13 @@
 
             <div class="form-group col-md-3">
                 <label for="role" class="form-label">Role</label>
-                <select class="form-control rounded-lg
-        @error('role') is-invalid @enderror" id="role" wire:model="role" name="role">
+                <select class="form-control rounded-lg @error('role') is-invalid @enderror" id="role" wire:model="role"
+                    name="role">
                     <option value="">Select Role</option> <!-- Default option -->
-                    @foreach ($roles as $role)
-                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                    @foreach ($roles as $item)
+                        <option value="{{ $item->id }}" @if ((string) $item->id === (string) $role) selected @endif>
+                            {{ $item->name }}
+                        </option>
                     @endforeach
                 </select>
                 @error('role')
@@ -73,9 +73,10 @@
             </div>
 
 
+
             <div class="form-group col-md-3">
                 <label for="photo" class="form-label">Photo</label>
-                <input type="file" id="input1" wire:model="photo" name="photo" class="form-control rounded-lg
+                <input type="file" id="photo" wire:model="photo" name="photo" class="form-control rounded-lg
                     @error('photo')
                         is-invalid
                     @enderror
@@ -88,17 +89,18 @@
             </div>
 
             <div class="form-group col-md-3">
-                <label for="photo" class="form-label">Photo Preview</label>
+                <label for="photoPreview" class="form-label">Photo Preview</label>
                 @if ($photo)
                     <img src="{{ $photo->temporaryUrl() }}" height="100px">
+                @elseif ($photoPreview)
+                    <img src="{{ asset('storage/' . $photoPreview) }}" height="100px">
                 @endif
-
             </div>
 
 
             <div class="col-md-12">
                 <div class="gap-3 d-md-flex d-grid align-items-center">
-                    <button type="submit" wire:click.prevent="save" class="px-4 btn btn-primary">
+                    <button type="submit" wire:click.prevent="update" class="px-4 btn btn-primary">
                         <span wire:loading.remove>Save</span>
                         <span wire:loading>
                             <div class="spinner-border spinner-border-sm">

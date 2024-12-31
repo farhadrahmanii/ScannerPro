@@ -117,7 +117,7 @@
             <div class="px-3 user-box dropdown">
                 <a class="gap-3 d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{ !empty($admin->photo) ? asset('upload/admin_images/' . $admin->photo) : url('upload/default.png')  }}"
+                    <img src="{{ !empty($admin->photo) ? asset($admin->photo) : url('uploads/default.png')  }}"
                         class="user-img" alt="user avatar">
                     <div class="user-info">
                         <p class="mb-0 user-name">{{$admin->name}}</p>
@@ -145,15 +145,17 @@
                         <div class="mb-0 dropdown-divider"></div>
                     </li>
                     <li>
-                        <form method="POST" action="{{ route('logout') }}">
+                        <a class="dropdown-item d-flex align-items-center" href="javascript:;"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="bx bx-log-out-circle"></i>
+                            <span>{{ __('Log Out') }}</span>
+                        </a>
+                        <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
                             @csrf
-
-                            <a class="dropdown-item d-flex align-items-center" :href="route('logout')" onclick="event.preventDefault();
-                                                this.closest('form').submit();"><i
-                                    class="bx bx-log-out-circle">{{ __('Log Out') }}</i>
-                            </a>
                         </form>
                     </li>
+
+
                 </ul>
             </div>
         </nav>

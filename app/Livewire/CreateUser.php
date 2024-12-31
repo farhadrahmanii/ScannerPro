@@ -14,7 +14,6 @@ class CreateUser extends Component
     use WithFileUploads;
     public $allSites;
     public $name = "";
-    public $user_name = "";
     public $email = "";
     public $password = "";
     public $site_id;
@@ -28,23 +27,35 @@ class CreateUser extends Component
 
         $this->validate([
             'name' => 'required|string|max:255',
-            'user_name' => 'required|string|max:255',
-            'email' => 'required|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255',
+            'email' => 'required|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users,email|',
             'password' => 'required|String|max:255',
             'site_id' => 'required',
             'role' => 'required|string|max:50',
             'photo' => 'image|mimes:jpg,jpeg,png|max:2048', // Max size in kilobytes
         ]);
         if ($this->photo) {
-            $filePath = $this->photo->store('uploads/photos', 'public');
+            $userEmail = $this->email ?? 'default';
+            $directory = public_path("uploads/images/{$userEmail}");
+
+            // Create directory if it doesn't exist
+            if (!file_exists($directory)) {
+                mkdir($directory, 0755, true);
+            }
+
+            // Store the uploaded image
+            $fileName = uniqid() . '.' . $this->photo->getClientOriginalExtension();
+            $this->photo->storeAs("uploads/images/{$userEmail}", $fileName, 'public');
+
+            $filePath = "uploads/images/{$userEmail}/{$fileName}";
         }
+        // dd($filePath);
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => bcrypt($this->password),
             'site_id' => $this->site_id,
             'role' => $this->role,
-            'photo' => isset($filePath) ? $filePath : null,
+            'photo' => $filePath,
         ]);
         if ($this->role) {
             $findedRole = Role::find($this->role);

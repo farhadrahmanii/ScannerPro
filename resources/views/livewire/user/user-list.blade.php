@@ -42,18 +42,18 @@
                         </label>
                         <!-- without node.js  -->
                         <!-- <div class="form-check-success form-check form-switch">
-                                            <input class="form-check-input status-toggle large-checkbox" type="checkbox"
-                                                id="flexSwitchCheckCheckedDanger{{ $user->id }}" wire:click="toggleStatus({{ $user->id }})"
-                                                {{ $user->status ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="flexSwitchCheckCheckedDanger{{ $user->id }}"></label>
+                                                    <input class="form-check-input status-toggle large-checkbox" type="checkbox"
+                                                        id="flexSwitchCheckCheckedDanger{{ $user->id }}" wire:click="toggleStatus({{ $user->id }})"
+                                                        {{ $user->status ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="flexSwitchCheckCheckedDanger{{ $user->id }}"></label>
 
-                                        </div> -->
+                                                </div> -->
 
 
                     </td>
                     <td>
 
-                        <a href="/edit/admin/user/{{$user->id}}" wire:navigate class="btn btn-info"><i
+                        <a href="{{route('edit.admin.user', $user->id)}}" wire:navigate class="btn btn-info"><i
                                 class="bx bx-edit"></i></a>
                     </td>
 
