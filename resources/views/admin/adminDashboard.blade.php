@@ -55,7 +55,9 @@
         <!--start page wrapper -->
         <div class="page-wrapper">
             @yield('admin')
-            @include('admin.index')
+            @if (request()->is('/'))
+                <livewire:home-wedgetslivewire />
+            @endif
         </div>
         <!--end page wrapper -->
         <!--start overlay-->
@@ -187,6 +189,14 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="{{ asset('assets/js/code.js') }}"></script>
 
+    <!--end switcher-->
+    <!-- Bootstrap JS -->
+    <!--plugins-->
+    <!-- Chart Code is start Here -->
+    <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="assets/js/widgets.js"></script>
+    <!--app JS-->
+    <script src="assets/js/app.js"></script>
     <script>
         new PerfectScrollbar(".app-container")
     </script>

@@ -29,4 +29,13 @@ class TransactionController extends Controller
         $transaction = Transaction::where('id', $id)->first();
         return view('admin.backend.transaction.EditTransactions', compact('transaction'));
     } // End Of method
+
+    public function DeleteTransaction($id)
+    {
+        $transaction = Transaction::where('id', $id)->first();
+
+        $transaction->delete();
+        flash()->success('Transaction is deleted successfully!');
+        return redirect()->route('all.transactions');
+    } // End Of method
 }

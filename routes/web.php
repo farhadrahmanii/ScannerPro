@@ -55,6 +55,7 @@ Route::middleware(admin::class)->group(function () {
         Route::get('/add/transactions', 'AddTransactions')->name('add.transactions');
         Route::get('/transaction/detail/{id}', 'TransactionsDetails')->name('transaction.details');
         Route::get('/edit/transaction/{id}', 'EditTransaction')->name('edit.transaction');
+        Route::get('/delete/transaction/{id}', 'DeleteTransaction')->name('delete.transactions');
     });
 
     // All Admin Users Routes here

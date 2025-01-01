@@ -7,6 +7,9 @@ use Livewire\Component;
 
 class AllTransaction extends Component
 {
+    public $transaction;
+
+
     public function placeholder()
     {
         return view("livewire.loading");

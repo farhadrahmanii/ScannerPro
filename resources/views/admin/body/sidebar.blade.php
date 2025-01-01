@@ -12,7 +12,7 @@
     <!--navigation-->
     <ul class="metismenu" id="menu">
         <li>
-            <a href="{{route('dashboard')}}" wire:navigate>
+            <a href="{{route('dashboard')}}">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
                 <div class="menu-title">Dashboard</div>
@@ -119,3 +119,6 @@
     </ul>
     <!--end navigation-->
 </div>
+<script>
+    document.querySelector('body').innerHTML = newHtml;
+</script>
