@@ -61,14 +61,14 @@
                                         <form method="POST" action="{{route('login')}}" class="row g-3">
                                             @csrf
                                             <div class="col-12">
-                                                <label for="email" class="form-label">Email</label>
+                                                <x-input-label for="email" :value="__('Email')" />
                                                 <input type="email" name="email" value="{{old('email')}}" class="form-control @error('email')
                                                     is-invalid
                                                 @enderror" id="email" placeholder="jhon@example.com">
 
                                             </div>
                                             <div class="col-12">
-                                                <label for="password" class="form-label">Password</label>
+                                                <x-input-label for="password" :value="__('Password')" />
                                                 <div class="input-group" id="show_hide_password">
                                                     <input type="password" value="{{old('password')}}" class="form-control @error('password')
                                                         is-invalid

@@ -181,6 +181,10 @@
     <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('assets/plugins/chartjs/js/chart.js') }}"></script>
+    <!-- Vector map JavaScript -->
+    <script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/plugins/vectormap/jvectormap.custom.js"></script>
     <script src="{{ asset('assets/js/index.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('assets/js/app.js') }}"></script>

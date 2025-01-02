@@ -45,6 +45,7 @@ Route::middleware(admin::class)->group(function () {
         Route::post('/store/vehicle', 'StoreVehicle')->name('add.vehicle.store');
         Route::get('/add/transaction/to/vehicle/{id}', 'AddTrasactionToVehicle')->name('add.transaction.to.vehicle');
         Route::get('/vehicle/details/{id}', 'VehicleDetails')->name('vehicle.details');
+        Route::get('/delete/vehicle/{id}', 'DeleteVehicle')->name('delete.vehicle');
     });
 
 

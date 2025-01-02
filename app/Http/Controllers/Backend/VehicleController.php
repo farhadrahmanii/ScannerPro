@@ -63,4 +63,12 @@ class VehicleController extends Controller
         $vehicle = Vehicle::findOrFail($id);
         return view('admin.backend.vehicles.VehicleDetails', compact('vehicle'));
     } // end of Methods
+
+    public function DeleteVehicle($id)
+    {
+        $vehicle = Vehicle::where('id', $id)->first();
+        $vehicle->delete();
+        flash()->success('Vehicle is deleted successfully!');
+        return redirect()->route('all.vehicles');
+    } // end of Methods
 }

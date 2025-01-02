@@ -28,5 +28,9 @@
                 Add Transactions
             </a>
         @endif
+        <a href="{{ route('delete.vehicle', $vehicle->id) }}"
+            class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50" wire:navigate>
+            Delete
+        </a>
     </div>
 </div>

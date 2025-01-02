@@ -79,8 +79,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Total Users</p>
-                            <h5 class="mb-0">85,028</h5>
+                            <p class="mb-0">registeration Rate</p>
+                            <h5 class="mb-0"></h5>
                         </div>
                         <div class="dropdown ms-auto">
                             <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
@@ -132,11 +132,78 @@
                 </div>
             </div>
         </div>
+        <div class="col">
+            <div class="card radius-10">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="mb-0">Vehicle Entry Rate</p>
+                            <h5 class="mb-0">60.45%</h5>
+                        </div>
+                        <div class="dropdown ms-auto">
+                            <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
+                                data-bs-toggle="dropdown"> <i class='bx bx-dots-horizontal-rounded font-22'></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="javascript:;">Action</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="" id="w-chart7"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card radius-10">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <p class="mb-0">Drivers Entry Rate</p>
+                            <h5 class="mb-0">21.74%</h5>
+                        </div>
+                        <div class="dropdown ms-auto">
+                            <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
+                                data-bs-toggle="dropdown"> <i class='bx bx-dots-horizontal-rounded font-22'></i>
+                            </div>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="javascript:;">Action</a>
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="" id="w-chart2"></div>
+                </div>
+            </div>
+        </div>
     </div><!--end row-->
 
     <!-- Bar Chart -->
     <div class="row mt-4">
-        <div class="col-8">
+        <div class="col-xl-6 mx-auto">
+            <h6 class="text-uppercase">World Map</h6>
+            <hr />
+            <div class="card">
+                <div class="card-body">
+                    <div id="world-map-markers" style="height: 300px"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
             <div class="card radius-10">
                 <div class="card-header">
                     <h6 class="mb-0">Statistics Overview</h6>
