@@ -1,20 +1,11 @@
 <?php
 
+
 return [
-
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
-    "Email" => "ایمیل",
-    'failed' => 'معلومات مو غلط دی',
-    'password' => 'معلومات ناسم دی!',
-    'throttle' => 'ډیر زیات کوښښ مو وکړو. مهربانی وکړی :seconds صبر.',
-
+    'failed' => 'این مشخصات با سوابق ما مطابقت ندارد.',
+    'password' => 'رمز عبور اشتباه است.',
+    'throttle' => 'تعداد زیادی تلاش برای ورود. لطفاً بعد از :seconds ثانیه دوباره تلاش کنید.',
+    'login' => 'ورود',
+    'register' => 'ثبت نام',
+    'logout' => 'خروج',
 ];

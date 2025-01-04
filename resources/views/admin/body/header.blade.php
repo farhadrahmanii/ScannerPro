@@ -24,18 +24,22 @@
                     </li>
                     <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;"
-                            data-bs-toggle="dropdown"><img src="{{ asset('backend/assets/images/county/02.png') }}"
-                                width="22" alt="">
+                            data-bs-toggle="dropdown"><img src="{{ asset('assets/images/county/02.png') }}" width="22"
+                                alt="">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img
-                                        src="{{ asset('backend/assets/images/county/01.png') }}" width="20" alt=""><span
-                                        class="ms-2">English</span></a>
-                            </li>
-                            <li><a class="py-2 dropdown-item d-flex align-items-center" href="javascript:;"><img
-                                        src="{{ asset('backend/assets/images/county/02.png') }}" width="20" alt=""><span
-                                        class="ms-2">Catalan</span></a>
-                            </li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center"
+                                    href="{{ route('language.switch', 'en') }}"><img
+                                        src="{{ asset('assets\flags\1x1\us.svg') }}" width="20" alt=""><span
+                                        class="ms-2">English</span></a></li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center rounded"
+                                    href="{{ route('language.switch', 'fa') }}"><img
+                                        src="{{ asset('assets\flags\1x1\af.svg') }}" width="20" alt=""><span
+                                        class="ms-2">فارسی</span></a></li>
+                            <li><a class="py-2 dropdown-item d-flex align-items-center"
+                                    href="{{ route('language.switch', 'pa') }}"><img
+                                        src="{{ asset('assets\flags\1x1\af.svg') }}" width="20" alt=""><span
+                                        class="ms-2">پشتو</span></a></li>
                         </ul>
                     </li>
                     <li class="nav-item dark-mode d-none d-sm-flex">
