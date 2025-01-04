@@ -12,7 +12,9 @@ class VehicleTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')->setTableRowUrl(function ($row) {
+            return route('vehicle.details', $row);
+        });
     }
 
     public function columns(): array
@@ -43,7 +45,7 @@ class VehicleTable extends DataTableComponent
             Column::make('Actions', 'driver.name')
                 ->format(function ($value, $row) {
                     return view('livewire.partials.vehicle-actions', ['vehicle' => $row]);
-                }) // Exclude 'action, // Optional: exclude from export if needed
+                })->unclickable() // Exclude 'action, // Optional: exclude from export if needed
         ];
     }
 }

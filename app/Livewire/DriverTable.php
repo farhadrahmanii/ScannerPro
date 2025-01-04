@@ -11,7 +11,9 @@ class DriverTable extends DataTableComponent
     protected $model = Driver::class;
     public function configure(): void
     {
-        $this->setPrimaryKey('id');
+        $this->setPrimaryKey('id')->setTableRowUrl(function ($row) {
+            return route('driver.details', $row);
+        });
     }
     public function columns(): array
     {
@@ -32,7 +34,7 @@ class DriverTable extends DataTableComponent
             Column::make('Actions', 'name')
                 ->format(function ($value, $row) {
                     return view('livewire.partials.driver-actions', ['drive' => $row]);
-                }),
+                })->unclickable(),
         ];
     }
 }
