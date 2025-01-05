@@ -53,22 +53,22 @@ class CreateTransaction extends Component
             $this->transaction_id = 'TXN-' . Str::upper(Str::random(10)); // Example: TXN-ABC123DEF4
         } while (\App\Models\Transaction::where('transaction_id', $this->transaction_id)->exists());
 
-           // Generate bill_of_landing
-    $year = now()->format('Y');
-    $month = now()->format('m');
-    $exportingCountry = Str::upper(substr($this->exporting_country, 0, 3)); // First 3 uppercase characters
-    $productionOrigin = Str::upper(substr($this->production_origin, 0, 3)); // First 3 uppercase characters
+        // Generate bill_of_landing
+        $year = now()->format('Y');
+        $month = now()->format('m');
+        $exportingCountry = Str::upper(substr($this->exporting_country, 0, 3)); // First 3 uppercase characters
+        $productionOrigin = Str::upper(substr($this->production_origin, 0, 3)); // First 3 uppercase characters
 
-    // Get the last record and increment the number
-    $lastBill = \App\Models\Transaction::whereYear('created_at', $year)
-        ->whereMonth('created_at', $month)
-        ->orderBy('id', 'desc')
-        ->first();
+        // Get the last record and increment the number
+        $lastBill = \App\Models\Transaction::whereYear('created_at', $year)
+            ->whereMonth('created_at', $month)
+            ->orderBy('id', 'desc')
+            ->first();
 
-    $incrementNumber = $lastBill ? intval(substr($lastBill->bill_of_landing, -4)) + 1 : 1;
-    $incrementNumber = str_pad($incrementNumber, 4, '0', STR_PAD_LEFT); // Ensure 4 digits (e.g., 0001)
+        $incrementNumber = $lastBill ? intval(substr($lastBill->bill_of_landing, -4)) + 1 : 1;
+        $incrementNumber = str_pad($incrementNumber, 4, '0', STR_PAD_LEFT); // Ensure 4 digits (e.g., 0001)
 
-    $bill_of_landing = "BL-{$year}-{$month}-{$exportingCountry}-{$productionOrigin}-{$incrementNumber}";
+        $bill_of_landing = "BL-{$year}-{$month}-{$exportingCountry}-{$productionOrigin}-{$incrementNumber}";
 
 
         $transaction = Transaction::create([
@@ -87,6 +87,7 @@ class CreateTransaction extends Component
             'consignee_company_tin' => $this->consignee_company_tin,
             'item_list' => $this->item_list,
             'delivery_location' => $this->delivery_location,
+            'scan_status' => $this->scan_status,
             'scan_time' => $this->scan_time,
         ]);
 

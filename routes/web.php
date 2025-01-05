@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\RoleAndPermissions;
 use App\Http\Controllers\Backend\TransactionController;
 use App\Http\Controllers\Backend\VehicleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransportCompanyController;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\LanguageMiddleware;
 use App\Livewire\AllPermissions;
@@ -31,6 +32,13 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
         Route::get('/', function () {
             return view('admin.adminDashboard');
         })->name('dashboard');
+
+        // All Transport Company Routes here
+        Route::controller(TransportCompanyController::class)->group(function () {
+            Route::get('/transport/companies', 'AllTransportCompany')->name('all.transportCompany');
+            Route::get('/add/transport/company', 'AddTransportCompany')->name('add.transportCompany');
+            Route::get('/edit/transport/company/{id}', 'EditTransportCompany')->name('edit.transportCompany');
+        });
 
         // All Driver Routes here
         Route::controller(driverController::class)->group(function () {

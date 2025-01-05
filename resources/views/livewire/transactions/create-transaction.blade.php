@@ -163,16 +163,12 @@
                 @enderror
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="scan_status" class="form-label">Scan Status</label>
-                <input type="text" id="scan_status" wire:model="scan_status" name="scan_status" class="form-control rounded-lg
-                    @error('scan_status')
-                        in-valid
-                    @enderror
-                    " id="scan_status" placeholder="Data Science">
-                @error('scan_status')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
-                @enderror
+            <div class="form-check form-switch form-check-success">
+                <input class="form-check-input @error('scan_status') is-invalid @enderror" type="checkbox" role="switch"
+                    id="scan_status" wire:model="scan_status">
+                <label class="form-check-label" for="scan_status">
+                    Transaction Status
+                </label>
             </div>
 
             <div class="form-group col-md-3">

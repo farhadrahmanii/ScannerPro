@@ -55,6 +55,15 @@
         </li>
         <li class="menu-label">System Settings</li>
         <li>
+            @if (Auth::user()->can('transport.company.list'))
+            @endif
+            <a href="{{ route('all.transportCompany')}}" wire:navigate>
+                <div class="parent-icon"><i class="fadeIn animated lni lni-apartment"></i>
+                </div>
+                <div class="menu-title">Transport Company</div>
+            </a>
+        </li>
+        <li>
             @if (Auth::user()->can('site.list'))
                 <a href="{{ route('province.site')}}" wire:navigate>
                     <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
@@ -77,7 +86,6 @@
 
 
         <li>
-
             <a href="{{route('users.list')}}" wire:navigate>
                 <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
                 </div>
@@ -113,9 +121,6 @@
                 </li> -->
             </ul>
         </li>
-
-
-
     </ul>
     <!--end navigation-->
 </div>

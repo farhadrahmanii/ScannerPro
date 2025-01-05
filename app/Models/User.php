@@ -29,7 +29,6 @@ class User extends Authenticatable
         'photo',
         'site_id',
     ];
-
     /**
      * The attributes that should be hidden for serialization.
      *
