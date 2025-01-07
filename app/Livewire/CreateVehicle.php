@@ -30,11 +30,11 @@ class CreateVehicle extends Component
             'driverId' => 'numeric|required|max:255',
             'vehicle_model' => 'required|string|max:255',
             'year' => 'required|string|max:255',
-            'capacity' => 'required|string|max:255',
-            'type' => 'required|string|max:255',
+            'capacity' => 'required|numeric|max:55',
+            'type' => 'required|in:Truck,Bus,Trailer,Tanker,Pickup,Van,Container',
             'plate_number' => 'required|string|max:255',
             'vin' => 'required|string|max:255',
-            'colour' => 'required|string|max:255',
+            'colour' => 'required|in:White,Black,Silver,Blue,Red,Green,Yellow,Gray,Orange,Brown,Purple',
             'extended_body_type' => 'required|string|max:255',
         ]);
         Vehicle::create([

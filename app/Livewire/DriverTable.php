@@ -29,7 +29,7 @@ class DriverTable extends DataTableComponent
             Column::make('National ID', 'national_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('Transport Company', 'transport_company')
+            Column::make('Transport Company', 'transportCompany.transport_company_name')
                 ->sortable(),
             Column::make('Actions', 'name')
                 ->format(function ($value, $row) {

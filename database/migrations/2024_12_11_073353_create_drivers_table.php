@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\TransportCompany;
 use App\Models\Vehicle;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -20,8 +21,9 @@ return new class extends Migration {
             $table->string('passport_no', 255)->nullable();
             $table->string('contact_information', 255);
             $table->string('nationality', 255);
-            $table->string('transport_company', 255);
-            $table->string('transport_company_tin', 255);
+            $table->foreignId('transport_company_id')
+                ->constrained('transport_companies')
+                ->cascadeOnDelete();
             $table->timestamps();
         });
     }

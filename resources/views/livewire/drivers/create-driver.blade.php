@@ -1,56 +1,45 @@
 <div>
-    <form class="row g-3" id="myForm" method="POST" action="{{route('add.store.driver')}}"
-        enctype="multipart/form-data">
+    <form id="myForm" method="POST" action="{{ route('add.store.driver') }}" enctype="multipart/form-data"
+        class="row g-3">
         @csrf
+
+        <!-- Driver Name -->
         <div class="form-group col-md-6">
-            <label for="name" class="form-label">Driver Name</label>
-            <input type="text" wire:model="name" name="name"
-                class="form-control rounded-lg @error('name') is-invalid @enderror" id="name"
-                placeholder="Data Science">
-            @error('name')
-                <span class="text-red-500 text-bold">{{$message}}</span>
-            @enderror
+            <label for="name">Driver Name</label>
+            <input type="text" wire:model.lazy="name" name="name" id="name"
+                class="form-control @error('name') is-invalid @enderror">
+            @error('name') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
+
+        <!-- Father Name -->
         <div class="form-group col-md-6">
-            <label for="father_name" class="form-label">Father Name</label>
-            <input type="text" wire:model="father_name" name="father_name"
-                class="form-control rounded-lg @error('father_name') is-invalid @enderror" id="father_name"
-                placeholder="Data Science">
-            @error('father_name')
-                <span class="text-red-500 text-bold">{{$message}}</span>
-            @enderror
+            <label for="father_name">Father Name</label>
+            <input type="text" wire:model.lazy="father_name" name="father_name" id="father_name"
+                class="form-control @error('father_name') is-invalid @enderror">
+            @error('father_name') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
+
+        <!-- National ID -->
         <div class="form-group col-md-6">
-            <label for="national_id" class="form-label">National ID</label>
-            <input type="text" wire:model="national_id" name="national_id"
-                class="form-control rounded-lg @error('national_id') is-invalid @enderror" id="national_id"
-                placeholder="Data Science">
-            @error('national_id')
-                <span class="text-red-500 text-bold">{{$message}}</span>
-            @enderror
+            <label for="national_id">National ID</label>
+            <input type="text" wire:model.lazy="national_id" name="national_id" id="national_id"
+                class="form-control @error('national_id') is-invalid @enderror">
+            @error('national_id') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
+
+        <!-- Contact Information -->
         <div class="form-group col-md-6">
-            <label for="passport_no" class="form-label">Passport No</label>
-            <input type="text" wire:model="passport_no" name="passport_no"
-                class="form-control rounded-lg @error('passport_no') is-invalid @enderror" id="passport_no"
-                placeholder="Data Science">
-            @error('passport_no')
-                <span class="text-red-500 text-bold">{{$message}}</span>
-            @enderror
+            <label for="contact_information">Contact Information</label>
+            <input type="text" wire:model.lazy="contact_information" name="contact_information" id="contact_information"
+                class="form-control @error('contact_information') is-invalid @enderror">
+            @error('contact_information') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
+
+        <!-- Nationality -->
         <div class="form-group col-md-6">
-            <label for="contact_information" class="form-label">Contact Information</label>
-            <input type="text" wire:model="contact_information" name="contact_information"
-                class="form-control rounded-lg @error('contact_information') is-invalid @enderror"
-                id="contact_information" placeholder="Data Science">
-            @error('contact_information')
-                <span class="text-red-500 text-bold">{{$message}}</span>
-            @enderror
-        </div>
-        <div class="form-group col-md-6">
-            <label for="nationality" class="form-label">Nationality</label>
-            <select class="form-control rounded-lg @error('nationality') is-invalid @enderror" wire:model="nationality"
-                name="nationality" id="nationality">
+            <label for="nationality">Nationality</label>
+            <select wire:model="nationality" name="nationality" id="nationality"
+                class="form-control @error('nationality') is-invalid @enderror">
                 <option value="">Select Nationality</option>
                 <option value="afghan">Afghan</option>
                 <option value="albanian">Albanian</option>
@@ -149,82 +138,50 @@
                 <option value="liberian">Liberian</option>
                 <option value="libyan">Libyan</option>
             </select>
-
-
-            @error('nationality')
-                <span class="text-red-500 text-bold">{{ $message }}</span>
-            @enderror
+            @error('nationality') <span class="text-danger">{{ $message }}</span> @enderror
         </div>
+        <!-- Transport Company Search/Selection -->
         <div class="form-group col-md-6">
-            <label for="transport_company" class="form-label">Transport Company</label>
-            <input type="text" wire:model="transport_company" name="transport_company"
-                class="form-control rounded-lg @error('transport_company') is-invalid @enderror" id="transport_company"
-                placeholder="Data Science">
-            @error('transport_company')
-                <span class="text-red-500 text-bold">{{$message}}</span>
-            @enderror
+            <label for="transport_company_tin">Transport Company TIN</label>
+            <input type="text" wire:model.lazy="transport_company_tin"
+                class="form-control @error('transport_company_tin') is-invalid @enderror">
+            @error('transport_company_tin') <span class="text-danger">{{ $message }}</span> @enderror
+
+            <!-- Search Results -->
+            @if (!empty($searchResults))
+                <ul class="list-group mt-2">
+                    @foreach ($searchResults as $result)
+                        <li class="list-group-item list-group-item-action"
+                            wire:click="selectTransportCompany({{ $result['id'] }})">
+                            {{ $result['transport_company_name'] }} - {{ $result['transport_company_tin'] }}
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
+
+            <!-- Add New Company Form -->
+            @if ($showAddCompanyForm)
+                <div class="mt-3">
+                    <h5>Add New Transport Company</h5>
+                    <input type="text" wire:model="transport_company" placeholder="Company Name"
+                        class="form-control mb-2 @error('transport_company') is-invalid @enderror">
+                    @error('transport_company') <span class="text-danger">{{ $message }}</span> @enderror
+
+                    <button type="button" wire:click="addTransportCompany" class="btn btn-primary btn-sm">
+                        Add Transport Company
+                    </button>
+                </div>
+            @endif
         </div>
-        <div class="form-group col-md-6">
-            <label for="transport_company_tin" class="form-label">Transport Company TIN</label>
-            <input type="text" wire:model="transport_company_tin" name="transport_company_tin"
-                class="form-control rounded-lg @error('transport_company_tin') is-invalid @enderror"
-                id="transport_company_tin" placeholder="Data Science">
-            @error('transport_company_tin')
-                <span class="text-red-500 text-bold">{{$message}}</span>
-            @enderror
-        </div>
+        <!-- Submit and Cancel Buttons -->
         <div class="col-md-12">
-            <div class="gap-3 d-md-flex d-grid align-items-center">
-                <button type="submit" wire:click.prevent="save" wire:loading.attr="disabled"
-                    class="px-4 btn btn-primary">
+            <div class="d-flex gap-3 align-items-center">
+                <button type="submit" wire:click.prevent="save" wire:loading.attr="disabled" class="btn btn-primary">
                     <span wire:loading.remove>Save</span>
-                    <span wire:loading class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-
+                    <span wire:loading class="spinner-border spinner-border-sm"></span>
                 </button>
-                <a href="{{route('all.drivers')}}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
+                <a href="{{ route('all.drivers') }}" class="btn btn-light">Cancel</a>
             </div>
         </div>
     </form>
-
-    <script>
-        $(document).ready(function () {
-            // Initialize jQuery Validation
-            $('#myForm').validate({
-                rules: {
-                    name: { required: true },
-                    father_name: { required: true },
-                    national_id: { required: true },
-                    contact_information: { required: true },
-                    nationality: { required: true },
-                    transport_company: { required: true },
-                    transport_company_tin: { required: true }
-                },
-                messages: {
-                    name: { required: 'Please Enter Driver Name' },
-                    father_name: { required: 'Please Enter Father Name' },
-                    national_id: { required: 'Please Enter National ID' },
-                    contact_information: { required: 'Please Enter Contact Information' },
-                    nationality: { required: 'Please Enter Nationality' },
-                    transport_company: { required: 'Please Enter Transport Company' },
-                    transport_company_tin: { required: 'Please Enter Transport Company TIN' }
-                },
-                errorElement: 'span',
-                errorPlacement: function (error, element) {
-                    error.addClass('invalid-feedback');
-                    element.closest('.form-group').append(error);
-                },
-                highlight: function (element) {
-                    $(element).addClass('is-invalid');
-                },
-                unhighlight: function (element) {
-                    $(element).removeClass('is-invalid');
-                },
-                submitHandler: function () {
-                    // Trigger the Livewire save method
-                    @this.save(); // This will call the `save()` method in Livewire
-                }
-            });
-        });
-
-    </script>
 </div>

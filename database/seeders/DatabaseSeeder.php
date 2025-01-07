@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             'site_id' => 2,
             'role' => 'admin'
         ]);
+        $this->call(TransportCompanySeeder::class);
         $this->call(DriverSeeder::class);
         $this->call(VehicleSeeder::class);
         Provinces::factory()->count(10)->sequence(

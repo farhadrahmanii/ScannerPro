@@ -14,7 +14,6 @@ class EditTransportCompanylivewire extends Component
     public function mount($transportCompany)
     {
         $this->transportCompanyId = $transportCompany;
-
         // Load the transport company data
         $transportCompanyData = TransportCompany::findOrFail($this->transportCompanyId);
 
