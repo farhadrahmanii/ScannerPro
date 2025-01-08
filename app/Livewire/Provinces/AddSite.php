@@ -4,35 +4,36 @@ namespace App\Livewire\Provinces;
 
 use App\Models\Provinces;
 use App\Models\Site;
+use App\Models\User;
 use Livewire\Component;
 
 class AddSite extends Component
 {
 
     public $provinces;
+    public $user;
     public $site_name;
     public $provinces_id;
     public $site_manager;
-    public $site_manager_contact_details;
 
     public function mount()
     {
         $this->provinces = Provinces::get();
+        $this->user = User::get();
+
     }
     protected $messages = [
         'provinces_id.required' => 'Please Select Province first!',
         'site_name.required' => 'Enter Site Name!',
         'site_manager' => 'Site Manager is required',
-        'site_manager_contact_details' => 'Site Contact Details is required',
 
     ];
     public function save()
     {
         $validatedData = $this->validate([
             'provinces_id' => 'required|numeric',
-            'site_name' => 'required|string|max:255',
-            'site_manager' => 'required|string|max:255',
-            'site_manager_contact_details' => 'required',
+            'site_name' => 'required|max:255',
+            'site_manager' => 'required|exists:users,id',
         ]);
 
         Site::create($validatedData);

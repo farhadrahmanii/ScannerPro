@@ -18,15 +18,15 @@
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $site->province->Province_name }}</td>
                             <td>{{ $site->site_name }}</td>
-                            <td>{{ $site->site_manager }}</td>
-                            <td>{{ $site->site_manager_contact_Details }}</td>
+                            <td>{{ $site->manager->name }}</td>
+                            <td>{{ $site->manager->phone }}</td>
                             <td>
                                 <button type="button" id="delete" class="btn btn-danger"
-                                    wire:click="deleteProvince({{ $site->id }})"
+                                    wire:click="deleteSite({{ $site->id }})"
                                     wire:confirm="Are you sure you want to delete this post?">
                                     <i class="bx bx-trash"></i>
                                 </button>
-                                <a href="javascript:void(0);" class="btn btn-info">
+                                <a href="{{Route('edit.site', $site->id) }}" class="btn btn-info" wire:navigate>
                                     <i class="bx bx-edit"></i>
                                 </a>
                             </td>

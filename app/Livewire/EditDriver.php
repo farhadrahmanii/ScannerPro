@@ -66,6 +66,10 @@ class EditDriver extends Component
         // Redirect to the driver list page
         return $this->redirect('/all/drivers', navigate: true);
     }
+    public function placeholder()
+    {
+        return view('livewire.form-loading');
+    }
 
     public function render()
     {

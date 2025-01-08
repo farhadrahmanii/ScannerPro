@@ -3,43 +3,33 @@
         <h5 class="mb-4">Add Category</h5>
         <form class="row g-3" method="POST" id="myForm" enctype="multipart/form-data">
             @csrf
-            <div class="form-group col-md-3">
-                <label for="goods_id" class="form-label">Goods ID</label>
-                <input type="text" id="goods_id" wire:model="goods_id" name="goods_id" class="form-control rounded-lg
-                    @error('goods_id')
-                        in-valid
-                    @enderror
-                    " id="goods_id" placeholder="Data Science">
-                @error('goods_id')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
-                @enderror
-            </div>
+
 
 
             <div class="form-group col-md-3">
-                <label for="bill_of_landing" class="form-label">Bill of Landing</label>
-                <input type="text" id="bill_of_landing" name="bill_of_landing" wire:model="bill_of_landing" class="form-control rounded-lg
-                    @error('bill_of_landing')
-                        in-valid
-                    @enderror
-                    " id="bill_of_landing" placeholder="Data Science">
-                @error('bill_of_landing')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
-                @enderror
-            </div>
-
-
-            <div class="form-group col-md-3">
-                <label for="exporting_country" class="form-label">Exporting country</label>
-                <input type="text" id="exporting_country" wire:model="exporting_country" name="exporting_country" class="form-control rounded-lg
-                    @error('exporting_country')
-                        in-valid
-                    @enderror
-                    " id="exporting_country" placeholder="Data Science">
+                <label for="exporting_country" class="form-label">Exporting Country</label>
+                <select id="exporting_country" name="exporting_country" wire:model="exporting_country"
+                    class="form-control rounded-lg @error('exporting_country') is-invalid @enderror">
+                    <option value="">Select Exporting Country</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="China">China</option>
+                    <option value="India">India</option>
+                    <option value="United States">United States</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="Japan">Japan</option>
+                    <option value="South Korea">South Korea</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Other">Other</option>
+                </select>
                 @error('exporting_country')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
+                    <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
+
 
 
             <div class="form-group col-md-3">
@@ -161,15 +151,9 @@
                 @error('delivery_location')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
+
             </div>
 
-            <div class="form-check form-switch form-check-success">
-                <input class="form-check-input @error('scan_status') is-invalid @enderror" type="checkbox" role="switch"
-                    id="scan_status" wire:model="scan_status">
-                <label class="form-check-label" for="scan_status">
-                    Transaction Status
-                </label>
-            </div>
 
             <div class="form-group col-md-3">
                 <label for="scan_time" class="form-label">Scan TimeStamp</label>
@@ -183,6 +167,15 @@
                 @enderror
             </div>
 
+            <div class="form-group col-md-3 mt-5">
+                <div class="form-check form-switch form-check-success">
+                    <input class="form-check-input @error('scan_status') is-invalid @enderror" type="checkbox"
+                        role="switch" id="scan_status" wire:model="scan_status">
+                    <label class="form-check-label" for="scan_status">
+                        Transaction Status
+                    </label>
+                </div>
+            </div>
             <div class="col-md-12">
                 <div class="gap-3 d-md-flex d-grid align-items-center">
                     <button type="submit" wire:click.prevent="save" wire:loading.attr="disabled"

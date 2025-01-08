@@ -84,12 +84,13 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
         });
 
 
-        // All Admin Users Routes here
+        // All Provinces Users Routes here
         Route::controller(ProvinceSiteController::class)->group(function () {
             Route::get('/all/province', 'AllProvinceSites')->name('province.site');
             Route::get('/add/province', 'AddProvince')->name('add.province');
             Route::get('/all/site', 'allSites')->name('site');
             Route::get('/add/site', 'AddSite')->name('add.site');
+            Route::get('/edit/site/{id}', 'EditSite')->name('edit.site');
         });
 
         // All Admin Role and Permissions for Users Routes here

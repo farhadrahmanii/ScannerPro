@@ -12,7 +12,7 @@
                 <ol class="p-0 mb-0 breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Drivers</li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit Drivers</li>
                 </ol>
             </nav>
         </div>
@@ -25,7 +25,7 @@
 
     <div class="card">
         <div class="p-4 card-body">
-            <h5 class="mb-4">Add Driver</h5>
+            <h5 class="mb-4">Edit Driver</h5>
             <livewire:edit-driver lazy :driverId="$driver->id" />
         </div>
     </div>
@@ -63,18 +63,6 @@
             unhighlight: function (element, errorClass, validClass) {
                 $(element).removeClass('is-invalid');
             },
-        });
-    });
-</script>
-<script>
-
-    $(document).ready(function () {
-        $('#image').change(function (e) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#showImage').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
         });
     });
 </script>

@@ -42,12 +42,12 @@
                         </label>
                         <!-- without node.js  -->
                         <!-- <div class="form-check-success form-check form-switch">
-                                                    <input class="form-check-input status-toggle large-checkbox" type="checkbox"
-                                                        id="flexSwitchCheckCheckedDanger{{ $user->id }}" wire:click="toggleStatus({{ $user->id }})"
-                                                        {{ $user->status ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="flexSwitchCheckCheckedDanger{{ $user->id }}"></label>
+                                                        <input class="form-check-input status-toggle large-checkbox" type="checkbox"
+                                                            id="flexSwitchCheckCheckedDanger{{ $user->id }}" wire:click="toggleStatus({{ $user->id }})"
+                                                            {{ $user->status ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="flexSwitchCheckCheckedDanger{{ $user->id }}"></label>
 
-                                                </div> -->
+                                                    </div> -->
 
 
                     </td>

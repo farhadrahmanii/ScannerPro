@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
             'status' => 1,
             'site_id' => 2,
+            'phone' => fake()->phoneNumber(),
             'role' => 'admin'
         ]);
         $this->call(TransportCompanySeeder::class);

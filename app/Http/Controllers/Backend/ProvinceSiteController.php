@@ -28,4 +28,10 @@ class ProvinceSiteController extends Controller
     {
         return view("admin.backend.sites.addSite");
     } //All Site
+    public function EditSite($id)
+    {
+        $siteId = Site::findOrFail($id);
+
+        return view("admin.backend.sites.editSite", compact('siteId'));
+    } //All Site
 }

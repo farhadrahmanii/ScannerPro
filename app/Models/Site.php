@@ -17,4 +17,9 @@ class Site extends Model
     {
         return $this->belongsTo(Provinces::class, 'provinces_id', 'id');
     }
+    public function manager()
+    {
+        return $this->belongsTo(User::class, 'site_manager', 'id');
+    }
+
 }
