@@ -11,9 +11,11 @@ class DriverTable extends DataTableComponent
     protected $model = Driver::class;
     public function configure(): void
     {
-        $this->setPrimaryKey('id')->setTableRowUrl(function ($row) {
-            return route('driver.details', $row);
-        });
+        $this->setPrimaryKey('id')
+            ->setDefaultSort('id', 'desc')
+            ->setTableRowUrl(function ($row) {
+                return route('driver.details', $row);
+            });
     }
     public function columns(): array
     {

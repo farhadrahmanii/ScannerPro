@@ -12,9 +12,11 @@ class VehicleTable extends DataTableComponent
 
     public function configure(): void
     {
-        $this->setPrimaryKey('id')->setTableRowUrl(function ($row) {
-            return route('vehicle.details', $row);
-        });
+        $this->setPrimaryKey('id')
+            ->setDefaultSort('id', 'desc')
+            ->setTableRowUrl(function ($row) {
+                return route('vehicle.details', $row);
+            });
     }
 
     public function columns(): array

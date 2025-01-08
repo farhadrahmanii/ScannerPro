@@ -30,7 +30,6 @@ class TransactionsSeeder extends Seeder
             DB::table('transactions')->insert([
                 'user_id' => $faker->randomElement($userIds),
                 'vehicle_id' => $faker->randomElement($vehicleIds),
-                'goods_id' => $faker->uuid,
                 'transaction_id' => strtoupper($faker->bothify('TRX-####-####')),
                 'bill_of_landing' => $faker->bothify('BL-####'),
                 'exporting_country' => $faker->country,

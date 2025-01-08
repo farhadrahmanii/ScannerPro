@@ -15,8 +15,10 @@ return new class extends Migration {
             $table->id();
             $table->foreignIdFor(Provinces::class)->references('id')->on('provinces')->onDelete('cascade');
             $table->string('site_name', 255);
-            $table->string('site_manager', 255)->nullable();
-            $table->text('site_manager_contact_Details')->nullable();
+            $table->foreignIdFor(\App\Models\User::class, 'site_manager')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
             $table->timestamps();
 
         });

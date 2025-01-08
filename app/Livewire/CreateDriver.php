@@ -5,8 +5,8 @@ namespace App\Livewire;
 use App\Models\Driver;
 use App\Models\TransportCompany;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
-use Masmerise\Toaster\Toaster;
 
 class CreateDriver extends Component
 {
@@ -23,10 +23,21 @@ class CreateDriver extends Component
     public $searchResults = [];
     public $showAddCompanyForm = false;
 
+    protected $rules = [
+        'name' => ['required', 'string', 'max:255'],
+        'father_name' => ['required', 'string', 'max:255'],
+        'national_id' => ['required', 'string', 'unique:drivers,national_id'],
+        'passport_no' => ['nullable', 'string', 'max:20'],
+        'contact_information' => ['required', 'string', 'max:255'],
+        'nationality' => ['required', 'string', 'max:100'],
+        'transport_company_id' => ['required', 'integer', 'exists:transport_companies,id'],
+    ];
+
     public function updatedTransportCompanyTin()
     {
         if (strlen($this->transport_company_tin) > 2) {
-            $this->searchResults = TransportCompany::where('transport_company_tin', 'like', $this->transport_company_tin)
+            $this->searchResults = TransportCompany::where('transport_company_tin', 'like', "%{$this->transport_company_tin}%")
+                ->limit(5)
                 ->get()
                 ->toArray();
 
@@ -39,26 +50,24 @@ class CreateDriver extends Component
 
     public function selectTransportCompany($companyId)
     {
-        $company = TransportCompany::find($companyId);
-        if ($company) {
-            $this->transport_company_id = $company->id;
-            $this->transport_company = $company->transport_company_name;
-            $this->transport_company_tin = $company->transport_company_tin;
-            $this->searchResults = [];
-            $this->showAddCompanyForm = false;
-        }
+        $company = TransportCompany::findOrFail($companyId);
+        $this->transport_company_id = $company->id;
+        $this->transport_company = $company->transport_company_name;
+        $this->transport_company_tin = $company->transport_company_tin;
+        $this->searchResults = [];
+        $this->showAddCompanyForm = false;
     }
 
     public function addTransportCompany()
     {
-        $this->validate([
-            'transport_company' => ['required', 'string'],
-            'transport_company_tin' => ['required', 'string', 'unique:transport_companies,transport_company_tin'],
+        $validated = $this->validate([
+            'transport_company' => ['required', 'string', 'max:255'],
+            'transport_company_tin' => ['required', 'string', 'max:50', 'unique:transport_companies,transport_company_tin'],
         ]);
 
         $company = TransportCompany::create([
-            'transport_company_name' => $this->transport_company,
-            'transport_company_tin' => $this->transport_company_tin,
+            'transport_company_name' => $validated['transport_company'],
+            'transport_company_tin' => $validated['transport_company_tin'],
         ]);
 
         $this->transport_company_id = $company->id;
@@ -68,31 +77,33 @@ class CreateDriver extends Component
 
     public function save()
     {
-        $this->validate([
-            'name' => ['required', 'string'],
-            'father_name' => ['required', 'string'],
-            'national_id' => ['required', 'string'],
-            'passport_no' => ['string'],
-            'contact_information' => ['required', 'string'],
-            'nationality' => ['required', 'string'],
-            'transport_company_id' => ['required', 'integer'],
-        ]);
+        $validated = $this->validate();
 
         $user = Auth::id();
 
         Driver::create([
             'user_id' => $user,
-            'name' => $this->name,
-            'father_name' => $this->father_name,
-            'national_id' => $this->national_id,
-            'passport_no' => $this->passport_no,
-            'contact_information' => $this->contact_information,
-            'nationality' => $this->nationality,
-            'transport_company_id' => $this->transport_company_id,
+            'name' => $validated['name'],
+            'father_name' => $validated['father_name'],
+            'national_id' => $validated['national_id'],
+            'passport_no' => $validated['passport_no'],
+            'contact_information' => $validated['contact_information'],
+            'nationality' => $validated['nationality'],
+            'transport_company_id' => $validated['transport_company_id'],
         ]);
 
-        flash()->success('The Driver is registered Successfully');
+        session()->flash('success', 'The Driver is registered successfully.');
         return redirect()->route('all.drivers');
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+    public function placeholder()
+    {
+        return view('livewire.form-loading');
     }
 
     public function render()

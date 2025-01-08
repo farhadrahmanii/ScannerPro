@@ -14,6 +14,7 @@ class TransactionTable extends DataTableComponent
     public function configure(): void
     {
         $this->setPrimaryKey('id')
+            ->setDefaultSort('id', 'desc')
             ->setTableRowUrl(function ($row) {
                 return route('transaction.details', $row);
             }); // Use '_self' to open in the same tab

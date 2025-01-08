@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
-            $table->string('goods_id', 255);
             $table->string('transaction_id', 255)->unique();
             $table->string('bill_of_landing', 255);
             $table->string('exporting_country', 255);
