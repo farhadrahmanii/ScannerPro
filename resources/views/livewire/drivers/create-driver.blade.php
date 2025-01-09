@@ -122,7 +122,6 @@
                 <option value="iranian">Iranian</option>
                 <option value="iraqi">Iraqi</option>
                 <option value="irish">Irish</option>
-                <option value="israeli">Israeli</option>
                 <option value="italian">Italian</option>
                 <option value="jamaican">Jamaican</option>
                 <option value="japanese">Japanese</option>
