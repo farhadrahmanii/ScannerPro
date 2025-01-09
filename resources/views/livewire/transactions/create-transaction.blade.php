@@ -29,20 +29,32 @@
                     <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
-
-
-
-            <div class="form-group col-md-3">
+            <div class="form-group col-md-3" wire:ignore>
                 <label for="production_origin" class="form-label">Production Origin</label>
-                <input type="text" id="production_origin" wire:model="production_origin" name="production_origin" class="form-control rounded-lg
-                    @error('production_origin')
-                        in-valid
-                    @enderror
-                    " id="production_origin" placeholder="Data Science">
+                <select id="production_origin" data-pharaonic="select2" data-component-id="{{ $id }}"
+                    class="form-control rounded-lg">
+                    <option value="">Select Exporting Country</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="China">China</option>
+                    <option value="India">India</option>
+                    <option value="United States">United States</option>
+                    <option value="Germany">Germany</option>
+                    <option value="Turkey">Turkey</option>
+                    <option value="Japan">Japan</option>
+                    <option value="South Korea">South Korea</option>
+                    <option value="United Arab Emirates">United Arab Emirates</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Pakistan">Pakistan</option>
+                    <option value="Iran">Iran</option>
+                    <option value="Other">Other</option>
+                </select>
                 @error('production_origin')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
+                    <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
+
+
+
 
             <div class="form-group col-md-3">
                 <label for="item_name" class="form-label">Item Name</label>
@@ -50,7 +62,7 @@
                     @error('item_name')
                         in-valid
                     @enderror
-                    " id="item_name" placeholder="Data Science">
+                    " id="item_name" placeholder="Item List">
                 @error('item_name')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
@@ -78,11 +90,11 @@
 
             <div class="form-group col-md-3">
                 <label for="total_tonnage" class="form-label">Total Tonnage</label>
-                <input type="text" id="total_tonnage" wire:model="total_tonnage" name="total_tonnage" class="form-control rounded-lg
+                <input type="number" id="total_tonnage" wire:model="total_tonnage" name="total_tonnage" class="form-control rounded-lg
                     @error('total_tonnage')
                         in-valid
                     @enderror
-                    " id="total_tonnage" placeholder="Data Science">
+                    " id="total_tonnage" placeholder="####">
                 @error('total_tonnage')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
@@ -91,11 +103,11 @@
 
             <div class="form-group col-md-3">
                 <label for="number_of_items" class="form-label">Number of Items</label>
-                <input type="text" id="number_of_items" wire:model="number_of_items" name="number_of_items" class="form-control rounded-lg
+                <input type="number" id="number_of_items" wire:model="number_of_items" name="number_of_items" class="form-control rounded-lg
                     @error('number_of_items')
                         in-valid
                     @enderror
-                    " id="number_of_items" placeholder="Data Science">
+                    " id="number_of_items" placeholder="#########">
                 @error('number_of_items')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
@@ -191,3 +203,14 @@
         </form>
     </div>
 </div>
+<script>
+    document.addEventListener('livewire:load', function () {
+        $('#production_origin').select2();
+
+        $('#production_origin').on('change', function (e) {
+            var data = $(this).val();
+            @this.set('production_origin', data);
+        });
+    });
+
+</script>

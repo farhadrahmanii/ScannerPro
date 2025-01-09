@@ -12,22 +12,25 @@
                 </thead>
                 <tbody>
                     <div wire:transition>
-
                         @foreach ($transportCompanies as $key => $tc)
                             <tr wire:transition.scale.origin.top wire:key="{{ $tc->id }}">
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $tc->transport_company_name }}</td>
                                 <td>{{ $tc->transport_company_tin }}</td>
                                 <td>
-                                    <a href="javascript:void(0);" id="delete" class="btn btn-danger"
-                                        wire:confirm="Are you sure you want to delete {{$tc->transport_company_name}}?"
-                                        wire:click="deleteTransportCompany({{ $tc->id }})">
-                                        <i class="bx bx-trash"></i>
-                                    </a>
-                                    <a href="{{route('edit.transportCompany', $tc->id)}}" class="btn btn-info"
-                                        wire:navigate>
-                                        <i class="bx bx-edit"></i>
-                                    </a>
+                                    @if (Auth::user()->can('transport.company.delete'))
+                                        <a href="javascript:void(0);" id="delete" class="btn btn-danger"
+                                            wire:confirm="Are you sure you want to delete {{$tc->transport_company_name}}?"
+                                            wire:click="deleteTransportCompany({{ $tc->id }})">
+                                            <i class="bx bx-trash"></i>
+                                        </a>
+                                    @endif
+                                    @if (Auth::user()->can('transport.company.edit'))
+                                        <a href="{{route('edit.transportCompany', $tc->id)}}" class="btn btn-info"
+                                            wire:navigate>
+                                            <i class="bx bx-edit"></i>
+                                        </a>
+                                    @endif
                                 </td>
 
                             </tr>

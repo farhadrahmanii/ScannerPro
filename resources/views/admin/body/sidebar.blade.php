@@ -53,44 +53,52 @@
                 </a>
             @endif
         </li>
-        <li class="menu-label">System Settings</li>
+        <li class="menu-label">Settings</li>
         <li>
-            @if (Auth::user()->can('transport.company.list'))
-            @endif
-            <a href="{{ route('all.transportCompany')}}" wire:navigate>
-                <div class="parent-icon"><i class="fadeIn animated lni lni-apartment"></i>
+            <a href="#" class="has-arrow">
+                <div class="parent-icon"><i class='lni lni-cog'></i>
                 </div>
-                <div class="menu-title">Transport Company</div>
+                <div class="menu-title">System Settings</div>
             </a>
-        </li>
-        <li>
-            @if (Auth::user()->can('site.list'))
-                <a href="{{ route('province.site')}}" wire:navigate>
-                    <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
-                    </div>
-                    <div class="menu-title">Province</div>
-                </a>
-            @endif
-        </li>
+            <ul>
+                <li>
+                    @if (Auth::user()->can('transport.company.list'))
+                        <a href="{{ route('all.transportCompany')}}" wire:navigate>
+                            <div class="parent-icon"><i class="fadeIn animated lni lni-apartment"></i>
+                            </div>
+                            <div class="menu-title">Transport Company</div>
+                        </a>
+                    @endif
+                </li>
+                <li>
+                    @if (Auth::user()->can('site.list'))
+                        <a href="{{ route('province.site')}}" wire:navigate>
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
+                            </div>
+                            <div class="menu-title">Province</div>
+                        </a>
+                    @endif
+                </li>
 
-        <li>
+                <li>
+                    @if (Auth::user()->can('site.list'))
+                        <a href="{{ route('site')}}" wire:navigate>
+                            <div class="parent-icon"><i class='bx bx-current-location'></i>
+                            </div>
+                            <div class="menu-title">Sites</div>
+                        </a>
+                    @endif
+                </li>
 
-            @if (Auth::user()->can('site.list'))
-                <a href="{{ route('site')}}" wire:navigate>
-                    <div class="parent-icon"><i class='bx bx-current-location'></i>
-                    </div>
-                    <div class="menu-title">Sites</div>
-                </a>
-            @endif
-        </li>
 
-
-        <li>
-            <a href="{{route('users.list')}}" wire:navigate>
-                <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
-                </div>
-                <div class="menu-title">Users</div>
-            </a>
+                <li>
+                    <a href="{{route('users.list')}}" wire:navigate>
+                        <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
+                        </div>
+                        <div class="menu-title">Users</div>
+                    </a>
+                </li>
+            </ul>
         </li>
         <!-- Role and Permission Links -->
         <li class="menu-label">Roles And Permissions</li>

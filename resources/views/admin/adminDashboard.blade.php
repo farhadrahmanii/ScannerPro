@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    @livewireStyles
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,6 +41,11 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     @vite('resources/css/app.css')
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"
+        type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    @livewireStyles
 </head>
 
 <body>
@@ -175,6 +180,8 @@
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--plugins-->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <!-- Select 2 link connected using below CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
@@ -255,6 +262,22 @@
 
     @livewireScripts
     @stack('scripts')
+    <!-- Way 1 -->
+    <x:pharaonic-select2::scripts />
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
+
+    <!-- Way 2 : Vendor Publishing REQURIED -->
+    <script src="{{ asset('vendor/pharaonic/pharaonic.select2.min.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2({
+                placeholder: "Select an option",
+                allowClear: true
+            });
+        });
+    </script>
+
 </body>
 
 </html>

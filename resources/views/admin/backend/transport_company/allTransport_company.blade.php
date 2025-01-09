@@ -23,10 +23,12 @@
                 </ol>
             </nav>
         </div>
-        <div class="ms-auto">
-            <a href="{{route('add.transportCompany')}}" class="px-5 btn btn-primary" wire:navigate>add Transport
-                Company</a>
-        </div>
+        @if (Auth::user()->can('transport.company.add'))
+            <div class="ms-auto">
+                <a href="{{route('add.transportCompany')}}" class="px-5 btn btn-primary" wire:navigate>add Transport
+                    Company</a>
+            </div>
+        @endif
     </div>
     <!--end breadcrumb-->
     <hr />

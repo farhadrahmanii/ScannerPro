@@ -15,6 +15,7 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "masmerise/livewire-toaster": "^2.6",
+        "pharaonic/livewire-select2": "^1.2",
         "pxlrbt/filament-activity-log": "^1.1",
         "rappasoft/laravel-livewire-tables": "^3.5",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2",

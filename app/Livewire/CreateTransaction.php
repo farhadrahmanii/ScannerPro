@@ -10,7 +10,6 @@ use Illuminate\Support\Str;
 class CreateTransaction extends Component
 {
     public $user;
-    public $goods_id;
     public $vehicle_id;
     public $transaction_id;
     public $bill_of_landing;
@@ -26,6 +25,8 @@ class CreateTransaction extends Component
     public $delivery_location;
     public $scan_status;
     public $scan_time;
+    public $id;
+
 
     public function save()
     {
@@ -98,7 +99,7 @@ class CreateTransaction extends Component
     }
     public function mount()
     {
-
+        $this->id = $this->getId();
     }
     public function placeholder()
     {

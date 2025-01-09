@@ -14,6 +14,10 @@ class PermissionsTableSeeder extends Seeder
             ['name' => 'user.create', 'guard_name' => 'web', 'group_name' => 'HR'],
             ['name' => 'user.edit', 'guard_name' => 'web', 'group_name' => 'HR'],
             ['name' => 'user.delete', 'guard_name' => 'web', 'group_name' => 'HR'],
+            ['name' => 'transport.company.list', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
+            ['name' => 'transport.company.delete', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
+            ['name' => 'transport.company.add', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
+            ['name' => 'transport.company.edit', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
             ['name' => 'driver.list', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
             ['name' => 'create.driver', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
             ['name' => 'driver.edit', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
@@ -31,7 +35,6 @@ class PermissionsTableSeeder extends Seeder
             ['name' => 'vehicle.list', 'guard_name' => 'web', 'group_name' => 'Vehicle'],
             ['name' => 'add.vehicle.to.driver', 'guard_name' => 'web', 'group_name' => 'driver'],
             ['name' => 'transaction.list', 'guard_name' => 'web', 'group_name' => 'Transactions'],
-            ['name' => 'transport.company.list', 'guard_name' => 'web', 'group_name' => 'Site Manager'],
         ];
 
         foreach ($permissions as $permission) {
