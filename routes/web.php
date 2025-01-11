@@ -16,6 +16,7 @@ use App\Livewire\EditRolelivewire;
 use App\Livewire\EditUserLivewire;
 use App\Livewire\Provinces\AllProvinces;
 
+use App\Models\ConsigneeCompany;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
@@ -38,6 +39,13 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('/transport/companies', 'AllTransportCompany')->name('all.transportCompany');
             Route::get('/add/transport/company', 'AddTransportCompany')->name('add.transportCompany');
             Route::get('/edit/transport/company/{id}', 'EditTransportCompany')->name('edit.transportCompany');
+        });
+
+        // All Consignee Company Routes here
+        Route::controller(ConsigneeCompany::class)->group(function () {
+            Route::get('/consignee/companies', 'AllConsigneeCompany')->name('all.consigneeCompany');
+            Route::get('/add/consignee/company', 'AddConsigneeCompany')->name('add.consigneeCompany');
+            Route::get('/edit/consignee/company/{id}', 'EditConsigneeCompany')->name('edit.consigneeCompany');
         });
 
         // All Driver Routes here

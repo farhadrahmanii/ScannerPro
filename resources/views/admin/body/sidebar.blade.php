@@ -71,6 +71,15 @@
                     @endif
                 </li>
                 <li>
+                    @if (Auth::user()->can('transport.company.list'))
+                        <a href="{{ route('all.consigneeCompany')}}" wire:navigate>
+                            <div class="parent-icon"><i class="fadeIn animated lni lni-apartment"></i>
+                            </div>
+                            <div class="menu-title">Consignee Company</div>
+                        </a>
+                    @endif
+                </li>
+                <li>
                     @if (Auth::user()->can('site.list'))
                         <a href="{{ route('province.site')}}" wire:navigate>
                             <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
