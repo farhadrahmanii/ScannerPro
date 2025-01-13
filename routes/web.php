@@ -46,6 +46,7 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('/consignee/companies', 'AllConsigneeCompany')->name('all.consigneeCompany');
             Route::get('/add/consignee/company', 'AddConsigneeCompany')->name('add.consigneeCompany');
             Route::get('/edit/consignee/company/{id}', 'EditConsigneeCompany')->name('edit.consigneeCompany');
+            Route::get('/delete/consignee/company/{id}', 'DeleteConsigneeCompany')->name('delete.consigneeCompany');
         });
 
         // All Driver Routes here
@@ -55,6 +56,7 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::post('/add/driver/store', 'AddDriverStore')->name('add.store.driver');
             Route::get('driver/details/{id}', 'DriverDetails')->name('driver.details');
             Route::get('edit/driver/{id}', 'EditDriver')->name('edit.driver');
+            Route::get('delete/driver/{id}', 'DeleteDriver')->name('delete.driver');
         });
 
 

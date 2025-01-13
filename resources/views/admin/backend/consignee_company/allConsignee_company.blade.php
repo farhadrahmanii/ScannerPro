@@ -25,14 +25,17 @@
         </div>
         @if (Auth::user()->can('transport.company.add'))
             <div class="ms-auto">
-                <a href="{{route('add.transportCompany')}}" class="px-5 btn btn-primary" wire:navigate>add Consignee
+                <a href="{{route('add.consigneeCompany')}}" class="px-5 btn btn-primary" wire:navigate>add Consignee
                     Company</a>
             </div>
         @endif
     </div>
     <!--end breadcrumb-->
-    <hr />
-    <livewire:consignee-company.listlivewire lazy />
+    <div class="card">
+        <div class="card-body">
+            <livewire:consignee-company.table lazy />
+        </div>
+    </div>
 
 </div>
 

@@ -128,14 +128,17 @@
 
 
             <div class="form-group col-md-3">
-                <label for="consignee_company_tin" class="form-label">consignee Company TIN</label>
-                <input type="text" id="input1" wire:model="consignee_company_tin" name="consignee_company_tin" class="form-control rounded-lg
-                    @error('consignee_company_tin')
-                        in-valid
-                    @enderror
-                    " id="consignee_company_tin" placeholder="Data Science">
+                <label for="consignee_company_tin" class="form-label">Consignee Company TIN</label>
+                <select id="consignee_company_tin" wire:model="consignee_company_tin" name="consignee_company_tin"
+                    class="js-example-basic-single form-control rounded-lg @error('consignee_company_tin') is-invalid @enderror"
+                    data-pharaonic="select2" data-component-id="{{ $id }}">
+                    <option value="">Select Consignee Company TIN</option>
+                    @foreach($consigneeCompanies as $company)
+                        <option value="{{ $company->consignee_company_tin }}">{{ $company->consignee_company_tin }}</option>
+                    @endforeach
+                </select>
                 @error('consignee_company_tin')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
+                    <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -203,14 +206,3 @@
         </form>
     </div>
 </div>
-<script>
-    document.addEventListener('livewire:load', function () {
-        $('#production_origin').select2();
-
-        $('#production_origin').on('change', function (e) {
-            var data = $(this).val();
-            @this.set('production_origin', data);
-        });
-    });
-
-</script>

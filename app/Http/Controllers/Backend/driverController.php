@@ -54,10 +54,13 @@ class driverController extends Controller
         $driver = Driver::findOrFail($id);
         $vehicles = Vehicle::where('driver_id', $id)->get();
         return view('admin.backend.drivers.driverDetails', compact('driver', 'vehicles'));
-    }
-    public function EditDriver($id)
+    } // Delete Driver
+    public function DeleteDriver($id)
     {
         $driver = Driver::findOrFail($id);
-        return view('admin.backend.drivers.editDriver', compact('driver'));
-    }
+
+        $driver->delete();
+        flash()->success('The Driver is Deleted Successfully');
+        return redirect()->back();
+    } //Delete Driver
 }

@@ -54,6 +54,13 @@
                         Add Vehicle
                     </a>
                 @endif
+                @if (Auth::user()->can('delete.driver'))
+                    <a href="{{route('delete.driver', $drive->id)}}" wire:navigate
+                        onclick="return confirm('Are you sure you want to delete this driver?')"
+                        class="px-2 lg:py-1.5 py-2 w-full flex items-center rounded-md transition-colors text-left text-gray-800 hover:bg-red-50 focus-visible:bg-red-50 hover:text-red-600 disabled:opacity-50 disabled:cursor-not-allowed">
+                        Delete
+                    </a>
+                @endif
 
             </div>
         </div>

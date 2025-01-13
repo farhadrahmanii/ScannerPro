@@ -7,6 +7,8 @@ use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
+use App\Models\ConsigneeCompany;
+
 class CreateTransaction extends Component
 {
     public $user;
@@ -26,7 +28,7 @@ class CreateTransaction extends Component
     public $scan_status;
     public $scan_time;
     public $id;
-
+    public $consigneeCompanies = [];
 
     public function save()
     {
@@ -100,6 +102,7 @@ class CreateTransaction extends Component
     public function mount()
     {
         $this->id = $this->getId();
+        $this->consigneeCompanies = ConsigneeCompany::all();
     }
     public function placeholder()
     {
