@@ -39,9 +39,7 @@
                 </a>
             @endif
         </li>
-
         <li>
-
             <!-- <li class="menu-label"></li> -->
             @if (Auth::user()->can('transaction.list'))
 
@@ -73,7 +71,7 @@
                 <li>
                     @if (Auth::user()->can('transport.company.list'))
                         <a href="{{ route('all.consigneeCompany')}}" wire:navigate>
-                            <div class="parent-icon"><i class="fadeIn animated lni lni-apartment"></i>
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-buildings"></i>
                             </div>
                             <div class="menu-title">Consignee Company</div>
                         </a>

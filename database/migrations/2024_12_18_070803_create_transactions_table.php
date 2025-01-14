@@ -23,8 +23,7 @@ return new class extends Migration {
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
             $table->string('total_tonnage', 255);
             $table->string('number_of_items', 255);
-            $table->string('consignee_company', 255);
-            $table->string('consignee_company_tin', 255);
+            $table->string('consignee_company_tin', 255)->nullable();
             $table->string('item_list', 255);
             $table->string('delivery_location', 255);
             $table->boolean('scan_status')->default(false);

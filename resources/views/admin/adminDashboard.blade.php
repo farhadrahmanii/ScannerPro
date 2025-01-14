@@ -21,7 +21,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+
 
     <!-- Font awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
@@ -43,7 +43,6 @@
     @vite('resources/css/app.css')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     @livewireStyles
 </head>
 
@@ -180,7 +179,6 @@
     <!--plugins-->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <!-- Select 2 link connected using below CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
@@ -237,25 +235,9 @@
 
 
     <!-- Data Table Scripts -->
-    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
-    <script>
-        // $(document).ready(function () {
-        //     var table = $('#example2').DataTable({
-        //         lengthChange: false,
-        //         buttons: ['copy', 'excel', 'pdf', 'print']
-        //     });
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-        //     table.buttons().container()
-        //         .appendTo('#example2_wrapper .col-md-6:eq(0)');
-        // });
-    </script>
-    <!-- End Data Table Scripts -->
+
     <!-- Toaster for Livewire -->
     <x-toaster-hub /> <!-- 👈 -->
 
@@ -263,8 +245,6 @@
     @stack('scripts')
     <!-- Way 1 -->
     <x:pharaonic-select2::scripts />
-
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
 
     <!-- Way 2 : Vendor Publishing REQURIED -->
     <script src="{{ asset('vendor/pharaonic/pharaonic.select2.min.js') }}"></script>
