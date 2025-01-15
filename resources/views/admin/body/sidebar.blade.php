@@ -140,5 +140,22 @@
     <!--end navigation-->
 </div>
 <script>
-    document.querySelector('body').innerHTML = newHtml;
+    function reinitializeComponents() {
+        // Reinitialize any JavaScript components here
+        // Example: reinitialize tooltips, dropdowns, etc.
+        // $('[data-toggle="tooltip"]').tooltip();
+        // $('.dropdown-toggle').dropdown();
+    }
+
+    document.addEventListener('livewire:navigate', function () {
+        reinitializeComponents();
+    });
+
+    document.addEventListener('livewire:load', function () {
+        reinitializeComponents();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        reinitializeComponents();
+    });
 </script>

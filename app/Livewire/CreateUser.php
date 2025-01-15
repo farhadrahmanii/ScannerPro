@@ -8,6 +8,7 @@ use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class CreateUser extends Component
 {
@@ -21,6 +22,8 @@ class CreateUser extends Component
     #[Validate('image|max:1024')]
     public $photo = "";
     public $roles = [];
+    public $permissions = [];
+    public $selectedPermissions = [];
 
     public function save()
     {
@@ -30,8 +33,10 @@ class CreateUser extends Component
             'email' => 'required|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users,email|',
             'password' => 'required|String|max:255',
             'site_id' => 'required',
-            'role' => 'required|string|max:50',
+            'role' => 'string|max:50',
             'photo' => 'image|mimes:jpg,jpeg,png|max:2048', // Max size in kilobytes
+            'selectedPermissions' => 'array',
+            'selectedPermissions.*' => 'string|exists:permissions,name',
         ]);
         if ($this->photo) {
             $userEmail = $this->email ?? 'default';
@@ -63,6 +68,9 @@ class CreateUser extends Component
                 $user->assignRole($findedRole);
             }
         }
+        if (!empty($this->selectedPermissions)) {
+            $user->syncPermissions($this->selectedPermissions);
+        }
 
         flash()->success('Account for Miss/Mr.' . $this->name . ' Created successfully');
         $this->reset();
@@ -72,6 +80,7 @@ class CreateUser extends Component
     {
         $this->roles = Role::all();
         $this->allSites = Site::all();
+        $this->permissions = Permission::all();
     }
     public function placeholder()
     {

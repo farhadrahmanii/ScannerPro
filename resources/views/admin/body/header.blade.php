@@ -19,11 +19,11 @@
                 <ul class="gap-1 navbar-nav align-items-center">
                     <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal"
                         data-bs-target="#SearchModal">
-                        <a class="nav-link" href="avascript:;"><i class='bx bx-search'></i>
+                        <a class="nav-link" href="javascript:;"><i class='bx bx-search'></i>
                         </a>
                     </li>
                     <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="avascript:;"
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                             data-bs-toggle="dropdown"><img src="{{ asset('assets/images/county/02.png') }}" width="22"
                                 alt="">
                         </a>
@@ -100,13 +100,13 @@
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span
                                 class="alert-count">8</span>
-                            <i class='bx bx-shopping-bag'></i>
+                            <i class='fadeIn animated bx bx-transfer'></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a href="javascript:;">
                                 <div class="msg-header">
-                                    <p class="msg-header-title">My Cart</p>
-                                    <p class="msg-header-badge">10 Items</p>
+                                    <p class="msg-header-title">My Transactions</p>
+                                    <p class="msg-header-badge">0 Transactions</p>
                                 </div>
                             </a>
                             <div class="header-message-list">
@@ -166,3 +166,24 @@
     </div>
 
 </header>
+
+<script>
+    function reinitializeComponents() {
+        // Reinitialize any JavaScript components here
+        // Example: reinitialize tooltips, dropdowns, etc.
+        // $('[data-toggle="tooltip"]').tooltip();
+        // $('.dropdown-toggle').dropdown();
+    }
+
+    document.addEventListener('livewire:navigate', function () {
+        reinitializeComponents();
+    });
+
+    document.addEventListener('livewire:load', function () {
+        reinitializeComponents();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        reinitializeComponents();
+    });
+</script>

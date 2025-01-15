@@ -204,7 +204,7 @@
     <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
     <script src="assets/js/widgets.js"></script>
     <!--app JS-->
-    <script src="assets/js/app.js"></script>
+    <script src=""></script>
     <script>
         new PerfectScrollbar(".app-container")
     </script>
@@ -248,14 +248,6 @@
 
     <!-- Way 2 : Vendor Publishing REQURIED -->
     <script src="{{ asset('vendor/pharaonic/pharaonic.select2.min.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            $('.select2').select2({
-                placeholder: "Select an option",
-                allowClear: true
-            });
-        });
-    </script>
 
 </body>
 
