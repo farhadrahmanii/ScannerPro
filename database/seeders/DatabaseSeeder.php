@@ -60,8 +60,12 @@ class DatabaseSeeder extends Seeder
         //     ['name' => 'admin', 'guard_name' => 'web'],
         //     ['name' => 'admin', 'guard_name' => 'web']
         // );
+        $siteUserRole = Role::updateOrCreate(
+            ['name' => 'Site_user', 'guard_name' => 'web'],
+            ['name' => 'Site_user', 'guard_name' => 'web']
+        );
 
-        // // Assign the role to the user
+        // Assign the role to the user
         // $user = User::where('email', 'test@example.com')->first();
         // if ($user) {
         //     $user->assignRole('admin');

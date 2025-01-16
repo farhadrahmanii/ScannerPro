@@ -4,98 +4,78 @@ namespace App\Livewire;
 
 use App\Models\Site;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class EditUserLivewire extends Component
+class EditUser extends Component
 {
-    use WithFileUploads;
-
-    public $user;
-    public $name;
-    public $user_name;
-    public $email;
-    public $password;
-    public $site_id;
-    public $role;
     public $roles = [];
-    public $photo;
-    public $photoPreview;
-    public $allSites;
     public $permissions = [];
     public $selectedPermissions = [];
+    public $photoPreview = "";
 
-    public function mount($user)
+    public function mount($userId)
     {
-        $user = User::findOrFail($user);
-
-        $this->user = $user->id;
+        $this->userId = $userId;
+        $user = User::findOrFail($userId);
         $this->name = $user->name;
         $this->email = $user->email;
         $this->site_id = $user->site_id;
-        $this->role = $user->roles->first()?->id;
-        $this->photoPreview = $user->photo;
+        $this->role = $user->roles->first()->id ?? '';
         $this->selectedPermissions = $user->permissions->pluck('name')->toArray();
+        $this->photoPreview = $user->photo;
+
         $this->roles = Role::all();
         $this->allSites = Site::all();
         $this->permissions = Permission::all();
-    }
-
-    public function updatedPhoto()
-    {
-        $this->validate([
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
     }
 
     public function update()
     {
         $this->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . $this->user,
-            'site_id' => 'numeric',
-            'role' => 'exists:roles,id',
-            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'email' => 'required|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/|max:255|unique:users,email,' . $this->userId,
+            'password' => 'nullable|string|max:255',
+            'site_id' => 'required',
+            'role' => 'string|max:50',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048', // Max size in kilobytes
             'selectedPermissions' => 'array',
             'selectedPermissions.*' => 'string|exists:permissions,name',
         ]);
 
-        $user = User::findOrFail($this->user);
-        $filePath = $user->photo;
+        $user = User::findOrFail($this->userId);
 
         if ($this->photo) {
             $userEmail = $this->email ?? 'default';
             $directory = public_path("uploads/images/{$userEmail}");
 
+            // Create directory if it doesn't exist
             if (!file_exists($directory)) {
                 mkdir($directory, 0755, true);
             }
 
+            // Store the uploaded image
             $fileName = uniqid() . '.' . $this->photo->getClientOriginalExtension();
-            $filePath = "uploads/images/{$userEmail}/{$fileName}";
-
-            if ($user->photo && file_exists(public_path($user->photo))) {
-                unlink(public_path($user->photo));
-            }
-
             $this->photo->storeAs("uploads/images/{$userEmail}", $fileName, 'public');
+
+            $filePath = "uploads/images/{$userEmail}/{$fileName}";
+            $user->photo = $filePath;
         }
 
         $user->update([
             'name' => $this->name,
             'email' => $this->email,
+            'password' => $this->password ? bcrypt($this->password) : $user->password,
             'site_id' => $this->site_id,
-            'password' => $this->password ? Hash::make($this->password) : $user->password,
-            'photo' => $filePath,
         ]);
 
         if ($this->role) {
             $findedRole = Role::find($this->role);
             if ($findedRole) {
-                $user->syncRoles([$findedRole->name]);
+                $user->syncRoles([$findedRole]);
             }
         }
 
@@ -103,12 +83,12 @@ class EditUserLivewire extends Component
             $user->syncPermissions($this->selectedPermissions);
         }
 
-        session()->flash('success', 'User updated successfully!');
-        return redirect()->route('users.list');
+        flash()->success('Account for Miss/Mr.' . $this->name . ' Updated successfully');
+        return $this->redirect('/all/users', navigate: true);
     }
 
     public function render()
     {
-        return view('livewire.edit-user-livewire');
+        return view('livewire.user.edit-user');
     }
 }
