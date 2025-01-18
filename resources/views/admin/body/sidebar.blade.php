@@ -22,12 +22,13 @@
             @if (Auth::user()->can('driver.list'))
                 <a href="{{route('all.drivers')}}" wire:navigate>
                     <div class="parent-icon"> <img src="{{asset('images/icons/driver.png')}}" class="logo-icon"
-                            width="100px" />
+                            width="80px" />
                     </div>
                     <div class="menu-title">Drivers</div>
                 </a>
             @endif
         </li>
+
         <li>
 
             <!-- <li class="menu-label"></li> -->
@@ -39,15 +40,28 @@
                 </a>
             @endif
         </li>
+
         <li>
             <!-- <li class="menu-label"></li> -->
             @if (Auth::user()->can('transaction.list'))
 
                 <a href="{{route('all.transactions')}}" wire:navigate>
                     <div class="parent-icon"><i class="fadeIn animated"><img src="{{asset('images/icons/transaction.png')}}"
-                                class="logo-icon" width="100px" /></i>
+                                class="logo-icon" width="80px" /></i>
                     </div>
                     <div class="menu-title">Transactions</div>
+                </a>
+            @endif
+        </li>
+        <li>
+            <!-- <li class="menu-label"></li> -->
+            <!-- Casher Routes links here -->
+            @if (Auth::user()->can('cash.list'))
+
+                <a href="{{route('all.cash')}}" wire:navigate>
+                    <div class="parent-icon"><i class="fadeIn animated bx bx-dollar-circle"></i>
+                    </div>
+                    <div class="menu-title">Casher</div>
                 </a>
             @endif
         </li>

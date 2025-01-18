@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CasherController;
 use App\Http\Controllers\Backend\driverController;
 use App\Http\Controllers\Backend\ProvinceSiteController;
 use App\Http\Controllers\Backend\RoleAndPermissions;
@@ -10,11 +11,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransportCompanyController;
 use App\Http\Middleware\Admin;
 use App\Http\Middleware\LanguageMiddleware;
-use App\Livewire\AllPermissions;
-use App\Livewire\CreateVehicle;
-use App\Livewire\EditRolelivewire;
-use App\Livewire\EditUserLivewire;
-use App\Livewire\Provinces\AllProvinces;
 
 use App\Models\ConsigneeCompany;
 use Illuminate\Routing\Controller;
@@ -39,6 +35,12 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('/transport/companies', 'AllTransportCompany')->name('all.transportCompany');
             Route::get('/add/transport/company', 'AddTransportCompany')->name('add.transportCompany');
             Route::get('/edit/transport/company/{id}', 'EditTransportCompany')->name('edit.transportCompany');
+        });
+        // All Casher Routes here
+        Route::controller(CasherController::class)->group(function () {
+            Route::get('/all/cash', 'AllCash')->name('all.cash');
+            Route::get('/add/cash', 'CreateCash')->name('add.cash');
+
         });
 
         // All Consignee Company Routes here

@@ -60,10 +60,10 @@ class DatabaseSeeder extends Seeder
         //     ['name' => 'admin', 'guard_name' => 'web'],
         //     ['name' => 'admin', 'guard_name' => 'web']
         // );
-        $siteUserRole = Role::updateOrCreate(
-            ['name' => 'Site_user', 'guard_name' => 'web'],
-            ['name' => 'Site_user', 'guard_name' => 'web']
-        );
+        // $siteUserRole = Role::updateOrCreate(
+        //     ['name' => 'Site_user', 'guard_name' => 'web'],
+        //     ['name' => 'Site_user', 'guard_name' => 'web']
+        // );
 
         // Assign the role to the user
         // $user = User::where('email', 'test@example.com')->first();
@@ -76,6 +76,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(TransactionsSeeder::class);
         // $this->call(SiteSeeder::class);
         // $this->call(ConsigneeCompanySeeder::class);
+        $this->call(CashSeeder::class);
 
     }
 }

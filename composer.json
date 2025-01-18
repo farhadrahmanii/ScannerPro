@@ -15,6 +15,7 @@
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
+        "maatwebsite/excel": "^3.1",
         "masmerise/livewire-toaster": "^2.6",
         "pharaonic/livewire-select2": "^1.2",
         "pxlrbt/filament-activity-log": "^1.1",
