@@ -53,18 +53,7 @@
                 </a>
             @endif
         </li>
-        <li>
-            <!-- <li class="menu-label"></li> -->
-            <!-- Casher Routes links here -->
-            @if (Auth::user()->can('cash.list'))
 
-                <a href="{{route('all.cash')}}" wire:navigate>
-                    <div class="parent-icon"><i class="fadeIn animated bx bx-dollar-circle"></i>
-                    </div>
-                    <div class="menu-title">Casher</div>
-                </a>
-            @endif
-        </li>
         <li class="menu-label">Settings</li>
         <li>
             <a href="#" class="has-arrow">

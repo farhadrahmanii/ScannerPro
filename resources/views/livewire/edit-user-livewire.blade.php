@@ -55,32 +55,25 @@
                 @enderror
             </div>
 
-            <div class="form-group col-md-3">
-                <label for="role" class="form-label">Role</label>
-                <select class="form-control rounded-lg @error('role') is-invalid @enderror" id="role" wire:model="role"
-                    name="role">
-                    <option value="">Select Role</option> <!-- Default option -->
-                    @foreach ($roles as $item)
-                        <option value="{{ $item->id }}" @if ((string) $item->id === (string) $role) selected @endif>
-                            {{ $item->name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('role')
-                    <span class="text-red-500 text-bold">{{ $message }}</span>
-                @enderror
-            </div>
-
             <div class="form-group col-md-12">
                 <label for="permissions" class="form-label">Permissions</label>
                 <div class="row">
-                    @foreach ($permissions as $permission)
-                        <div class="col-md-3">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" wire:model="selectedPermissions"
-                                    value="{{ $permission->name }}" id="permission-{{ $permission->id }}">
-                                <label class="form-check-label"
-                                    for="permission-{{ $permission->id }}">{{ $permission->name }}</label>
+                    @foreach ($permissions->groupBy('group_name') as $groupName => $groupedPermissions)
+                        <div class="col-md-12 mb-3">
+                            <h5 class="text-primary">{{ $groupName }}</h5>
+                            <hr>
+                            <br>
+                            <div class="row">
+                                @foreach ($groupedPermissions as $permission)
+                                    <div class="col-md-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" wire:model="selectedPermissions"
+                                                value="{{ $permission->name }}" id="permission-{{ $permission->id }}">
+                                            <label class="form-check-label"
+                                                for="permission-{{ $permission->id }}">{{ $permission->name }}</label>
+                                        </div>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     @endforeach
@@ -89,6 +82,7 @@
                     <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
+
 
             <div class="form-group col-md-3">
                 <label for="photo" class="form-label">Photo</label>

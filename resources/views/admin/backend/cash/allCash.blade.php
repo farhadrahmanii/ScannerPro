@@ -22,11 +22,9 @@
                 </ol>
             </nav>
         </div>
-        @if (Auth::user()->can('transport.company.add'))
-            <div class="ms-auto">
-                <a href="{{ route('add.cash') }}" class="px-5 btn btn-primary" wire:navigate>Add Cash</a>
-            </div>
-        @endif
+        <div class="ms-auto">
+            <a href="{{ route('add.cash') }}" class="px-5 btn btn-primary" wire:navigate>Add Cash</a>
+        </div>
     </div>
     <!--end breadcrumb-->
     <div class="card">

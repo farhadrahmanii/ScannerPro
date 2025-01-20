@@ -44,6 +44,7 @@ class Cash extends Model
 
     public function approver()
     {
-        return $this->belongsTo(User::class, 'approved_by');
+        return $this->belongsTo(User::class, 'approver_id');
     }
+
 }

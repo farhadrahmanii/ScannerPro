@@ -13,6 +13,7 @@ return new class extends Migration {
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('site_id')->constrained('sites')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
             $table->string('transaction_id', 255)->unique();
@@ -27,7 +28,9 @@ return new class extends Migration {
             $table->string('item_list', 255);
             $table->string('delivery_location', 255);
             $table->boolean('scan_status')->default(false);
-            $table->timestamp('scan_time')->nullable();
+            $table->boolean('scan_time')->default(false);
+            $table->boolean('fees_payment')->default(false);
+            $table->integer('fees_amount')->default(1000);
             $table->timestamps();
         });
     }

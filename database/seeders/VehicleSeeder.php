@@ -17,10 +17,11 @@ class VehicleSeeder extends Seeder
 
         // Define how many rows you want to seed
         $numberOfVehicles = 1000;
-
+        $siteid = \App\Models\Site::pluck('id')->toArray();
         // Loop to insert multiple records
         foreach (range(1, $numberOfVehicles) as $index) {
             DB::table('vehicles')->insert([
+                'site_id' => $faker->randomElement($siteid),
                 'user_id' => 1, // Assuming users are already seeded
                 'driver_id' => $faker->numberBetween(1, 3), // Assuming drivers are already seeded
                 'vehicle_make' => $faker->word(),

@@ -16,6 +16,7 @@ class CreateUser extends Component
     public $allSites;
     public $name = "";
     public $email = "";
+    public $phone = "";
     public $password = "";
     public $site_id;
     public $role = "";
@@ -34,6 +35,7 @@ class CreateUser extends Component
             'password' => 'required|String|max:255',
             'site_id' => 'required',
             'role' => 'string|max:50',
+            'phone' => 'required|numeric|digits:10',
             'photo' => 'image|mimes:jpg,jpeg,png|max:2048', // Max size in kilobytes
             'selectedPermissions' => 'array',
             'selectedPermissions.*' => 'string|exists:permissions,name',
@@ -59,8 +61,9 @@ class CreateUser extends Component
             'email' => $this->email,
             'password' => bcrypt($this->password),
             'site_id' => $this->site_id,
-            'role' => $this->role,
-            'photo' => $filePath,
+            'photo' => $filePath ?? null,
+            'role' => 'admin',
+            'phone' => $this->phone,
         ]);
         if ($this->role) {
             $findedRole = Role::find($this->role);

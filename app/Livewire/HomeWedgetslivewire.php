@@ -25,10 +25,12 @@ class HomeWedgetslivewire extends Component
 
     private function loadStatistics()
     {
-        $this->totalVehicles = Vehicle::count();
-        $this->totalDrivers = Driver::count();
-        $this->totalTransactions = Transaction::count();
-        $this->totalUsers = User::count();
+        $userId = auth()->user()->id;
+        $userSiteId = auth()->user()->site_id;
+        $this->totalVehicles = Vehicle::where('site_id', $userSiteId)->count();
+        $this->totalDrivers = Driver::where('site_id', $userSiteId)->count();
+        $this->totalTransactions = Transaction::where('site_id', $userSiteId)->count();
+        $this->totalUsers = User::where('site_id', $userSiteId)->count();
     }
 
     private function loadChartData()
