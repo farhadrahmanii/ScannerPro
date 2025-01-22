@@ -81,6 +81,7 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('/transaction/detail/{id}', 'TransactionsDetails')->name('transaction.details');
             Route::get('/edit/transaction/{id}', 'EditTransaction')->name('edit.transaction');
             Route::get('/delete/transaction/{id}', 'DeleteTransaction')->name('delete.transactions');
+            Route::get('/backend/cash/print-slip/{id}', 'printSlip')->name('backend.cash.print-slip');
         });
 
         // All Admin Users Routes here
@@ -122,6 +123,7 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::post('/update/role/permission/{id}', 'AdminUpdateRolePermission')->name('update.rolepermission');
         });
 
+        // Cash Slip Route
 
     });
 

@@ -43,6 +43,7 @@ class PermissionsTableSeeder extends Seeder
             ['name' => 'cash.edit', 'guard_name' => 'web', 'group_name' => 'Transactions'],
             ['name' => 'cash.delete', 'guard_name' => 'web', 'group_name' => 'Transactions'],
             ['name' => 'cash.show', 'guard_name' => 'web', 'group_name' => 'Transactions'],
+            ['name' => 'get.cash', 'guard_name' => 'web', 'group_name' => 'Transactions'],
         ];
 
         foreach ($permissions as $permission) {

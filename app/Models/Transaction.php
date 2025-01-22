@@ -20,13 +20,17 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function vehicle()                                                                                     
+    public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);
     }
     public function driver()
     {
         return $this->belongsTo(Driver::class);
+    }
+    public function Site()
+    {
+        return $this->belongsTo(Site::class);
     }
     // The Scan_time is DateTime it's defined
     protected $casts = [

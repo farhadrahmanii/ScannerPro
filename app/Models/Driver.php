@@ -19,4 +19,8 @@ class Driver extends Model
     {
         return $this->belongsTo(TransportCompany::class);
     }
+    public function site()
+    {
+        return $this->belongsTo(Site::class);
+    }
 }

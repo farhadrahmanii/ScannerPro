@@ -24,12 +24,25 @@
         @endif
         @if (Auth::user()->can('add.vehicle.to.driver'))
             <a href="{{ route('add.transaction.to.vehicle', $transaction->id) }}"
-                class="block px-4 py-2 text-sm text-green-600 hover:bg-green-50" wire:navigate>
+                class="block px-4 py-2 text-sm text-orange-600 hover:bg-orange-50" wire:navigate>
                 Add Transactions
             </a>
         @endif
+        @if (Auth::user()->can('get.cash'))
+            @if (!$transaction->fees_payment)
+                <button wire:click="markAsPaid({{ $transaction->id }})"
+                    class="block w-full text-left px-4 py-2 text-sm text-green-600 hover:bg-green-50">
+                    Payment
+                </button>
+            @else
+                <a href="{{ route('backend.cash.print-slip', $transaction->id) }}"
+                    class="block px-4 py-2 text-sm text-blue-600 hover:bg-blue-50" wire:navigate>
+                    Print Slip
+                </a>
+            @endif
+        @endif
         <a href="{{ route('delete.transactions', $transaction->id) }}"
-            class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50" wire.click.prevent="d({{ $transaction->id }})"
+            class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50" wire:click.prevent="d({{ $transaction->id }})"
             wire:navigate wire:confirm="Are you sure you want to delete this post?">
             Delete
         </a>

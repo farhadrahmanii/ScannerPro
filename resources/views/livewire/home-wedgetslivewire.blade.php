@@ -26,7 +26,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Total Drivers</p>
-                            <h4 class="my-1 text-danger">${{ number_format($totalDrivers, 2) }}</h4>
+                            <h4 class="my-1 text-danger">{{ number_format($totalDrivers, 2) }}</h4>
                             <p class="mb-0 font-13">+5.4% Today</p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle ms-auto bg-gradient-burning">
@@ -194,15 +194,7 @@
 
     <!-- Bar Chart -->
     <div class="row mt-4">
-        <div class="col-xl-6 mx-auto">
-            <h6 class="text-uppercase">World Map</h6>
-            <hr />
-            <div class="card">
-                <div class="card-body">
-                    <div id="world-map-markers" style="height: 300px"></div>
-                </div>
-            </div>
-        </div>
+
         <div class="col-6">
             <div class="card radius-10">
                 <div class="card-header">

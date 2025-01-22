@@ -38,4 +38,10 @@ class TransactionController extends Controller
         flash()->success('Transaction is deleted successfully!');
         return redirect()->route('all.transactions');
     } // End Of method
+
+    public function printSlip($id)
+    {
+        $transaction = Transaction::with(['driver'])->findOrFail($id);
+        return view('admin.backend.cash.print-slip', compact('transaction'));
+    } // End Of method
 }

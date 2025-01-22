@@ -33,6 +33,10 @@ class Vehicle extends Model
             } while (\App\Models\Vehicle::where('system_code', $vehicle->system_code)->exists());
         });
     }
+    public function Site()
+    {
+        return $this->belongsTo(Site::class);
+    }
 
 
 }

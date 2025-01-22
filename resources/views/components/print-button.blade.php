@@ -1,6 +1,3 @@
-@php
-dd($row);
-@endphp
 <button type="button" id="print-button-{{ $row->id }}">Print Slip</button>
 
 <script>

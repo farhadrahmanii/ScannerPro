@@ -27,15 +27,18 @@
 
 <body>
     <div class="receipt">
+        @php
+            //dd($transaction);
+        @endphp
         <h2>Cash Receipt</h2>
-        <p><strong>Receipt Number:</strong> {{ $cash->id }}</p>
-        <p><strong>Transaction ID:</strong> {{ $cash->transaction->transaction_id }}</p>
-        <p><strong>Driver:</strong> {{ $cash->driver->name }}</p>
-        <p><strong>Amount:</strong> {{ $cash->amount }}</p>
-        <p><strong>Casher:</strong> {{ $cash->casher->name }}</p>
-        <p><strong>Receiver:</strong> {{ $cash->receiver->name }}</p>
-        <p><strong>Date:</strong> {{ $cash->date }}</p>
-        <p><strong>Description:</strong> {{ $cash->description }}</p>
+        <p><strong>Receipt Number:</strong> {{ $transaction->id }}</p>
+        <p><strong>Transaction ID:</strong> {{ $transaction->transaction_id }}</p>
+        <p><strong>Bill Of Lading:</strong> {{ $transaction->bill_of_landing }}</p>
+        <p><strong>Driver:</strong> {{ $transaction->driver->name ?? 'Unkown' }}</p>
+        <p><strong>Casher:</strong> {{ $transaction->user->name }}</p>
+        <p><strong>Receiver:</strong> {{ $transaction->user->name }}</p>
+        <p><strong>Date:</strong> {{ now() }}</p>
+        <p><strong>Amount:</strong> {{ $transaction->fees_amount }}</p>
     </div>
     <button type="button" onclick="window.print()">Print Slip</button>
 </body>
