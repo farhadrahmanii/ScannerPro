@@ -9,6 +9,8 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
+
 class TransactionTable extends DataTableComponent
 {
     protected $model = Transaction::class;
@@ -69,12 +71,20 @@ class TransactionTable extends DataTableComponent
             Column::make('Number of Items', 'number_of_items')
                 ->sortable(),
 
+
             Column::make('Scan Status', 'scan_status')
                 ->sortable()
                 ->format(fn($value) => $value ? '✅ Scanned' : '❌ Not Scanned'),
             Column::make('Payment Status', 'fees_payment')
                 ->sortable()
-                ->format(fn($value) => $value ? '✅ Paid' : '❌ Not Paid'),
+                ->format(function ($value, $row) {
+                    $tooltip = $row->payment_time ? Carbon::parse($row->payment_time)->format('Y-m-d H:i:s') : 'No Payment Time';
+                    return "<span title=\"" . e($tooltip) . "\">" . view('livewire.partials.payment-status', ['transaction' => $row])->render() . "</span>";
+                })
+                ->html(),
+            Column::make('Payment Time', 'payment_time')
+                ->sortable()
+                ->format(fn($value) => $value ? Carbon::parse($value)->format('Y-m-d H:i:s') : 'No Payment Time'),
             Column::make('Fees', 'fees_amount')
                 ->sortable(),
 
@@ -87,6 +97,7 @@ class TransactionTable extends DataTableComponent
         ];
     }
 
+
     // --------------------------------------------------------- Show Data based on Site Name --------------
     public function builder(): Builder
     {
@@ -97,7 +108,18 @@ class TransactionTable extends DataTableComponent
     {
         $transaction = Transaction::find($transactionId);
         $transaction->fees_payment = true;
+        $transaction->payment_time = now();
         $transaction->save();
+        session()->flash('success', 'Transaction marked as paid successfully');
+    }
+
+    public function markAsNotPaid($transactionId)
+    {
+        $transaction = Transaction::find($transactionId);
+        $transaction->fees_payment = false;
+        $transaction->payment_time = now();
+        $transaction->save();
+        session()->flash('error', 'Transaction marked as unpaid successfully');
     }
 
 }
