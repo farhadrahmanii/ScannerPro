@@ -36,7 +36,7 @@
                 </button>
             @else
                 <a href="{{ route('backend.cash.print-slip', $transaction->id) }}"
-                    class="block px-4 py-2 text-sm text-blue-600 hover:bg-blue-50" wire:navigate>
+                    class="block px-4 py-2 text-sm text-blue-600 hover:bg-blue-50" target="_blank">
                     Print Slip
                 </a>
             @endif

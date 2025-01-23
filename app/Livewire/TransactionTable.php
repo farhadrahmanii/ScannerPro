@@ -14,13 +14,15 @@ use Carbon\Carbon;
 class TransactionTable extends DataTableComponent
 {
     protected $model = Transaction::class;
+
     // Exporting Data Processs start here
     public function bulkActions(): array
     {
         return [
-            'export' => 'Export Transactions',
+            'export' => __('transaction_table.export_transactions'),
         ];
     }
+
     public function export()
     {
         $transactionIds = $this->getSelected();
@@ -31,7 +33,6 @@ class TransactionTable extends DataTableComponent
         return Excel::download(new TransactionExport($transactionIds, $userSiteId), 'transactions.xlsx');
     }
     // END Exporting Data Processs start here
-
 
     public function configure(): void
     {
@@ -45,50 +46,42 @@ class TransactionTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Sl', 'id')
+            Column::make(__('transaction_table.sl'), 'id')
                 ->sortable(),
-            Column::make('Site', 'Site.site_name')
+            Column::make(__('transaction_table.site'), 'site.site_name')
                 ->sortable(),
-            Column::make('Transaction ID', 'transaction_id')
+            Column::make(__('transaction_table.transaction_id'), 'transaction_id')
                 ->sortable()
                 ->searchable(),
-
-            Column::make('User', 'user.name')
+            Column::make(__('transaction_table.user'), 'user.name')
                 ->sortable()
                 ->searchable(),
-
-            Column::make('Vehicle', 'vehicle.plate_number')
+            Column::make(__('transaction_table.vehicle'), 'vehicle.plate_number')
                 ->sortable()
                 ->searchable(),
-
-            Column::make('Item Name', 'item_name')
+            Column::make(__('transaction_table.item_name'), 'item_name')
                 ->sortable()
                 ->searchable(),
-
-            Column::make('Total Tonnage', 'total_tonnage')
+            Column::make(__('transaction_table.total_tonnage'), 'total_tonnage')
                 ->sortable(),
-
-            Column::make('Number of Items', 'number_of_items')
+            Column::make(__('transaction_table.number_of_items'), 'number_of_items')
                 ->sortable(),
-
-
-            Column::make('Scan Status', 'scan_status')
+            Column::make(__('transaction_table.scan_status'), 'scan_status')
                 ->sortable()
-                ->format(fn($value) => $value ? '✅ Scanned' : '❌ Not Scanned'),
-            Column::make('Payment Status', 'fees_payment')
+                ->format(fn($value) => $value ? __('transaction_table.scanned') : __('transaction_table.not_scanned')),
+            Column::make(__('transaction_table.payment_status'), 'fees_payment')
                 ->sortable()
                 ->format(function ($value, $row) {
-                    $tooltip = $row->payment_time ? Carbon::parse($row->payment_time)->format('Y-m-d H:i:s') : 'No Payment Time';
+                    $tooltip = $row->payment_time ? Carbon::parse($row->payment_time)->format('Y-m-d H:i:s') : __('transaction_table.no_payment_time');
                     return "<span title=\"" . e($tooltip) . "\">" . view('livewire.partials.payment-status', ['transaction' => $row])->render() . "</span>";
                 })
                 ->html(),
-            Column::make('Payment Time', 'payment_time')
+            Column::make(__('transaction_table.payment_time'), 'payment_time')
                 ->sortable()
-                ->format(fn($value) => $value ? Carbon::parse($value)->format('Y-m-d H:i:s') : 'No Payment Time'),
-            Column::make('Fees', 'fees_amount')
+                ->format(fn($value) => $value ? Carbon::parse($value)->format('Y-m-d H:i:s') : __('transaction_table.no_payment_time')),
+            Column::make(__('transaction_table.fees'), 'fees_amount')
                 ->sortable(),
-
-            Column::make('Actions', 'transaction_id') // Prevent row click behavior on this column
+            Column::make(__('transaction_table.actions'), 'transaction_id') // Prevent row click behavior on this column
                 ->format(function ($value, $row) {
                     return view('livewire.partials.transaction-actions', ['transaction' => $row])->render();
                 })
@@ -96,7 +89,6 @@ class TransactionTable extends DataTableComponent
                 ->unclickable(), // Ensure raw HTML is rendered if using Blade partials
         ];
     }
-
 
     // --------------------------------------------------------- Show Data based on Site Name --------------
     public function builder(): Builder
@@ -109,8 +101,9 @@ class TransactionTable extends DataTableComponent
         $transaction = Transaction::find($transactionId);
         $transaction->fees_payment = true;
         $transaction->payment_time = now();
+        $transaction->fees_amount = 1000;
         $transaction->save();
-        session()->flash('success', 'Transaction marked as paid successfully');
+        session()->flash('success', __('transaction_table.marked_as_paid'));
     }
 
     public function markAsNotPaid($transactionId)
@@ -118,8 +111,8 @@ class TransactionTable extends DataTableComponent
         $transaction = Transaction::find($transactionId);
         $transaction->fees_payment = false;
         $transaction->payment_time = now();
+        $transaction->fees_amount = 0;
         $transaction->save();
-        session()->flash('error', 'Transaction marked as unpaid successfully');
+        session()->flash('error', __('transaction_table.marked_as_unpaid'));
     }
-
 }

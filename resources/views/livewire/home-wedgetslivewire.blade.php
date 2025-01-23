@@ -1,4 +1,10 @@
 <div class="page-content">
+    @php
+        $countries = App\Models\Country::all();
+        foreach ($countries as $country) {
+            echo $country->translated_name; // Displays the name based on app locale
+        }
+    @endphp
     <!-- Stat Cards -->
     <p class="alert alert-warning" wire:offline>
         Whoops, your device has lost connection. The web page you are viewing is offline.

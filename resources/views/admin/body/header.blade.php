@@ -14,30 +14,34 @@
             @php
                 $id = Auth::user()->id;
                 $admin = App\models\User::findOrFail($id);
+                $currentLocale = app()->getLocale();
+                $languageName = [
+                    'en' => 'English',
+                    'fa' => 'فارسی',
+                    'ps' => 'پشتو'
+                ][$currentLocale];
             @endphp
             <div class="top-menu ms-auto">
-                <ul class="gap-1 navbar-nav align-items-center">
+                <ul class="navbar-nav align-items-center">
                     <li class="nav-item mobile-search-icon d-flex d-lg-none" data-bs-toggle="modal"
                         data-bs-target="#SearchModal">
                         <a class="nav-link" href="javascript:;"><i class='bx bx-search'></i>
                         </a>
                     </li>
-                    <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex">
+                    <li class="nav-item dropdown dropdown-laungauge d-none d-sm-flex" style="margin-right: 40px;">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
-                            data-bs-toggle="dropdown"><img src="{{ asset('assets/images/county/02.png') }}" width="22"
-                                alt="">
+                            data-bs-toggle="dropdown"><button class="btn btn-primary">{{ $languageName }}</button>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="py-2 dropdown-item d-flex align-items-center"
-                                    href="{{ route('language.switch', 'en') }}"><img
-                                        src="{{ asset('assets\flags\1x1\us.svg') }}" width="20" alt=""><span
-                                        class="ms-2">English</span></a></li>
+                                    href="{{ route('language.switch', 'en') }}"><span class="ms-2">English</span></a>
+                            </li>
                             <li><a class="py-2 dropdown-item d-flex align-items-center rounded"
                                     href="{{ route('language.switch', 'fa') }}"><img
                                         src="{{ asset('assets\flags\1x1\af.svg') }}" width="20" alt=""><span
                                         class="ms-2">فارسی</span></a></li>
                             <li><a class="py-2 dropdown-item d-flex align-items-center"
-                                    href="{{ route('language.switch', 'pa') }}"><img
+                                    href="{{ route('language.switch', 'ps') }}"><img
                                         src="{{ asset('assets\flags\1x1\af.svg') }}" width="20" alt=""><span
                                         class="ms-2">پشتو</span></a></li>
                         </ul>
