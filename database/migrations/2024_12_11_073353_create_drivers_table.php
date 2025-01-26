@@ -26,6 +26,7 @@ return new class extends Migration {
                 ->constrained('transport_companies')
                 ->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes(); // Add soft delete column
         });
     }
 

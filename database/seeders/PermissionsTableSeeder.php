@@ -39,11 +39,11 @@ class PermissionsTableSeeder extends Seeder
             ['name' => 'vehicle.list', 'guard_name' => 'web', 'group_name' => 'Vehicle'],
             ['name' => 'add.vehicle.to.driver', 'guard_name' => 'web', 'group_name' => 'driver'],
             ['name' => 'transaction.list', 'guard_name' => 'web', 'group_name' => 'Transactions'],
-            ['name' => 'cash.list', 'guard_name' => 'web', 'group_name' => 'Transactions'],
-            ['name' => 'cash.edit', 'guard_name' => 'web', 'group_name' => 'Transactions'],
-            ['name' => 'cash.delete', 'guard_name' => 'web', 'group_name' => 'Transactions'],
-            ['name' => 'cash.show', 'guard_name' => 'web', 'group_name' => 'Transactions'],
-            ['name' => 'get.cash', 'guard_name' => 'web', 'group_name' => 'Transactions'],
+            ['name' => 'cash.list', 'guard_name' => 'web', 'group_name' => 'Fee'],
+            ['name' => 'cash.delete', 'guard_name' => 'web', 'group_name' => 'Fee'],
+            ['name' => 'cash.show', 'guard_name' => 'web', 'group_name' => 'Fee'],
+            ['name' => 'get.cash', 'guard_name' => 'web', 'group_name' => 'Fee'],
+            ['name' => 'cash.slip.print', 'guard_name' => 'web', 'group_name' => 'Fee'],
         ];
 
         foreach ($permissions as $permission) {

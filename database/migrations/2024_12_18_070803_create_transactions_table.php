@@ -14,7 +14,7 @@ return new class extends Migration {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('site_id')->constrained('sites')->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->onDelete('no action');
             $table->foreignId('vehicle_id')->constrained('vehicles')->cascadeOnDelete();
             $table->string('transaction_id', 255)->unique();
             $table->string('bill_of_landing', 255);
@@ -30,9 +30,10 @@ return new class extends Migration {
             $table->boolean('scan_status')->default(false);
             $table->boolean('scan_time')->default(false);
             $table->boolean('fees_payment')->default(false);
-            $table->timestamp('payment_time');
+            $table->timestamp('payment_time')->useCurrent();
             $table->integer('fees_amount')->default(1000);
             $table->timestamps();
+            $table->softDeletes(); // Add soft delete column
         });
     }
 

@@ -28,29 +28,33 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin'
         ]);
 
-        Provinces::factory()->count(10)->sequence(
+        Provinces::factory()->count(13)->sequence(
             ['Province_name' => 'Kabul'],
             ['Province_name' => 'Herat'],
             ['Province_name' => 'Kandahar'],
             ['Province_name' => 'Balkh'],
             ['Province_name' => 'Nangarhar'],
-            ['Province_name' => 'Helmand'],
+            ['Province_name' => 'Takhar'],
             ['Province_name' => 'Parwan'],
             ['Province_name' => 'Badakhshan'],
             ['Province_name' => 'Paktia'],
-            ['Province_name' => 'Baghlan']
+            ['Province_name' => 'Baghlan'],
+            ['Province_name' => 'Faryab'],
+            ['Province_name' => 'khost'],
+            ['Province_name' => 'kunduz'],
+            ['Province_name' => 'Nimroz'],
         )->create();
         Category::factory()->count(10)->sequence(
             ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()],
-            ['category_name' => fake()->name()]
+            ['category_name' => 'Handicrafts'],
+            ['category_name' => 'Medical Supplies'],
+            ['category_name' => 'Home Decor'],
+            ['category_name' => 'Minerals'],
+            ['category_name' => 'Textiles'],
+            ['category_name' => 'Electronics'],
+            ['category_name' => 'Furniture'],
+            ['category_name' => 'Perishable Goods'],
+            ['category_name' => 'Consumer Goods'],
         )->create();
         $this->call(SiteSeeder::class);
         $this->call(TransportCompanySeeder::class);
@@ -77,7 +81,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(ConsigneeCompanySeeder::class);
         $this->call(TransactionsSeeder::class);
-        $this->call(CashSeeder::class);
 
     }
 }

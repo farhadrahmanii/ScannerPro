@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->string('extended_body_type', 255);
             $table->bigInteger('system_code')->default(0);
             $table->timestamps();
+            $table->softDeletes(); // Add soft delete column
         });
     }
 

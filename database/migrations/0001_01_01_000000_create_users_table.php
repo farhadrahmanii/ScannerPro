@@ -23,6 +23,7 @@ return new class extends Migration {
             $table->string('status')->default('0');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes(); // Add soft delete column
         });
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
