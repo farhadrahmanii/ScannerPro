@@ -14,8 +14,9 @@ class AllRolesList extends Component
         $role = Role::findOrFail($roleId);
         $role->delete();
 
-        session()->flash('success', 'Role deleted successfully!');
+        
         // return redirect()->route('all.roles');
+
         return $this->redirect('/all/roles', navigate: true);
     }
     public function placeholder()

@@ -30,7 +30,7 @@ return new class extends Migration {
             $table->boolean('scan_status')->default(false);
             $table->boolean('scan_time')->default(false);
             $table->boolean('fees_payment')->default(false);
-            $table->string('payment_time');
+            $table->timestamp('payment_time');
             $table->integer('fees_amount')->default(1000);
             $table->timestamps();
         });

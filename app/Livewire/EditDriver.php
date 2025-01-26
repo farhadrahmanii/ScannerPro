@@ -39,12 +39,12 @@ class EditDriver extends Component
     {
         // Validate the form data
         $this->validate([
-            'name' => ['required', 'string'],
-            'father_name' => ['required', 'string'],
-            'national_id' => ['required', 'string'],
+            'name' => ['required', 'string', 'max:255', 'min:5'],
+            'father_name' => ['required', 'string', 'max:255', 'min:5'],
+            'national_id' => ['required', 'string', 'max:14', 'min:4'],
             'passport_no' => ['nullable', 'string'],
-            'contact_information' => ['required', 'string'],
-            'nationality' => ['required', 'string'],
+            'contact_information' => ['required', 'string', 'max:12', 'min:10'],
+            'nationality' => ['required', 'string', 'max:50', 'min:3'],
             'transport_company_id' => ['required', 'exists:transport_companies,id'], // Ensure it exists in transport_companies table
         ]);
 

@@ -1,9 +1,10 @@
 <div class="page-content">
+    <h1>{{ __('home_wedgetslivewire.welcome') }}</h1><br>
     @php
-        $countries = App\Models\Country::all();
-        foreach ($countries as $country) {
-            echo $country->translated_name; // Displays the name based on app locale
-        }
+        //   $countries = App\Models\Country::all();
+        //   foreach ($countries as $country) {
+        //echo $country->translated_name; // Displays the name based on app locale
+        //    }
     @endphp
     <!-- Stat Cards -->
     <p class="alert alert-warning" wire:offline>
@@ -15,7 +16,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Today Total Transactions</p>
+                            <p class="mb-0 text-secondary">{{ __('home_wedgetslivewire.total_transactions') }}</p>
                             <h4 class="my-1 text-info">{{ $totalTransactions }}</h4>
                             <p class="mb-0 font-13">+2 Today</p>
                         </div>
@@ -31,7 +32,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Total Drivers</p>
+                            <p class="mb-0 text-secondary">{{ __('home_wedgetslivewire.total_drivers') }}</p>
                             <h4 class="my-1 text-danger">{{ number_format($totalDrivers, 2) }}</h4>
                             <p class="mb-0 font-13">+5.4% Today</p>
                         </div>
@@ -47,7 +48,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Today Total Vehicles</p>
+                            <p class="mb-0 text-secondary">{{ __('home_wedgetslivewire.today_total_vehicles') }}</p>
                             <h4 class="my-1 text-success">{{ number_format($totalVehicles, 2) }}</h4>
                             <p class="mb-0 font-13">+3.2% Today</p>
                         </div>
@@ -70,7 +71,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">All Users</p>
+                            <p class="mb-0 text-secondary">{{ __('home_wedgetslivewire.all_users') }}</p>
                             <h4 class="my-1 text-warning">{{ $totalUsers }}</h4>
                             <p class="mb-0 font-13">+8.4% Today</p>
                         </div>

@@ -10,7 +10,7 @@ use Rappasoft\LaravelLivewireTables\Views\Column;
 use Illuminate\Database\Eloquent\Builder;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Lang;
 class TransactionTable extends DataTableComponent
 {
     protected $model = Transaction::class;
@@ -47,9 +47,11 @@ class TransactionTable extends DataTableComponent
     {
         return [
             Column::make(__('transaction_table.sl'), 'id')
-                ->sortable(),
+                ->sortable()
+            ,
             Column::make(__('transaction_table.site'), 'site.site_name')
-                ->sortable(),
+                ->sortable()
+            ,
             Column::make(__('transaction_table.transaction_id'), 'transaction_id')
                 ->sortable()
                 ->searchable(),
@@ -75,6 +77,7 @@ class TransactionTable extends DataTableComponent
                     $tooltip = $row->payment_time ? Carbon::parse($row->payment_time)->format('Y-m-d H:i:s') : __('transaction_table.no_payment_time');
                     return "<span title=\"" . e($tooltip) . "\">" . view('livewire.partials.payment-status', ['transaction' => $row])->render() . "</span>";
                 })
+                ->unclickable()
                 ->html(),
             Column::make(__('transaction_table.payment_time'), 'payment_time')
                 ->sortable()

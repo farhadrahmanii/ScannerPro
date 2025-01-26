@@ -9,6 +9,20 @@
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Add your font style here -->
+    <style>
+        @font-face {
+            font-family: 'Bahij Helvetica Neue 55 Roman';
+            src: url('{{ asset('uploads/font/Neue-Helvetica.ttf') }}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+
+            font-family: 'Bahij Helvetica Neue 55 Roman', sans-serif;
+        }
+    </style>
     <!--plugins-->
     <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />

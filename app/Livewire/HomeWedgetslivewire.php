@@ -36,7 +36,12 @@ class HomeWedgetslivewire extends Component
     private function loadChartData()
     {
         $this->chartData = [
-            'labels' => ['Vehicles', 'Drivers', 'Transactions', 'Users'],
+            'labels' => [
+                __('home_wedgetslivewire.vehicles'),
+                __('home_wedgetslivewire.drivers'),
+                __('home_wedgetslivewire.transactions'),
+                __('home_wedgetslivewire.users'),
+            ],
             'data' => [
                 $this->totalVehicles,
                 $this->totalDrivers,
