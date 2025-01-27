@@ -1,0 +1,22 @@
+<?php
+return [
+    'export_transactions' => 'صادرات معاملات',
+    'sl' => 'ردیف',
+    'site' => 'محل',
+    'transaction_id' => 'شناسه معامله',
+    'user' => 'کاربر',
+    'vehicle' => 'وسیله نقلیه',
+    'item_name' => 'نام کالا',
+    'total_tonnage' => 'کل تناژ',
+    'number_of_items' => 'تعداد اقلام',
+    'scan_status' => 'وضعیت اسکن',
+    'scanned' => '<i class="bx bxs-check-circle"></i> اسکن شده',
+    'not_scanned' => '<i class="bx bxs-x-circle"></i> اسکن نشده',
+    'payment_status' => 'وضعیت پرداخت',
+    'no_payment_time' => 'زمان پرداختی وجود ندارد',
+    'payment_time' => 'زمان پرداخت',
+    'fees' => 'هزینه‌ها',
+    'actions' => 'عملیات',
+    'marked_as_paid' => 'معامله به عنوان پرداخت شده علامت‌گذاری شد.',
+    'marked_as_unpaid' => 'معامله به عنوان پرداخت نشده علامت‌گذاری شد.',
+];

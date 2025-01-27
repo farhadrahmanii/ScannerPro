@@ -27,10 +27,10 @@ class CreateVehicle extends Component
         $this->user = auth()->user()->id; // current logined user ID 
         $this->validate([
             'vehicle_make' => 'required|string|max:255',
-            'driverId' => 'numeric|required|max:255',
+            'driverId' => 'numeric|required',
             'vehicle_model' => 'required|string|max:255',
             'year' => 'required|string|max:255',
-            'capacity' => 'required|numeric|max:55',
+            'capacity' => 'required|numeric',
             'type' => 'required|in:Truck,Bus,Trailer,Tanker,Pickup,Van,Container',
             'plate_number' => 'required|string|max:255',
             'vin' => 'required|string|max:255',
@@ -38,6 +38,7 @@ class CreateVehicle extends Component
             'extended_body_type' => 'required|string|max:255',
         ]);
         Vehicle::create([
+            'site_id' => auth()->user()->site_id,
             'user_id' => $this->user,
             'vehicle_make' => $this->vehicle_make,
             'driver_id' => $this->driverId,

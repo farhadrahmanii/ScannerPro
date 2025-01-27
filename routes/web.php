@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CashController;
+use App\Http\Controllers\Backend\CasherController;
 use App\Http\Controllers\Backend\driverController;
 use App\Http\Controllers\Backend\ProvinceSiteController;
 use App\Http\Controllers\Backend\RoleAndPermissions;
@@ -9,16 +11,15 @@ use App\Http\Controllers\Backend\VehicleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransportCompanyController;
 use App\Http\Middleware\Admin;
-use App\Http\Middleware\LanguageMiddleware;
-use App\Livewire\AllPermissions;
-use App\Livewire\CreateVehicle;
-use App\Livewire\EditRolelivewire;
-use App\Livewire\EditUserLivewire;
-use App\Livewire\Provinces\AllProvinces;
 
+use App\Http\Middleware\LanguageMiddleware;
+use App\Livewire\EditUserLivewire;
+use App\Models\ConsigneeCompany;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+
+
 
 
 Route::middleware([LanguageMiddleware::class])->group(function () {
@@ -33,11 +34,22 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             return view('admin.adminDashboard');
         })->name('dashboard');
 
+
+
+
         // All Transport Company Routes here
         Route::controller(TransportCompanyController::class)->group(function () {
             Route::get('/transport/companies', 'AllTransportCompany')->name('all.transportCompany');
             Route::get('/add/transport/company', 'AddTransportCompany')->name('add.transportCompany');
             Route::get('/edit/transport/company/{id}', 'EditTransportCompany')->name('edit.transportCompany');
+        });
+
+        // All Consignee Company Routes here
+        Route::controller(ConsigneeCompany::class)->group(function () {
+            Route::get('/consignee/companies', 'AllConsigneeCompany')->name('all.consigneeCompany');
+            Route::get('/add/consignee/company', 'AddConsigneeCompany')->name('add.consigneeCompany');
+            Route::get('/edit/consignee/company/{id}', 'EditConsigneeCompany')->name('edit.consigneeCompany');
+            Route::get('/delete/consignee/company/{id}', 'DeleteConsigneeCompany')->name('delete.consigneeCompany');
         });
 
         // All Driver Routes here
@@ -47,6 +59,7 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::post('/add/driver/store', 'AddDriverStore')->name('add.store.driver');
             Route::get('driver/details/{id}', 'DriverDetails')->name('driver.details');
             Route::get('edit/driver/{id}', 'EditDriver')->name('edit.driver');
+            Route::get('delete/driver/{id}', 'DeleteDriver')->name('delete.driver');
         });
 
 
@@ -71,6 +84,7 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('/transaction/detail/{id}', 'TransactionsDetails')->name('transaction.details');
             Route::get('/edit/transaction/{id}', 'EditTransaction')->name('edit.transaction');
             Route::get('/delete/transaction/{id}', 'DeleteTransaction')->name('delete.transactions');
+            Route::get('/backend/cash/print-slip/{id}', 'printSlip')->name('backend.cash.print-slip');
         });
 
         // All Admin Users Routes here
@@ -81,6 +95,11 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
 
             // Route::get('/edit/admin/user/{id}', EditUserLivewire::class);
             Route::post('/update/admin/user', 'UpdateAdminUser')->name('update.admin.user');
+
+            Route::get('/get-chart-data', 'getChartData');
+
+
+
         });
 
 
@@ -112,6 +131,7 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::post('/update/role/permission/{id}', 'AdminUpdateRolePermission')->name('update.rolepermission');
         });
 
+        // Cash Slip Route
 
     });
 

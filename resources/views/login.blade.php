@@ -49,10 +49,9 @@
                                 <div class="p-4">
                                     <div class="mb-3 text-center"
                                         style="display: flex; justify-content: center; align-items: center; height: 180px;">
-                                        <img src="assets/images/logo-icon.png" alt=""
+                                        <img src="assets/images/ZobairMosawer.png" alt=""
                                             style="width: 250px; height: auto;" />
                                     </div>
-
                                     <div class="text-center mb-4">
                                         <h5 class="">Scanner System</h5>
                                         <p class="mb-0">Please log in to your account</p>
@@ -64,7 +63,7 @@
                                                 <x-input-label for="email" :value="__('Email')" />
                                                 <input type="email" name="email" value="{{old('email')}}" class="form-control @error('email')
                                                     is-invalid
-                                                @enderror" id="email" placeholder="jhon@example.com">
+                                                @enderror" id="email" placeholder="example@example.com">
 
                                             </div>
                                             <div class="col-12">

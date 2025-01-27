@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('site_id')->constrained('sites')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('driver_id')->constrained('drivers')->onDelete('cascade'); // Foreign Key
             $table->string('vehicle_make', 255);
@@ -25,6 +26,7 @@ return new class extends Migration {
             $table->string('extended_body_type', 255);
             $table->bigInteger('system_code')->default(0);
             $table->timestamps();
+            $table->softDeletes(); // Add soft delete column
         });
     }
 

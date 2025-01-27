@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('transport_company_name');
             $table->string('transport_company_tin')->unique();
             $table->timestamps();
+            $table->softDeletes(); // Add soft delete column
         });
     }
 

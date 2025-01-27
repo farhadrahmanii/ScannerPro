@@ -1,9 +1,8 @@
 <div class="card">
     <div class="p-4 card-body">
         <h5 class="mb-4">Add Category</h5>
-        <form class="row g-3" method="POST" id="myForm" enctype="multipart/form-data">
+        <form class="row g-3" method="POST" id="myForm" wire:submit.prevent="save" enctype="multipart/form-data">
             @csrf
-
 
 
             <div class="form-group col-md-3">
@@ -31,9 +30,9 @@
             </div>
             <div class="form-group col-md-3" wire:ignore>
                 <label for="production_origin" class="form-label">Production Origin</label>
-                <select id="production_origin" data-pharaonic="select2" data-component-id="{{ $id }}"
-                    class="form-control rounded-lg">
-                    <option value="">Select Exporting Country</option>
+                <select id="production_origin" wire:model="production_origin" data-pharaonic="select2"
+                    data-component-id="{{ $id }}" class="form-control rounded-lg">
+                    <option value="">Select Production Origin</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="China">China</option>
                     <option value="India">India</option>
@@ -114,30 +113,6 @@
             </div>
 
 
-            <div class="form-group col-md-3">
-                <label for="consignee_company" class="form-label">consignee Company</label>
-                <input type="text" id="consignee_company" wire:model="consignee_company" name="consignee_company" class="form-control rounded-lg
-                    @error('consignee_company')
-                        in-valid
-                    @enderror
-                    " id="consignee_company" placeholder="Data Science">
-                @error('consignee_company')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
-                @enderror
-            </div>
-
-
-            <div class="form-group col-md-3">
-                <label for="consignee_company_tin" class="form-label">consignee Company TIN</label>
-                <input type="text" id="input1" wire:model="consignee_company_tin" name="consignee_company_tin" class="form-control rounded-lg
-                    @error('consignee_company_tin')
-                        in-valid
-                    @enderror
-                    " id="consignee_company_tin" placeholder="Data Science">
-                @error('consignee_company_tin')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
-                @enderror
-            </div>
 
 
             <div class="form-group col-md-3">
@@ -178,6 +153,39 @@
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
             </div>
+            <!-- Consignee Company Search/Selection -->
+            <div class="form-group col-md-6">
+                <label for="consignee_company_tin">Consignee Company TIN</label>
+                <input type="text" wire:model.lazy="consignee_company_tin"
+                    class="form-control @error('consignee_company_tin') is-invalid @enderror">
+                @error('consignee_company_tin') <span class="text-danger">{{ $message }}</span> @enderror
+
+                <!-- Search Results -->
+                @if (!empty($consigneeSearchResults))
+                    <ul class="list-group mt-2">
+                        @foreach ($consigneeSearchResults as $result)
+                            <li class="list-group-item list-group-item-action"
+                                wire:click="selectConsigneeCompany({{ $result['id'] }})">
+                                {{ $result['consignee_company_name'] }} - {{ $result['consignee_company_tin'] }}
+                            </li>
+                        @endforeach
+                    </ul>
+                @endif
+
+                <!-- Add New Company Form -->
+                @if ($showAddConsigneeCompanyForm)
+                    <div class="mt-3">
+                        <h5>Add New Consignee Company</h5>
+                        <input type="text" wire:model="consignee_company" placeholder="Company Name"
+                            class="form-control mb-2 @error('consignee_company') is-invalid @enderror">
+                        @error('consignee_company') <span class="text-danger">{{ $message }}</span> @enderror
+
+                        <button type="button" wire:click="addConsigneeCompany" class="btn btn-primary btn-sm">
+                            Add Consignee Company
+                        </button>
+                    </div>
+                @endif
+            </div>
 
             <div class="form-group col-md-3 mt-5">
                 <div class="form-check form-switch form-check-success">
@@ -190,27 +198,32 @@
             </div>
             <div class="col-md-12">
                 <div class="gap-3 d-md-flex d-grid align-items-center">
-                    <button type="submit" wire:click.prevent="save" wire:loading.attr="disabled"
-                        class="px-4 btn btn-primary">
+                    <button type="submit" wire:loading.attr="disabled" class="px-4 btn btn-primary">
                         <span wire:loading.remove>Save</span>
                         <span wire:loading class="spinner-border spinner-border-sm" role="status"
                             aria-hidden="true"></span>
-
                     </button>
-                    <a href="{{route('all.transactions')}}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
+                    <a href="{{ route('all.transactions') }}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
                 </div>
             </div>
         </form>
     </div>
-</div>
-<script>
-    document.addEventListener('livewire:load', function () {
-        $('#production_origin').select2();
-
-        $('#production_origin').on('change', function (e) {
-            var data = $(this).val();
-            @this.set('production_origin', data);
+    <script>
+        document.addEventListener('livewire:load', () => {
+            $('#production_origin').select2({
+                placeholder: "Select Production Origin",
+                allowClear: true
+            });
+            $('#production_origin').on('change', function () {
+                @this.set('production_origin', $(this).val());
+            });
         });
-    });
 
-</script>
+        Livewire.hook('message.processed', (message, component) => {
+            $('#production_origin').select2({
+                placeholder: "Select Production Origin",
+                allowClear: true
+            });
+        });
+    </script>
+</div>

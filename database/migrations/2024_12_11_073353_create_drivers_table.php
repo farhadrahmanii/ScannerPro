@@ -14,6 +14,7 @@ return new class extends Migration {
     {
         Schema::create('drivers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('site_id')->constrained('sites')->cascadeOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->string('name', 255);
             $table->string('father_name', 255);
@@ -25,6 +26,7 @@ return new class extends Migration {
                 ->constrained('transport_companies')
                 ->cascadeOnDelete();
             $table->timestamps();
+            $table->softDeletes(); // Add soft delete column
         });
     }
 

@@ -1,6 +1,6 @@
 <div class="card">
     <div class="p-4 card-body">
-        <h5 class="mb-4">Add User</h5>
+        <h5 class="mb-4">Edit User</h5>
 
         <form class="row g-3" method="POST" action="" id="myForm" enctype="multipart/form-data" action="">
             @csrf
@@ -30,8 +30,8 @@
             </div>
 
             <div class="form-group col-md-3">
-                <label for="password" class="form-label">password</label>
-                <input type="password" id="input1" wire:model="password" name="password" class="form-control rounded-lg
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" wire:model="password" name="password" class="form-control rounded-lg
                     @error('password')
                         is-invalid
                     @enderror
@@ -55,23 +55,33 @@
                 @enderror
             </div>
 
-
-            <div class="form-group col-md-3">
-                <label for="role" class="form-label">Role</label>
-                <select class="form-control rounded-lg @error('role') is-invalid @enderror" id="role" wire:model="role"
-                    name="role">
-                    <option value="">Select Role</option> <!-- Default option -->
-                    @foreach ($roles as $item)
-                        <option value="{{ $item->id }}" @if ((string) $item->id === (string) $role) selected @endif>
-                            {{ $item->name }}
-                        </option>
+            <div class="form-group col-md-12">
+                <label for="permissions" class="form-label">Permissions</label>
+                <div class="row">
+                    @foreach ($permissions->groupBy('group_name') as $groupName => $groupedPermissions)
+                        <div class="col-md-12 mb-3">
+                            <h5 class="text-primary">{{ $groupName }}</h5>
+                            <hr>
+                            <br>
+                            <div class="row">
+                                @foreach ($groupedPermissions as $permission)
+                                    <div class="col-md-3">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" wire:model="selectedPermissions"
+                                                value="{{ $permission->name }}" id="permission-{{ $permission->id }}">
+                                            <label class="form-check-label"
+                                                for="permission-{{ $permission->id }}">{{ $permission->name }}</label>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     @endforeach
-                </select>
-                @error('role')
+                </div>
+                @error('selectedPermissions')
                     <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
-
 
 
             <div class="form-group col-md-3">
@@ -85,7 +95,6 @@
                     <span class="text-red-500 text-bold">{{$message}} or may Check the Image size or May Check the Image
                         Type should be | jpg | png | jpeg </span>
                 @enderror
-
             </div>
 
             <div class="form-group col-md-3">
@@ -96,7 +105,6 @@
                     <img src="{{ asset('storage/' . $photoPreview) }}" height="100px">
                 @endif
             </div>
-
 
             <div class="col-md-12">
                 <div class="gap-3 d-md-flex d-grid align-items-center">
@@ -110,7 +118,6 @@
                     </button>
                     <a href="{{ route('users.list')}}" class="px-4 btn btn-light" wire:navigate>Cancel</a>
                 </div>
-
             </div>
         </form>
     </div>

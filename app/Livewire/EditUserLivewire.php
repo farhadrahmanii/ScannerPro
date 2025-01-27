@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\Storage;
+use Spatie\Permission\Models\Permission;
+
 class EditUserLivewire extends Component
 {
-
     use WithFileUploads;
 
     public $user;
@@ -20,25 +20,28 @@ class EditUserLivewire extends Component
     public $email;
     public $password;
     public $site_id;
-    public $role; // Ensure this property is declared
-    public $roles = []; // Ensure this property is declared
+    public $role;
+    public $roles = [];
     public $photo;
     public $photoPreview;
     public $allSites;
+    public $permissions = [];
+    public $selectedPermissions = [];
 
     public function mount($user)
     {
         $user = User::findOrFail($user);
 
-        // Initialize properties
         $this->user = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
         $this->site_id = $user->site_id;
         $this->role = $user->roles->first()?->id;
-        $this->photoPreview = $user->photo; // Existing photo for preview
-        $this->roles = Role::all(); // Load roles
-        $this->allSites = Site::all(); // Load sites
+        $this->photoPreview = $user->photo;
+        $this->selectedPermissions = $user->permissions->pluck('name')->toArray();
+        $this->roles = Role::all();
+        $this->allSites = Site::all();
+        $this->permissions = Permission::all();
     }
 
     public function updatedPhoto()
@@ -56,16 +59,17 @@ class EditUserLivewire extends Component
             'site_id' => 'numeric',
             'role' => 'exists:roles,id',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'selectedPermissions' => 'array',
+            'selectedPermissions.*' => 'string|exists:permissions,name',
         ]);
 
         $user = User::findOrFail($this->user);
-        $filePath = $user->photo; // Default to the existing photo if no new photo is uploaded
+        $filePath = $user->photo;
 
         if ($this->photo) {
             $userEmail = $this->email ?? 'default';
             $directory = public_path("uploads/images/{$userEmail}");
 
-            // Create directory if it doesn't exist
             if (!file_exists($directory)) {
                 mkdir($directory, 0755, true);
             }
@@ -73,29 +77,30 @@ class EditUserLivewire extends Component
             $fileName = uniqid() . '.' . $this->photo->getClientOriginalExtension();
             $filePath = "uploads/images/{$userEmail}/{$fileName}";
 
-            // Delete previous image if it exists
             if ($user->photo && file_exists(public_path($user->photo))) {
                 unlink(public_path($user->photo));
             }
 
-            // Store the new image
             $this->photo->storeAs("uploads/images/{$userEmail}", $fileName, 'public');
         }
-
 
         $user->update([
             'name' => $this->name,
             'email' => $this->email,
             'site_id' => $this->site_id,
-            'role' => $this->role,
-            'photo' => $filePath,
             'password' => $this->password ? Hash::make($this->password) : $user->password,
+            'photo' => $filePath,
         ]);
 
-        // Update Role if it's provided
-        $findedRole = Role::find($this->role);
-        if ($findedRole) {
-            $user->syncRoles([$findedRole->name]);
+        if ($this->role) {
+            $findedRole = Role::find($this->role);
+            if ($findedRole) {
+                $user->syncRoles([$findedRole->name]);
+            }
+        }
+
+        if (!empty($this->selectedPermissions)) {
+            $user->syncPermissions($this->selectedPermissions);
         }
 
         session()->flash('success', 'User updated successfully!');

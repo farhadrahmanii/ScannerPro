@@ -1,7 +1,7 @@
 <div class="page-content">
-    <!-- Stat Cards -->
+    <h1>{{ __('home_wedgetslivewire.welcome') }}</h1><br>
     <p class="alert alert-warning" wire:offline>
-        Whoops, your device has lost connection. The web page you are viewing is offline.
+        {{ __('home_wedgetslivewire.offline_warning') }}
     </p>
     <div class="row row-cols-1 row-cols-md-2 row-cols-xl-4">
         <div class="col">
@@ -9,9 +9,9 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Today Total Transactions</p>
+                            <p class="mb-0 text-secondary">{{ __('home_wedgetslivewire.total_transactions') }}</p>
                             <h4 class="my-1 text-info">{{ $totalTransactions }}</h4>
-                            <p class="mb-0 font-13">+2 Today</p>
+                            <p class="mb-0 font-13">{{ __('home_wedgetslivewire.today_increase', ['count' => 2]) }}</p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle ms-auto">
                             <img src="{{asset('images/icons/truckScanning.png')}}" />
@@ -25,9 +25,11 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Total Drivers</p>
-                            <h4 class="my-1 text-danger">${{ number_format($totalDrivers, 2) }}</h4>
-                            <p class="mb-0 font-13">+5.4% Today</p>
+                            <p class="mb-0 text-secondary">{{ __('home_wedgetslivewire.total_drivers') }}</p>
+                            <h4 class="my-1 text-danger">{{ number_format($totalDrivers, 2) }}</h4>
+                            <p class="mb-0 font-13">
+                                {{ __('home_wedgetslivewire.today_increase_percentage', ['percentage' => 5.4]) }}
+                            </p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle ms-auto bg-gradient-burning">
                             <img src="{{asset('images/icons/driver.png')}}" height="30px" width="30px" />
@@ -41,9 +43,11 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">Today Total Vehicles</p>
+                            <p class="mb-0 text-secondary">{{ __('home_wedgetslivewire.today_total_vehicles') }}</p>
                             <h4 class="my-1 text-success">{{ number_format($totalVehicles, 2) }}</h4>
-                            <p class="mb-0 font-13">+3.2% Today</p>
+                            <p class="mb-0 font-13">
+                                {{ __('home_wedgetslivewire.today_increase_percentage', ['percentage' => 3.2]) }}
+                            </p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle bg-gradient-ohhappiness ms-auto">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -64,9 +68,11 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0 text-secondary">All Users</p>
+                            <p class="mb-0 text-secondary">{{ __('home_wedgetslivewire.all_users') }}</p>
                             <h4 class="my-1 text-warning">{{ $totalUsers }}</h4>
-                            <p class="mb-0 font-13">+8.4% Today</p>
+                            <p class="mb-0 font-13">
+                                {{ __('home_wedgetslivewire.today_increase_percentage', ['percentage' => 8.4]) }}
+                            </p>
                         </div>
                         <div class="text-white widgets-icons-2 rounded-circle bg-gradient-orange ms-auto"><i
                                 class='bx bxs-group'></i></div>
@@ -79,27 +85,11 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">registeration Rate</p>
+                            <p class="mb-0">{{ __('home_wedgetslivewire.registration_rate') }}</p>
                             <h5 class="mb-0"></h5>
                         </div>
-                        <div class="dropdown ms-auto">
-                            <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
-                                data-bs-toggle="dropdown"> <i class='bx bx-dots-horizontal-rounded font-22'></i>
-                            </div>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
-                        </div>
                     </div>
-                    <div class="" id="w-chart8"></div>
+                    <div class="" id="w-chart3"></div>
                 </div>
             </div>
         </div>
@@ -108,24 +98,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Transaction Entry Rate</p>
+                            <p class="mb-0">{{ __('home_wedgetslivewire.transaction_entry_rate') }}</p>
                             <h5 class="mb-0">51.46%</h5>
-                        </div>
-                        <div class="dropdown ms-auto">
-                            <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
-                                data-bs-toggle="dropdown"> <i class='bx bx-dots-horizontal-rounded font-22'></i>
-                            </div>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="" id="w-chart4"></div>
@@ -137,24 +111,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Vehicle Entry Rate</p>
+                            <p class="mb-0">{{ __('home_wedgetslivewire.vehicle_entry_rate') }}</p>
                             <h5 class="mb-0">60.45%</h5>
-                        </div>
-                        <div class="dropdown ms-auto">
-                            <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
-                                data-bs-toggle="dropdown"> <i class='bx bx-dots-horizontal-rounded font-22'></i>
-                            </div>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="" id="w-chart7"></div>
@@ -166,24 +124,8 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div>
-                            <p class="mb-0">Drivers Entry Rate</p>
+                            <p class="mb-0">{{ __('home_wedgetslivewire.drivers_entry_rate') }}</p>
                             <h5 class="mb-0">21.74%</h5>
-                        </div>
-                        <div class="dropdown ms-auto">
-                            <div class="dropdown-toggle dropdown-toggle-nocaret cursor-pointer"
-                                data-bs-toggle="dropdown"> <i class='bx bx-dots-horizontal-rounded font-22'></i>
-                            </div>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="javascript:;">Action</a>
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Another action</a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="javascript:;">Something else here</a>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                     <div class="" id="w-chart2"></div>
@@ -194,19 +136,10 @@
 
     <!-- Bar Chart -->
     <div class="row mt-4">
-        <div class="col-xl-6 mx-auto">
-            <h6 class="text-uppercase">World Map</h6>
-            <hr />
-            <div class="card">
-                <div class="card-body">
-                    <div id="world-map-markers" style="height: 300px"></div>
-                </div>
-            </div>
-        </div>
         <div class="col-6">
             <div class="card radius-10">
                 <div class="card-header">
-                    <h6 class="mb-0">Statistics Overview</h6>
+                    <h6 class="mb-0">{{ __('home_wedgetslivewire.statistics_overview') }}</h6>
                 </div>
                 <div class="card-body">
                     <canvas id="chart"></canvas>
@@ -216,7 +149,7 @@
         <div class="col-4">
             <div class="card radius-10">
                 <div class="card-header">
-                    <h6 class="mb-0">Polar Area Chart</h6>
+                    <h6 class="mb-0">{{ __('home_wedgetslivewire.polar_area_chart') }}</h6>
                 </div>
                 <div class="card-body">
                     <canvas id="polarChart"></canvas>
@@ -237,7 +170,7 @@
     document.addEventListener('DOMContentLoaded', function () {
         // Bar Chart
         const barCtx = document.getElementById('chart').getContext('2d');
-        new Chart(barCtx, {
+        const barChart = new Chart(barCtx, {
             type: 'bar',
             data: {
                 labels: @json($chartData['labels']),
@@ -261,7 +194,7 @@
 
         // Polar Area Chart
         const polarCtx = document.getElementById('polarChart').getContext('2d');
-        new Chart(polarCtx, {
+        const polarChart = new Chart(polarCtx, {
             type: 'polarArea',
             data: {
                 labels: @json($chartData['labels']),
@@ -282,5 +215,22 @@
                 }
             }
         });
+
+        // Livewire event listeners to update charts
+        Livewire.on('updateChartData', chartData => {
+            barChart.data.labels = chartData.labels;
+            barChart.data.datasets[0].data = chartData.data;
+            barChart.data.datasets[0].backgroundColor = chartData.colors;
+            barChart.data.datasets[0].borderColor = chartData.colors;
+            barChart.update();
+
+            polarChart.data.labels = chartData.labels;
+            polarChart.data.datasets[0].data = chartData.data;
+            polarChart.data.datasets[0].backgroundColor = chartData.colors;
+            polarChart.update();
+        });
+
+        // Fetch updated data from Livewire
+        Livewire.emit('fetchChartData');
     });
 </script>

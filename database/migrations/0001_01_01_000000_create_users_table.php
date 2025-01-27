@@ -19,12 +19,12 @@ return new class extends Migration {
             $table->string('password', 255);
             $table->string('photo', 500)->nullable();
             $table->string('phone', 50)->nullable();
-            $table->enum('role', ['admin', 'user', 'slipPrinter'])->default('user')->nullable();
+            $table->string('role')->default('Site_user');
             $table->string('status')->default('0');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes(); // Add soft delete column
         });
-
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');

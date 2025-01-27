@@ -4,7 +4,7 @@
             <img src="{{ asset('assets/images/logo-icon.png') }}" class="logo-icon" width="" alt="logo icon">
         </div>
         <div>
-            <h4 class="logo-text">Admin</h4>
+            <h4 class="logo-text">{{ __('sidebar.admin') }}</h4>
         </div>
         <div class="toggle-icon ms-auto"><i class='bx bx-arrow-back'></i>
         </div>
@@ -15,50 +15,48 @@
             <a href="{{route('dashboard')}}">
                 <div class="parent-icon"><i class='bx bx-home-alt'></i>
                 </div>
-                <div class="menu-title">Dashboard</div>
+                <div class="menu-title">{{ __('sidebar.dashboard') }}</div>
             </a>
         </li>
         <li>
             @if (Auth::user()->can('driver.list'))
                 <a href="{{route('all.drivers')}}" wire:navigate>
                     <div class="parent-icon"> <img src="{{asset('images/icons/driver.png')}}" class="logo-icon"
-                            width="100px" />
+                            width="80px" />
                     </div>
-                    <div class="menu-title">Drivers</div>
+                    <div class="menu-title">{{ __('sidebar.drivers') }}</div>
                 </a>
             @endif
         </li>
-        <li>
 
-            <!-- <li class="menu-label"></li> -->
+        <li>
             @if (Auth::user()->can('vehicle.list'))
                 <a href="{{ route('all.vehicles') }}" wire:navigate>
                     <div class="parent-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                     </div>
-                    <div class="menu-title">Vehicles</div>
+                    <div class="menu-title">{{ __('sidebar.vehicles') }}</div>
                 </a>
             @endif
         </li>
 
         <li>
-
-            <!-- <li class="menu-label"></li> -->
             @if (Auth::user()->can('transaction.list'))
 
                 <a href="{{route('all.transactions')}}" wire:navigate>
                     <div class="parent-icon"><i class="fadeIn animated"><img src="{{asset('images/icons/transaction.png')}}"
-                                class="logo-icon" width="100px" /></i>
+                                class="logo-icon" width="80px" /></i>
                     </div>
-                    <div class="menu-title">Transactions</div>
+                    <div class="menu-title">{{ __('sidebar.transactions') }}</div>
                 </a>
             @endif
         </li>
-        <li class="menu-label">Settings</li>
+
+        <li class="menu-label">{{ __('sidebar.settings') }}</li>
         <li>
             <a href="#" class="has-arrow">
                 <div class="parent-icon"><i class='lni lni-cog'></i>
                 </div>
-                <div class="menu-title">System Settings</div>
+                <div class="menu-title">{{ __('sidebar.system_settings') }}</div>
             </a>
             <ul>
                 <li>
@@ -66,7 +64,16 @@
                         <a href="{{ route('all.transportCompany')}}" wire:navigate>
                             <div class="parent-icon"><i class="fadeIn animated lni lni-apartment"></i>
                             </div>
-                            <div class="menu-title">Transport Company</div>
+                            <div class="menu-title">{{ __('sidebar.transport_company') }}</div>
+                        </a>
+                    @endif
+                </li>
+                <li>
+                    @if (Auth::user()->can('transport.company.list'))
+                        <a href="{{ route('all.consigneeCompany')}}" wire:navigate>
+                            <div class="parent-icon"><i class="fadeIn animated bx bx-buildings"></i>
+                            </div>
+                            <div class="menu-title">{{ __('sidebar.consignee_company') }}</div>
                         </a>
                     @endif
                 </li>
@@ -75,7 +82,7 @@
                         <a href="{{ route('province.site')}}" wire:navigate>
                             <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
                             </div>
-                            <div class="menu-title">Province</div>
+                            <div class="menu-title">{{ __('sidebar.province') }}</div>
                         </a>
                     @endif
                 </li>
@@ -85,7 +92,7 @@
                         <a href="{{ route('site')}}" wire:navigate>
                             <div class="parent-icon"><i class='bx bx-current-location'></i>
                             </div>
-                            <div class="menu-title">Sites</div>
+                            <div class="menu-title">{{ __('sidebar.sites') }}</div>
                         </a>
                     @endif
                 </li>
@@ -95,43 +102,57 @@
                     <a href="{{route('users.list')}}" wire:navigate>
                         <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
                         </div>
-                        <div class="menu-title">Users</div>
+                        <div class="menu-title">{{ __('sidebar.users') }}</div>
                     </a>
                 </li>
             </ul>
         </li>
         <!-- Role and Permission Links -->
-        <li class="menu-label">Roles And Permissions</li>
+        <li class="menu-label">{{ __('sidebar.roles_permissions') }}</li>
         <li>
             <a href="#" class="has-arrow">
                 <div class="parent-icon"><i class='lni lni-protection'></i>
                 </div>
-                <div class="menu-title">Roles</div>
+                <div class="menu-title">{{ __('sidebar.roles') }}</div>
             </a>
             <ul>
                 @if (Auth::user()->can('Permission.list'))
-                    <li> <a href="{{ route('all.permissions') }}" wire:navigate><i class='bx bx-radio-circle'></i>All
-                            Permissions</a>
+                    <li> <a href="{{ route('all.permissions') }}" wire:navigate><i
+                                class='bx bx-radio-circle'></i>{{ __('sidebar.all_permissions') }}</a>
                     </li>
                 @endif
 
                 <li>
-                    <a href="{{route('all.roles')}}" wire:navigate><i class='bx bx-radio-circle'></i>All Role</a>
+                    <a href="{{route('all.roles')}}" wire:navigate><i
+                            class='bx bx-radio-circle'></i>{{ __('sidebar.all_roles') }}</a>
                 </li>
 
-                <li> <a href="{{route('all.roles.permission')}}" wire:navigate><i class='bx bx-radio-circle'></i>All
-                        Roles In
-                        Permission</a>
+                <li> <a href="{{route('all.roles.permission')}}" wire:navigate><i
+                            class='bx bx-radio-circle'></i>{{ __('sidebar.all_roles_permissions') }}</a>
                 </li>
-                <!-- <li> 
-                    <a href="{{route('add.roles.permission')}}"><i class='bx bx-radio-circle'></i>Roles In
-                        Permission</a>
-                </li> -->
+                
             </ul>
         </li>
     </ul>
     <!--end navigation-->
 </div>
 <script>
-    document.querySelector('body').innerHTML = newHtml;
+    function reinitializeComponents() {
+        // Reinitialize any JavaScript components here
+        // Example: reinitialize tooltips, dropdowns, etc.
+        // $('[data-toggle="tooltip"]').tooltip();
+        // $('.dropdown-toggle').dropdown();
+    }
+
+    document.addEventListener('livewire:navigate', function () {
+        reinitializeComponents();
+    });
+
+    document.addEventListener('livewire:load', function () {
+        reinitializeComponents();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        reinitializeComponents();
+    });
 </script>

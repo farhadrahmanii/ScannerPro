@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Response;
 
 class admin
@@ -21,8 +22,9 @@ class admin
         }
 
         $role = Auth::user()->role;
+        $roleExists = DB::table('roles')->where('name', $role)->exists();
 
-        if ($role == 'admin' && Auth::user()->status == '1') { // Correct comparison operator
+        if ($roleExists && Auth::user()->status == '1') {
             return $next($request);
         } else {
             flash()->error('You are not authorized to access this page, You may Check your account is active or not?');

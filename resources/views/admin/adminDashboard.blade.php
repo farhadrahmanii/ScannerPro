@@ -9,6 +9,20 @@
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Add your font style here -->
+    <style>
+        @font-face {
+            font-family: 'Bahij Helvetica Neue 55 Roman';
+            src: url('{{ asset('uploads/font/Neue-Helvetica.ttf') }}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+
+            font-family: 'Bahij Helvetica Neue 55 Roman', sans-serif;
+        }
+    </style>
     <!--plugins-->
     <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
@@ -21,7 +35,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/bootstrap-extended.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="{{ asset('assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+
 
     <!-- Font awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
@@ -41,10 +55,8 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     @vite('resources/css/app.css')
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"
-        type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
-
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @livewireStyles
 </head>
 
@@ -181,7 +193,6 @@
     <!--plugins-->
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <!-- Select 2 link connected using below CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="{{ asset('assets/plugins/simplebar/js/simplebar.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/metismenu/js/metisMenu.min.js') }}"></script>
     <script src="{{ asset('assets/plugins/perfect-scrollbar/js/perfect-scrollbar.js') }}"></script>
@@ -205,9 +216,10 @@
     <!--plugins-->
     <!-- Chart Code is start Here -->
     <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="{{ asset('js/chart-renderer.js') }}"></script>
     <script src="assets/js/widgets.js"></script>
     <!--app JS-->
-    <script src="assets/js/app.js"></script>
+    <script src=""></script>
     <script>
         new PerfectScrollbar(".app-container")
     </script>
@@ -238,25 +250,9 @@
 
 
     <!-- Data Table Scripts -->
-    <script src="{{asset('assets/plugins/datatable/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/datatable/js/dataTables.bootstrap5.min.js')}}"></script>
-    <script>
-        $(document).ready(function () {
-            $('#example').DataTable();
-        });
-    </script>
-    <script>
-        // $(document).ready(function () {
-        //     var table = $('#example2').DataTable({
-        //         lengthChange: false,
-        //         buttons: ['copy', 'excel', 'pdf', 'print']
-        //     });
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-        //     table.buttons().container()
-        //         .appendTo('#example2_wrapper .col-md-6:eq(0)');
-        // });
-    </script>
-    <!-- End Data Table Scripts -->
+
     <!-- Toaster for Livewire -->
     <x-toaster-hub /> <!-- 👈 -->
 
@@ -265,18 +261,8 @@
     <!-- Way 1 -->
     <x:pharaonic-select2::scripts />
 
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/js/select2.min.js"></script>
-
     <!-- Way 2 : Vendor Publishing REQURIED -->
     <script src="{{ asset('vendor/pharaonic/pharaonic.select2.min.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            $('.select2').select2({
-                placeholder: "Select an option",
-                allowClear: true
-            });
-        });
-    </script>
 
 </body>
 

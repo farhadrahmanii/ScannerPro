@@ -35,7 +35,6 @@
         </div>
     </div>
     <!--end breadcrumb-->
-    <hr />
     <livewire:all-transaction lazy />
 
 </div>

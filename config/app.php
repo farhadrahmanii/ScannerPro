@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'http://scannerpro.test'),
 
     /*
     |--------------------------------------------------------------------------
@@ -65,8 +65,7 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE', 'UTC'),
-
+    'timezone' => env('APP_TIMEZONE', 'Asia/Kabul'),
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
