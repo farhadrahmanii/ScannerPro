@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Driver;
 use App\Models\Provinces;
+use App\Models\Transaction;
 use App\Models\User;
+use App\Models\Vehicle;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -52,4 +56,96 @@ class AdminController extends Controller
         return redirect()->route('users.list')->with($notification);
 
     } // End of Method
+    public function getChartData(Request $request)
+    {
+        $chartName = $request->input('name');
+        $data = [];
+        $categories = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        switch ($chartName) {
+            case 'Transactions':
+                $data = $this->getMonthlyTransactionSums(Carbon::now()->year);
+                break;
+            case 'Drivers':
+                $data = $this->getMonthlyDriverCounts(Carbon::now()->year);
+                break;
+            case 'Vehicles':
+                $data = $this->getMonthlyVehicleCounts(Carbon::now()->year);
+                break;
+            case 'Payment Fees':
+                $data = $this->getMonthlyPaymentFees(Carbon::now()->year);
+                break;
+            default:
+                $data = array_fill(0, 12, 0); // Default empty data
+        }
+
+        return response()->json([
+            'data' => $data,
+            'categories' => $categories
+        ]);
+    }
+
+    private function getMonthlyTransactionSums($year)
+    {
+        $monthlyTransactionSums = Transaction::selectRaw('MONTH(payment_time) as month, SUM(amount) as sum')
+            ->whereYear('payment_time', $year)
+            ->groupBy('month')
+            ->pluck('sum', 'month')
+            ->toArray();
+
+        $data = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $data[] = $monthlyTransactionSums[$i] ?? 0;
+        }
+
+        return $data;
+    }
+    private function getMonthlyDriverCounts($year)
+    {
+        $monthlyDriverCounts = Driver::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+            ->whereYear('created_at', $year)
+            ->groupBy('month')
+            ->pluck('count', 'month')
+            ->toArray();
+
+        $data = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $data[] = $monthlyDriverCounts[$i] ?? 0;
+        }
+
+        return $data;
+    }
+
+    private function getMonthlyVehicleCounts($year)
+    {
+        $monthlyVehicleCounts = Vehicle::selectRaw('MONTH(created_at) as month, COUNT(*) as count')
+            ->whereYear('created_at', $year)
+            ->groupBy('month')
+            ->pluck('count', 'month')
+            ->toArray();
+
+        $data = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $data[] = $monthlyVehicleCounts[$i] ?? 0;
+        }
+
+        return $data;
+    }
+
+    private function getMonthlyPaymentFees($year)
+    {
+        $monthlyPaymentFees = Transaction::selectRaw('MONTH(payment_time) as month, SUM(payment_fee) as sum')
+            ->whereYear('payment_time', $year)
+            ->groupBy('month')
+            ->pluck('sum', 'month')
+            ->toArray();
+
+        $data = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $data[] = $monthlyPaymentFees[$i] ?? 0;
+        }
+
+        return $data;
+    }
+    // End of Method
 }

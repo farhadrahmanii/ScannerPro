@@ -8,15 +8,19 @@ use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\App;
+
 class VehicleTable extends DataTableComponent
 {
     protected $model = Vehicle::class;
+
     public function bulkActions(): array
     {
         return [
-            'export' => 'Export Drivers',
+            'export' => __('Export Drivers'),
         ];
     }
+
     public function export()
     {
         $vehicleId = $this->getSelected();
@@ -26,6 +30,7 @@ class VehicleTable extends DataTableComponent
 
         return Excel::download(new VehicleExport($vehicleId, $userSiteId), 'vehicles.xlsx');
     }
+
     // END Exporting Data Processs start here
     public function configure(): void
     {
@@ -39,36 +44,37 @@ class VehicleTable extends DataTableComponent
     public function columns(): array
     {
         return [
-            Column::make('Sl', 'id')
+            Column::make(__('vehicletable.Sl'), 'id')
                 ->sortable(),
-            Column::make('Site Name', 'Site.site_name')
+            Column::make(__('vehicletable.Site Name'), 'Site.site_name')
                 ->sortable(),
-            Column::make('Driver Name', 'driver.name')
+            Column::make(__('vehicletable.Driver Name'), 'driver.name')
                 ->sortable()
                 ->searchable(),
-            Column::make('Vehicle Make', 'vehicle_make')
+            Column::make(__('vehicletable.Vehicle Make'), 'vehicle_make')
                 ->sortable(),
-            Column::make('Model', 'vehicle_model')
+            Column::make(__('vehicletable.Model'), 'vehicle_model')
                 ->sortable()
                 ->searchable(),
-            Column::make('Year', 'year')
+            Column::make(__('vehicletable.Year'), 'year')
                 ->sortable()
                 ->searchable(),
-            Column::make('Capacity (Ton)', 'capacity')
+            Column::make(__('vehicletable.Capacity (Ton)'), 'capacity')
                 ->sortable(),
-            Column::make('Vehicle Type', 'type')
+            Column::make(__('vehicletable.Vehicle Type'), 'type')
                 ->sortable(),
-            Column::make('System Code', 'system_code')
+            Column::make(__('vehicletable.System Code'), 'system_code')
                 ->searchable()
                 ->sortable(),
-            Column::make('Plate #', 'plate_number')
+            Column::make(__('vehicletable.Plate #'), 'plate_number')
                 ->sortable(),
-            Column::make('Actions', 'driver.name')
+            Column::make(__('vehicletable.Actions'), 'driver.name')
                 ->format(function ($value, $row) {
                     return view('livewire.partials.vehicle-actions', ['vehicle' => $row]);
                 })->unclickable() // Exclude 'action, // Optional: exclude from export if needed
         ];
     }
+
     public function builder(): Builder
     {
         return Vehicle::query()->where('vehicles.site_id', auth()->user()->site_id);

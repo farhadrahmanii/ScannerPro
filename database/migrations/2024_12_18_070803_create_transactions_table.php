@@ -28,7 +28,7 @@ return new class extends Migration {
             $table->string('item_list', 255);
             $table->string('delivery_location', 255);
             $table->boolean('scan_status')->default(false);
-            $table->boolean('scan_time')->default(false);
+            $table->boolean('scan_time');
             $table->boolean('fees_payment')->default(false);
             $table->timestamp('payment_time')->useCurrent();
             $table->integer('fees_amount')->default(1000);

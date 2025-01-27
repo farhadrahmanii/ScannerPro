@@ -9,16 +9,19 @@ use Livewire\Component;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use Maatwebsite\Excel\Facades\Excel;
+
 class DriverTable extends DataTableComponent
 {
     protected $model = Driver::class;
+
     // Exporting Data Processs start here
     public function bulkActions(): array
     {
         return [
-            'export' => 'Export Drivers',
+            'export' => __('driver_table.export_drivers'),
         ];
     }
+
     public function export()
     {
         $driverId = $this->getSelected();
@@ -29,6 +32,7 @@ class DriverTable extends DataTableComponent
         return Excel::download(new DriverExport($driverId, $userSiteId), 'drivers.xlsx');
     }
     // END Exporting Data Processs start here
+
     public function configure(): void
     {
         $this->setPrimaryKey('id')
@@ -37,30 +41,32 @@ class DriverTable extends DataTableComponent
                 return route('driver.details', $row);
             });
     }
+
     public function columns(): array
     {
         return [
-            Column::make('Sl', 'id')
+            Column::make(__('driver_table.sl'), 'id')
                 ->sortable(),
-            Column::make('Site Name', 'Site.site_name')
+            Column::make(__('driver_table.site'), 'Site.site_name')
                 ->sortable(),
-            Column::make('Name', 'name')
+            Column::make(__('driver_table.name'), 'name')
                 ->sortable()
                 ->searchable(),
-            Column::make('Father Name', 'father_name')
+            Column::make(__('driver_table.father_name'), 'father_name')
                 ->sortable()
                 ->searchable(),
-            Column::make('National ID', 'national_id')
+            Column::make(__('driver_table.national_id'), 'national_id')
                 ->sortable()
                 ->searchable(),
-            Column::make('Transport Company', 'transportCompany.transport_company_name')
+            Column::make(__('driver_table.transport_company'), 'transportCompany.transport_company_name')
                 ->sortable(),
-            Column::make('Actions', 'name')
+            Column::make(__('driver_table.actions'), 'name')
                 ->format(function ($value, $row) {
                     return view('livewire.partials.driver-actions', ['drive' => $row]);
                 })->unclickable(),
         ];
     }
+
     public function builder(): Builder
     {
         return Driver::query()->where('drivers.site_id', auth()->user()->site_id);

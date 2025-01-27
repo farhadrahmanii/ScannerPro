@@ -34,6 +34,9 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             return view('admin.adminDashboard');
         })->name('dashboard');
 
+
+
+
         // All Transport Company Routes here
         Route::controller(TransportCompanyController::class)->group(function () {
             Route::get('/transport/companies', 'AllTransportCompany')->name('all.transportCompany');
@@ -92,6 +95,11 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
 
             // Route::get('/edit/admin/user/{id}', EditUserLivewire::class);
             Route::post('/update/admin/user', 'UpdateAdminUser')->name('update.admin.user');
+
+            Route::get('/get-chart-data', 'getChartData');
+
+
+
         });
 
 

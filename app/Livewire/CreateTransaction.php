@@ -38,6 +38,7 @@ class CreateTransaction extends Component
         $user = Auth::user()->id;
         Log::info('Transaction Data:', [
             'user' => $user,
+            'site_id' => auth()->user()->site_id,
             'vehicle_id' => $this->vehicle_id,
             'transaction_id' => $this->transaction_id,
             'bill_of_landing' => $this->bill_of_landing,
@@ -103,6 +104,7 @@ class CreateTransaction extends Component
         // Save the transaction
         $transaction = Transaction::create([
             'user_id' => $user,
+            'site_id' => auth()->user()->site_id,
             'vehicle_id' => $this->vehicle_id,
             'transaction_id' => $this->transaction_id,
             'bill_of_landing' => $bill_of_landing,

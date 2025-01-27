@@ -216,6 +216,7 @@
     <!--plugins-->
     <!-- Chart Code is start Here -->
     <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="{{ asset('js/chart-renderer.js') }}"></script>
     <script src="assets/js/widgets.js"></script>
     <!--app JS-->
     <script src=""></script>

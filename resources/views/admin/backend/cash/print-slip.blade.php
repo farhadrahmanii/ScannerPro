@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ps' ? 'rtl' : 'ltr' }}">
 
 <head>
-    <title>{{ __('cash_receipt.title') }}</title>
+    <title>Cash Receipt</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -53,6 +53,24 @@
             padding-top: 10px;
         }
 
+        .receipt table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .receipt table td {
+            padding: 5px;
+        }
+
+        .receipt table td.label {
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .receipt table td.value {
+            text-align: right;
+        }
+
         @media print {
             .receipt {
                 border: none;
@@ -75,27 +93,55 @@
         <div class="text-center">
             <img src="{{ asset('assets/images/ZobairMosawer.png') }}" alt="Logo" style="width: 50mm; height: auto;">
         </div>
-        <h2>{{ __('cash_receipt.title') }}</h2>
+        <h2>Cash Receipt</h2>
         <div class="details">
             <div class="category">
-                <p><strong>{{ __('cash_receipt.receipt_number') }}:</strong> {{ $transaction->id }}</p>
-                <p><strong>{{ __('cash_receipt.transaction_id') }}:</strong> {{ $transaction->transaction_id }}</p>
-                <p><strong>{{ __('cash_receipt.bill_of_lading') }}:</strong> {{ $transaction->bill_of_landing }}</p>
+                <table>
+                    <tr>
+                        <td class="label">Receipt Number:</td>
+                        <td class="value">{{ $transaction->id }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Transaction ID:</td>
+                        <td class="value">{{ $transaction->transaction_id }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Bill of Lading:</td>
+                        <td class="value">{{ $transaction->bill_of_landing }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="category">
-                <p><strong>{{ __('cash_receipt.driver') }}:</strong>
-                    {{ $transaction->vehicle->driver->name ?? __('cash_receipt.unknown') }}</p>
-                <p><strong>{{ __('cash_receipt.casher') }}:</strong> {{ $transaction->user->name }}</p>
-                <p><strong>{{ __('cash_receipt.receiver') }}:</strong> {{ $transaction->user->name }}</p>
+                <table>
+                    <tr>
+                        <td class="label">Driver:</td>
+                        <td class="value">{{ $transaction->vehicle->driver->name ?? 'Unknown' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Casher:</td>
+                        <td class="value">{{ $transaction->user->name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Receiver:</td>
+                        <td class="value">{{ $transaction->user->name }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="category">
-                <p><strong>{{ __('cash_receipt.paid_by') }}:</strong>
-                    {{ $transaction->vehicle->driver->name ?? __('cash_receipt.unknown') }}</p>
-                <p><strong>{{ __('cash_receipt.date') }}:</strong> {{ now() }}</p>
+                <table>
+                    <tr>
+                        <td class="label">Paid By:</td>
+                        <td class="value">{{ $transaction->vehicle->driver->name ?? 'Unknown' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Date:</td>
+                        <td class="value">{{ now() }}</td>
+                    </tr>
+                </table>
             </div>
         </div>
         <div class="amount">
-            <p><strong>{{ __('cash_receipt.amount') }}:</strong> {{ $transaction->fees_amount }}</p>
+            <p><strong>Amount:</strong> {{ $transaction->fees_amount }}</p>
         </div>
     </div>
 </body>
