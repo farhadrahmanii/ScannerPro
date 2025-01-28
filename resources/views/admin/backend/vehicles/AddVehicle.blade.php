@@ -6,18 +6,19 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="mb-3 page-breadcrumb d-none d-sm-flex align-items-center">
-        <div class="breadcrumb-title pe-3">Vehicles</div>
+        <div class="breadcrumb-title pe-3">{{ __('vehicletable.Vehicles') }}</div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="p-0 mb-0 breadcrumb">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">All Vehicles</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ __('vehicletable.All_Vehicles') }}</li>
                 </ol>
             </nav>
         </div>
         <div class="ms-auto">
-            <a href="{{route('all.drivers')}}" class="px-5 btn btn-primary" wire:navigate>Cancel</a>
+            <a href="{{route('all.drivers')}}" class="px-5 btn btn-primary"
+                wire:navigate>{{ __('vehicletable.cancel') }}</a>
         </div>
     </div>
     <!--end breadcrumb-->
@@ -25,7 +26,7 @@
 
     <div class="card">
         <div class="p-4 card-body">
-            <h5 class="mb-4">Register Vehicle</h5>
+            <h5 class="mb-4">{{ __('vehicletable.RegisterـVehicle') }}</h5>
             <livewire:create-vehicle lazy :driverId="$driver->id" :driverName="$driver->name" />
         </div>
     </div>

@@ -13,4 +13,8 @@ return [
     'System Code' => 'کد سیستم',
     'Plate #' => 'پلیټ #',
     'Actions' => 'اقدامات',
+    'Vehicles' => 'واسطه',
+    'All_Vehicles' => 'تمام واسطه',
+    'cancel' => 'لغو',
+    'RegisterـVehicle' => 'ثبت واسطه',
 ];

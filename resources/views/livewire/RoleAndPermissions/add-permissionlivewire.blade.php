@@ -9,19 +9,19 @@
                     @error('name')
                         is-invalid
                     @enderror
-                    " id="name" placeholder="Data Science">
+                    " id="name" placeholder="site.view">
                 @error('name')
                     <span class="text-red-500 text-bold">{{$message}}</span>
                 @enderror
             </div>
             <div class="form-group col-md-6">
-                <label for="group_name" class="form-label">Category</label>
+                <label for="group_name" class="form-label">Permission Group Name</label>
                 <select id="group_name" name="group_name" wire:model="group_name" class="form-control rounded-lg
                     @error('group_name')
                         is-invalid
                     @enderror
                     " id="group_name" placeholder="Data Science">
-                    <option selected disabled>Select Permission Category</option>
+                    <option selected>Select Permission Category</option>
                     <option value="Category">User</option>
                     <option value="Site Manager">Site Manager</option>
                     <option value="Coupon">Driver</option>

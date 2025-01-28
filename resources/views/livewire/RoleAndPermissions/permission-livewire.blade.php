@@ -18,8 +18,8 @@
                             <td>{{$item->name}}</td>
                             <td>{{$item->group_name}}</td>
                             <td>
-                                <a href="" class="btn btn-info">Edit</a>
-                                <a href="" class="btn btn-danger" id="delete">Delete</a>
+                                <a href="#" class="btn btn-info">Edit</a>
+                                <a href="#" class="btn btn-danger" id="delete">Delete</a>
                             </td>
                         </tr>
                     @endforeach
