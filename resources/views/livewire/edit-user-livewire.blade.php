@@ -68,7 +68,8 @@
                                     <div class="col-md-3">
                                         <div class="form-check form-switch">
                                             <input class="form-check-input" type="checkbox" wire:model="selectedPermissions"
-                                                value="{{ $permission->name }}" id="permission-{{ $permission->id }}">
+                                                value="{{ $permission->name }}" id="permission-{{ $permission->id }}"
+                                                @if(in_array($permission->name, $selectedPermissions)) checked @endif>
                                             <label class="form-check-label"
                                                 for="permission-{{ $permission->id }}">{{ $permission->name }}</label>
                                         </div>
@@ -82,7 +83,6 @@
                     <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
-
 
             <div class="form-group col-md-3">
                 <label for="photo" class="form-label">Photo</label>

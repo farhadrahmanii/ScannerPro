@@ -57,7 +57,6 @@ class EditUserLivewire extends Component
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,email,' . $this->user,
             'site_id' => 'numeric',
-            'role' => 'exists:roles,id',
             'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             'selectedPermissions' => 'array',
             'selectedPermissions.*' => 'string|exists:permissions,name',
@@ -91,13 +90,6 @@ class EditUserLivewire extends Component
             'password' => $this->password ? Hash::make($this->password) : $user->password,
             'photo' => $filePath,
         ]);
-
-        if ($this->role) {
-            $findedRole = Role::find($this->role);
-            if ($findedRole) {
-                $user->syncRoles([$findedRole->name]);
-            }
-        }
 
         if (!empty($this->selectedPermissions)) {
             $user->syncPermissions($this->selectedPermissions);

@@ -63,4 +63,9 @@ class driverController extends Controller
         flash()->success('The Driver is Deleted Successfully');
         return redirect()->back();
     } //Delete Driver
+    public function EditDriver($id)
+    {
+        $driver = Driver::findOrFail($id);
+        return view('admin.backend.drivers.editDriver', compact('driver'));
+    } //Delete Driver
 }

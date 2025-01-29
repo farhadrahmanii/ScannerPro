@@ -6,7 +6,6 @@
                 <th>Sl</th>
                 <th>Name</th>
                 <th>email</th>
-                <th>province</th>
                 <th>role</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -23,9 +22,6 @@
                     </td>
                     <td>
                         {{ $user->email }}
-                    </td>
-                    <td>
-                        {{ $user['province']['Province_name'] ?? ''}}
                     </td>
                     <td>
                         {{ $user->role }}
@@ -68,7 +64,6 @@
                 <th>Sl</th>
                 <th>Name</th>
                 <th>email</th>
-                <th>province</th>
                 <th>role</th>
                 <th>Status</th>
                 <th>Actions</th>

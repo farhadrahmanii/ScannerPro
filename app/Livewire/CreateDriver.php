@@ -82,6 +82,7 @@ class CreateDriver extends Component
         $user = Auth::id();
 
         Driver::create([
+            'site_id' => auth()->user()->site_id,
             'user_id' => $user,
             'name' => $validated['name'],
             'father_name' => $validated['father_name'],

@@ -69,7 +69,7 @@
                     @endif
                 </li>
                 <li>
-                    @if (Auth::user()->can('transport.company.list'))
+                    @if (Auth::user()->can('consignee.company.list'))
                         <a href="{{ route('all.consigneeCompany')}}" wire:navigate>
                             <div class="parent-icon"><i class="fadeIn animated bx bx-buildings"></i>
                             </div>
@@ -130,7 +130,7 @@
                 <li> <a href="{{route('all.roles.permission')}}" wire:navigate><i
                             class='bx bx-radio-circle'></i>{{ __('sidebar.all_roles_permissions') }}</a>
                 </li>
-                
+
             </ul>
         </li>
     </ul>

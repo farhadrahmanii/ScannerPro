@@ -32,7 +32,9 @@
     </div>
     <!--end breadcrumb-->
     <hr />
-    <livewire:transport-company.transport-company-listlivewire lazy />
+    @if (Auth::user()->can('transport.company.list'))
+        <livewire:transport-company.transport-company-listlivewire lazy />
+    @endif
 
 </div>
 
