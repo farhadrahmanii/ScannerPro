@@ -20,7 +20,7 @@
         </li>
         <li>
             @if (Auth::user()->can('driver.list'))
-                <a href="{{route('all.drivers')}}" wire:navigate>
+                <a href="{{route('all.drivers')}}">
                     <div class="parent-icon"> <img src="{{asset('images/icons/driver.png')}}" class="logo-icon"
                             width="80px" />
                     </div>
@@ -31,7 +31,7 @@
 
         <li>
             @if (Auth::user()->can('vehicle.list'))
-                <a href="{{ route('all.vehicles') }}" wire:navigate>
+                <a href="{{ route('all.vehicles') }}">
                     <div class="parent-icon"><i class="fa fa-truck" aria-hidden="true"></i>
                     </div>
                     <div class="menu-title">{{ __('sidebar.vehicles') }}</div>
@@ -42,7 +42,7 @@
         <li>
             @if (Auth::user()->can('transaction.list'))
 
-                <a href="{{route('all.transactions')}}" wire:navigate>
+                <a href="{{route('all.transactions')}}">
                     <div class="parent-icon"><i class="fadeIn animated"><img src="{{asset('images/icons/transaction.png')}}"
                                 class="logo-icon" width="80px" /></i>
                     </div>
@@ -61,7 +61,7 @@
             <ul>
                 <li>
                     @if (Auth::user()->can('transport.company.list'))
-                        <a href="{{ route('all.transportCompany')}}" wire:navigate>
+                        <a href="{{ route('all.transportCompany')}}">
                             <div class="parent-icon"><i class="fadeIn animated lni lni-apartment"></i>
                             </div>
                             <div class="menu-title">{{ __('sidebar.transport_company') }}</div>
@@ -70,7 +70,7 @@
                 </li>
                 <li>
                     @if (Auth::user()->can('consignee.company.list'))
-                        <a href="{{ route('all.consigneeCompany')}}" wire:navigate>
+                        <a href="{{ route('all.consigneeCompany')}}">
                             <div class="parent-icon"><i class="fadeIn animated bx bx-buildings"></i>
                             </div>
                             <div class="menu-title">{{ __('sidebar.consignee_company') }}</div>
@@ -79,7 +79,7 @@
                 </li>
                 <li>
                     @if (Auth::user()->can('site.list'))
-                        <a href="{{ route('province.site')}}" wire:navigate>
+                        <a href="{{ route('province.site')}}">
                             <div class="parent-icon"><i class="fadeIn animated bx bx-location-plus"></i>
                             </div>
                             <div class="menu-title">{{ __('sidebar.province') }}</div>
@@ -89,7 +89,7 @@
 
                 <li>
                     @if (Auth::user()->can('site.list'))
-                        <a href="{{ route('site')}}" wire:navigate>
+                        <a href="{{ route('site')}}">
                             <div class="parent-icon"><i class='bx bx-current-location'></i>
                             </div>
                             <div class="menu-title">{{ __('sidebar.sites') }}</div>
@@ -99,7 +99,7 @@
 
 
                 <li>
-                    <a href="{{route('users.list')}}" wire:navigate>
+                    <a href="{{route('users.list')}}">
                         <div class="parent-icon"><i class="fadeIn animated bx bx-user"></i>
                         </div>
                         <div class="menu-title">{{ __('sidebar.users') }}</div>
@@ -117,17 +117,16 @@
             </a>
             <ul>
                 @if (Auth::user()->can('Permission.list'))
-                    <li> <a href="{{ route('all.permissions') }}" wire:navigate><i
+                    <li> <a href="{{ route('all.permissions') }}"><i
                                 class='bx bx-radio-circle'></i>{{ __('sidebar.all_permissions') }}</a>
                     </li>
                 @endif
 
                 <li>
-                    <a href="{{route('all.roles')}}" wire:navigate><i
-                            class='bx bx-radio-circle'></i>{{ __('sidebar.all_roles') }}</a>
+                    <a href="{{route('all.roles')}}"><i class='bx bx-radio-circle'></i>{{ __('sidebar.all_roles') }}</a>
                 </li>
 
-                <li> <a href="{{route('all.roles.permission')}}" wire:navigate><i
+                <li> <a href="{{route('all.roles.permission')}}"><i
                             class='bx bx-radio-circle'></i>{{ __('sidebar.all_roles_permissions') }}</a>
                 </li>
 

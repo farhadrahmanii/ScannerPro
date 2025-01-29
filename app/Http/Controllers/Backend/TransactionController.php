@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Transaction;
+use App\Models\Driver;
 use Illuminate\Http\Request;
+use PDF;
 
 class TransactionController extends Controller
 {
@@ -44,4 +46,5 @@ class TransactionController extends Controller
         $transaction = Transaction::with(['driver'])->findOrFail($id);
         return view('admin.backend.cash.print-slip', compact('transaction'));
     } // End Of method
+
 }

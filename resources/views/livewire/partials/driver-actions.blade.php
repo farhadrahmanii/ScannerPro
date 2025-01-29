@@ -62,10 +62,6 @@
                     </a>
                 @endif
 
-                <a href="#" class="block px-4 py-2 text-sm text-blue-600 hover:bg-blue-50" target="_blank">
-                    Print ID Card
-                </a>
-
             </div>
         </div>
     </div>

@@ -71,4 +71,15 @@ class VehicleController extends Controller
         flash()->success('Vehicle is deleted successfully!');
         return redirect()->route('all.vehicles');
     } // end of Methods
+
+    public function printIdCard($id)
+    {
+        $vehicle = Vehicle::with('driver')->findOrFail($id);
+
+        if ($vehicle->driver) {
+            return view('admin.backend.idCard.print-id-card', compact('vehicle'));
+        }
+
+        return redirect()->back()->with('error', 'Vehicle does not have any Driver.');
+    } // End Of method
 }

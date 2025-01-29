@@ -1,6 +1,6 @@
 <?php
 return [
-    'welcome' => 'به ویجت خانه خوش آمدید',
+    'welcome' => 'خوش آمدید',
     'description' => 'این توضیحات برای ویجت خانه لایو ویر است.',
     'total_transactions' => 'تعداد کل معاملات',
     'total_drivers' => 'تعداد کل رانندگان',
@@ -19,4 +19,17 @@ return [
     'action' => 'عمل',
     'another_action' => 'عمل دیگر',
     'something_else' => 'چیز دیگری در اینجا',
+    'driver_table.export' => 'صادرات رانندگان',
+    'driver_table.name' => 'نام',
+    'driver_table.father_name' => 'نام پدر',
+    'driver_table.national_id' => 'شناسه ملی',
+    'driver_table.transport_company' => 'شرکت حمل و نقل',
+    'driver_table.actions' => 'عملیات',
+    'vehicles' => 'وسایل نقلیه',
+    'drivers' => 'رانندگان',
+    'transactions' => 'معاملات',
+    'users' => 'کاربران',
+    'daily_transaction_rate' => 'نرخ ثبت نام روزانه معاملات',
+    'daily_vehicle_rate' => 'نرخ ثبت نام روزانه وسایل نقلیه',
+    'daily_driver_rate' => 'نرخ ثبت نام روزانه رانندگان',
 ];

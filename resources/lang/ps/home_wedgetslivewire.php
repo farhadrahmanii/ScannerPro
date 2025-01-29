@@ -1,6 +1,6 @@
 <?php
 return [
-    'welcome' => 'د کور ویجټ ته ښه راغلاست',
+    'welcome' => ' ته ښه راغلاست',
     'description' => 'دا د کور ویجټ لایو ویر لپاره تشریح ده.',
     'total_transactions' => 'ټول معاملات',
     'total_drivers' => 'ټول چلوونکي',
@@ -19,4 +19,11 @@ return [
     'action' => 'عمل',
     'another_action' => 'بل عمل',
     'something_else' => 'دلته بل څه',
+    'vehicles' => 'وسایل نقلیه',
+    'drivers' => 'رانندگان',
+    'transactions' => 'معاملات',
+    'users' => 'کاربران',
+    'daily_transaction_rate' => 'د معاملاتو د ثبت نرخ',
+    'daily_vehicle_rate' => 'د وسایطو د ثبت نرخ',
+    'daily_driver_rate' => 'د چلوونکو د ثبت نرخ',
 ];

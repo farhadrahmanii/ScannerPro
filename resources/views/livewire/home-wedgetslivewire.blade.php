@@ -1,5 +1,5 @@
 <div class="page-content">
-    <h1>{{ __('home_wedgetslivewire.welcome') }}</h1><br>
+    <h1>{{ __('home_wedgetslivewire.welcome') }} {{auth()->user()->site['site_name']}}</h1><br>
     <p class="alert alert-warning" wire:offline>
         {{ __('home_wedgetslivewire.offline_warning') }}
     </p>

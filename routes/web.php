@@ -73,6 +73,7 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('/add/transaction/to/vehicle/{id}', 'AddTrasactionToVehicle')->name('add.transaction.to.vehicle');
             Route::get('/vehicle/details/{id}', 'VehicleDetails')->name('vehicle.details');
             Route::get('/delete/vehicle/{id}', 'DeleteVehicle')->name('delete.vehicle');
+            Route::get('/vehicle/card/{id}', 'printIdCard')->name('backend.driver.print-id-card');
         });
 
 
