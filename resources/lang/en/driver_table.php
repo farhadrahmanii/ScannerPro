@@ -10,4 +10,7 @@ return [
     'transport_company' => 'Transport Company',
     'actions' => 'Actions',
     'export_drivers' => 'Export Drivers',
+    'All_Drivers' => 'All Drivers',
+    'Driver' => 'Driver',
+    'Add_Driver' => 'Add Driver',
 ];

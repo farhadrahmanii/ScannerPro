@@ -13,4 +13,8 @@ return [
     'System Code' => 'System Code',
     'Plate #' => 'Plate #',
     'Actions' => 'Actions',
+    'Vehicles' => 'Vehicles',
+    'All_Vehicles' => 'All Vehicles',
+    'cancel' => 'Cancel',
+    'RegisterـVehicle' => 'Register Vehicle',
 ];

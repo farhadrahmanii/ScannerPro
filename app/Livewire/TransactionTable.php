@@ -4,13 +4,15 @@ namespace App\Livewire;
 
 use App\Exports\TransactionExport;
 use App\Models\Transaction;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Livewire\Component;
+use Maatwebsite\Excel\Facades\Excel;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
-use Illuminate\Database\Eloquent\Builder;
-use Maatwebsite\Excel\Facades\Excel;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Lang;
+
 class TransactionTable extends DataTableComponent
 {
     protected $model = Transaction::class;
@@ -74,8 +76,10 @@ class TransactionTable extends DataTableComponent
             Column::make(__('transaction_table.payment_status'), 'fees_payment')
                 ->sortable()
                 ->format(function ($value, $row) {
-                    $tooltip = $row->payment_time ? Carbon::parse($row->payment_time)->format('Y-m-d H:i:s') : __('transaction_table.no_payment_time');
-                    return "<span title=\"" . e($tooltip) . "\">" . view('livewire.partials.payment-status', ['transaction' => $row])->render() . "</span>";
+                    if (Auth::user()->can('get.cash')) {
+                        $tooltip = $row->payment_time ? Carbon::parse($row->payment_time)->format('Y-m-d H:i:s') : __('transaction_table.no_payment_time');
+                        return "<span title=\"" . e($tooltip) . "\">" . view('livewire.partials.payment-status', ['transaction' => $row])->render() . "</span>";
+                    }
                 })
                 ->unclickable()
                 ->html(),

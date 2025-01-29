@@ -12,7 +12,7 @@ class AddPermissionlivewire extends Component
     public function save()
     {
         $this->validate([
-            "name" => ["required", "string"],
+            "name" => ["required", "string", 'unique:permissions,name,except,id'],
             "group_name" => ["required", "string"]
 
         ]);

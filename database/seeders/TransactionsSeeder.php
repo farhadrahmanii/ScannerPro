@@ -46,6 +46,7 @@ class TransactionsSeeder extends Seeder
                 'item_list' => $faker->words(5, true),
                 'delivery_location' => $faker->address,
                 'scan_status' => $faker->boolean,
+                'scan_time' => now(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

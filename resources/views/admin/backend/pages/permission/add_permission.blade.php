@@ -26,42 +26,4 @@
 
 
 </div>
-<script>
-    $(document).ready(function () {
-        $('#myForm').validate({
-            rules: {
-                group_name: {
-                    required: true,
-                },
-                name: {
-                    required: true,
-                },
-
-            },
-            messages: {
-                group_name: {
-                    required: 'Please Enter Group name',
-                },
-
-                name: {
-                    required: 'Please Select Permission Name',
-                },
-
-
-
-            },
-            errorElement: 'span',
-            errorPlacement: function (error, element) {
-                error.addClass('invalid-feedback');
-                element.closest('.form-group').append(error);
-            },
-            highlight: function (element, errorClass, validClass) {
-                $(element).addClass('is-invalid');
-            },
-            unhighlight: function (element, errorClass, validClass) {
-                $(element).removeClass('is-invalid');
-            },
-        });
-    });
-</script>
 @endsection
