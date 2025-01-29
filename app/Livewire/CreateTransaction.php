@@ -17,12 +17,13 @@ class CreateTransaction extends Component
     public $transaction_id;
     public $bill_of_landing;
     public $exporting_country;
-    public $production_origin;
+    public $production_origin = [];
     public $item_name;
     public $category_id;
     public $total_tonnage;
-    public $number_of_items;
+    public $number_of_items = [];
     public $item_list;
+    public $defaultItemList = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
     public $delivery_location;
     public $scan_status;
     public $scan_time;
@@ -33,6 +34,7 @@ class CreateTransaction extends Component
     public $consignee_company = "";
     public $consigneeSearchResults = [];
     public $showAddConsigneeCompanyForm = false;
+
     public function save()
     {
         $user = Auth::user()->id;
@@ -71,7 +73,7 @@ class CreateTransaction extends Component
         $year = now()->format('Y');
         $month = now()->format('m');
         $exportingCountry = $this->exporting_country ? Str::upper(substr($this->exporting_country, 0, 3)) : ''; // First 3 uppercase characters
-        $productionOrigin = $this->production_origin ? Str::upper(substr($this->production_origin, 0, 3)) : ''; // First 3 uppercase characters
+        $productionOrigin = !empty($this->production_origin) ? Str::upper(substr(implode(',', $this->production_origin), 0, 3)) : ''; // First 3 uppercase characters
 
         // Get the last record and increment the number
         $lastBill = Transaction::whereYear('created_at', $year)
@@ -88,11 +90,11 @@ class CreateTransaction extends Component
         $validatedData = $this->validate([
             'vehicle_id' => 'required',
             'exporting_country' => 'required|string',
-            'production_origin' => 'string',
+            'production_origin' => 'array',
             'item_name' => 'required|string',
             'category_id' => 'required|numeric',
             'total_tonnage' => 'required|string',
-            'number_of_items' => 'required|string',
+            'number_of_items' => 'array',
             'consignee_company_tin' => 'required|string',
             'item_list' => 'required|string',
             'delivery_location' => 'required|string',
@@ -109,11 +111,11 @@ class CreateTransaction extends Component
             'transaction_id' => $this->transaction_id,
             'bill_of_landing' => $bill_of_landing,
             'exporting_country' => $this->exporting_country,
-            'production_origin' => $this->production_origin,
+            'production_origin' => implode(',', $this->production_origin),
             'item_name' => $this->item_name,
             'category_id' => $this->category_id,
             'total_tonnage' => $this->total_tonnage,
-            'number_of_items' => $this->number_of_items,
+            'number_of_items' => implode(',', $this->number_of_items),
             'consignee_company_tin' => $this->consignee_company_tin,
             'item_list' => $this->item_list,
             'delivery_location' => $this->delivery_location,
@@ -129,6 +131,35 @@ class CreateTransaction extends Component
             flash()->error('Failed to save the transaction.');
         }
     }
+
+    public function addProductionOrigin($origin)
+    {
+        if (!in_array($origin, $this->production_origin)) {
+            $this->production_origin[] = $origin;
+        }
+    }
+
+    public function removeProductionOrigin($origin)
+    {
+        $this->production_origin = array_filter($this->production_origin, function($value) use ($origin) {
+            return $value !== $origin;
+        });
+    }
+
+    public function addNumberOfItems($item)
+    {
+        if (!in_array($item, $this->number_of_items)) {
+            $this->number_of_items[] = $item;
+        }
+    }
+
+    public function removeNumberOfItems($item)
+    {
+        $this->number_of_items = array_filter($this->number_of_items, function($value) use ($item) {
+            return $value !== $item;
+        });
+    }
+
     public function mount()
     {
         $this->id = $this->getId();

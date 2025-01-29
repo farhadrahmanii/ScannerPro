@@ -30,9 +30,8 @@
             </div>
             <div class="form-group col-md-3" wire:ignore>
                 <label for="production_origin" class="form-label">Production Origin</label>
-                <select id="production_origin" wire:model="production_origin" data-pharaonic="select2"
+                <select id="production_origin" wire:model="production_origin" data-pharaonic="select2" multiple
                     data-component-id="{{ $id }}" class="form-control rounded-lg">
-                    <option value="">Select Production Origin</option>
                     <option value="Afghanistan">Afghanistan</option>
                     <option value="China">China</option>
                     <option value="India">India</option>
@@ -102,28 +101,27 @@
 
             <div class="form-group col-md-3">
                 <label for="number_of_items" class="form-label">Number of Items</label>
-                <input type="number" id="number_of_items" wire:model="number_of_items" name="number_of_items" class="form-control rounded-lg
-                    @error('number_of_items')
-                        in-valid
-                    @enderror
-                    " id="number_of_items" placeholder="#########">
+                <input type="text" id="number_of_items_input" class="form-control rounded-lg @error('number_of_items') is-invalid @enderror" placeholder="Enter Number of Items">
                 @error('number_of_items')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
+                    <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
+                <div id="number_of_items_tags" class="mt-2">
+                    @foreach ($number_of_items as $item)
+                        <span class="badge bg-primary">{{ $item }} <i class="fas fa-times" wire:click="removeNumberOfItems('{{ $item }}')"></i></span>
+                    @endforeach
+                </div>
             </div>
 
-
-
-
             <div class="form-group col-md-3">
-                <label for="item_list" class="form-label">Items list</label>
-                <input type="text" id="input1" wire:model="item_list" name="item_list" class="form-control rounded-lg
-                    @error('item_list')
-                        in-valid
-                    @enderror
-                    " id="item_list" placeholder="Data Science">
+                <label for="item_list" class="form-label">Items List</label>
+                <select id="item_list" wire:model="item_list" class="form-control rounded-lg @error('item_list') is-invalid @enderror">
+                    <option value="">Select Item</option>
+                    @foreach ($defaultItemList as $item)
+                        <option value="{{ $item }}">{{ $item }}</option>
+                    @endforeach
+                </select>
                 @error('item_list')
-                    <span class="text-red-500 text-bold">{{$message}}</span>
+                    <span class="text-red-500 text-bold">{{ $message }}</span>
                 @enderror
             </div>
 
@@ -216,6 +214,15 @@
             });
             $('#production_origin').on('change', function () {
                 @this.set('production_origin', $(this).val());
+            });
+
+            const input = document.getElementById('number_of_items_input');
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    @this.call('addNumberOfItems', input.value);
+                    input.value = '';
+                }
             });
         });
 
