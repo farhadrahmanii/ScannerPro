@@ -31,7 +31,7 @@ return new class extends Migration {
             $table->timestamp('scan_time');
             $table->boolean('fees_payment')->default(false);
             $table->timestamp('payment_time')->useCurrent();
-            $table->integer('fees_amount')->default(1000);
+            $table->integer('fees_amount')->default(0);
             $table->timestamps();
             $table->softDeletes(); // Add soft delete column
         });

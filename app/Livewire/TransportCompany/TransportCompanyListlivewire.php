@@ -18,7 +18,7 @@ class TransportCompanyListlivewire extends Component
         $transportCompany->delete();
         $this->transportCompanies = TransportCompany::all();
         flash()->success('Transport Company deleted successfully.');
-        // return $this->redirect('/transport/companies', navigate: true);
+        // return $this->redirect('/transport/companies');
     }
     public function placeholder()
     {

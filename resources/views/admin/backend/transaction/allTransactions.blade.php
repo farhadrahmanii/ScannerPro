@@ -35,6 +35,7 @@
         </div>
     </div>
     <!--end breadcrumb-->
+    <button onclick="Livewire.emit('openModal', 'create-transaction')">Open Modal</button>
     <livewire:all-transaction lazy />
 
 </div>

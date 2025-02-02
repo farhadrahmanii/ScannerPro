@@ -94,7 +94,7 @@ class EditTransactionlivewire extends Component
         ]);
 
         flash()->success('Transaction updated successfully!');
-        return $this->redirect('/all/transactions', navigate: true);
+        return $this->redirect('/all/transactions');
     }
 
 

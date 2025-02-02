@@ -37,7 +37,7 @@ class EditTransportCompanylivewire extends Component
 
         session()->flash('success', 'Transport Company updated successfully.');
 
-        return $this->redirect('/transport/companies', navigate: true);
+        return $this->redirect('/transport/companies');
     }
 
     public function placeholder()

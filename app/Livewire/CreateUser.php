@@ -77,7 +77,7 @@ class CreateUser extends Component
 
         flash()->success('Account for Miss/Mr.' . $this->name . ' Created successfully');
         $this->reset();
-        return $this->redirect('/all/users', navigate: true);
+        return $this->redirect('/all/users');
     }
     public function mount()
     {

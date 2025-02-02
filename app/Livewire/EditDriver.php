@@ -64,7 +64,7 @@ class EditDriver extends Component
         flash()->success('Driver details updated successfully.');
 
         // Redirect to the driver list page
-        return $this->redirect('/all/drivers', navigate: true);
+        return $this->redirect('/all/drivers');
     }
     public function placeholder()
     {

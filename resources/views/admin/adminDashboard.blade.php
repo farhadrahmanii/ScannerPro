@@ -9,20 +9,7 @@
     <!--favicon-->
     <link rel="icon" href="{{ asset('assets/images/favicon-32x32.png') }}" type="image/png" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Add your font style here -->
-    <style>
-        @font-face {
-            font-family: 'Bahij Helvetica Neue 55 Roman';
-            src: url('{{ asset('uploads/font/Neue-Helvetica.ttf') }}') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
 
-        body {
-
-            font-family: 'Bahij Helvetica Neue 55 Roman', sans-serif;
-        }
-    </style>
     <!--plugins-->
     <link href="{{ asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/plugins/simplebar/css/simplebar.css') }}" rel="stylesheet" />
@@ -57,7 +44,24 @@
     @vite('resources/css/app.css')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Add your font style here -->
+    <style>
+        @font-face {
+            font-family: 'Bahij Helvetica Neue 55 Roman';
+            src: url('{{ asset('uploads/font/Neue-Helvetica.ttf') }}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+
+            font-family: 'Bahij Helvetica Neue 55 Roman', sans-serif;
+        }
+    </style>
+    <!-- CDN Models -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     @livewireStyles
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body>
@@ -200,9 +204,9 @@
     <script src="{{ asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <script src="{{ asset('assets/plugins/chartjs/js/chart.js') }}"></script>
     <!-- Vector map JavaScript -->
-    <script src="assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="assets/plugins/vectormap/jvectormap.custom.js"></script>
+    <script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-2.0.2.min.js')}}"></script>
+    <script src="{{asset('assets/plugins/vectormap/jquery-jvectormap-world-mill-en.js')}}"></script>
+    <script src="{{asset('assets/plugins/vectormap/jvectormap.custom.js')}}"></script>
     <script src="{{ asset('assets/js/index.js') }}"></script>
     <!--app JS-->
     <script src="{{ asset('assets/js/app.js') }}"></script>
@@ -215,9 +219,9 @@
     <!-- Bootstrap JS -->
     <!--plugins-->
     <!-- Chart Code is start Here -->
-    <script src="assets/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="{{asset('assets/plugins/apexcharts-bundle/js/apexcharts.min.js')}}"></script>
     <script src="{{ asset('js/chart-renderer.js') }}"></script>
-    <script src="assets/js/widgets.js"></script>
+    <script src="{{asset('assets/js/widgets.js')}}"></script>
     <!--app JS-->
     <script src=""></script>
     <script>
@@ -255,14 +259,14 @@
 
     <!-- Toaster for Livewire -->
     <x-toaster-hub /> <!-- 👈 -->
-
-    @livewireScripts
     @stack('scripts')
     <!-- Way 1 -->
     <x:pharaonic-select2::scripts />
 
     <!-- Way 2 : Vendor Publishing REQURIED -->
     <script src="{{ asset('vendor/pharaonic/pharaonic.select2.min.js') }}"></script>
+    @livewire('livewire-ui-modal')
+    @livewireScripts
 
 </body>
 

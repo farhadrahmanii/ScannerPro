@@ -57,7 +57,7 @@ class EditSite extends Component
         flash()->addSuccess($this->site_name . ' Site updated successfully!');
 
         // Redirect to the site list page
-        return $this->redirect('/all/site', navigate: true);  // Adjust to your actual route
+        return $this->redirect('/all/site');  // Adjust to your actual route
     }
 
     public function render()

@@ -23,7 +23,7 @@ class AddPermissionlivewire extends Component
         flash()->success("Permission created successuflly");
         $this->reset();
         // return redirect()->route("all.permissions");
-        return $this->redirect('/all/permission', navigate: true);
+        return $this->redirect('/all/permission');
     }
     public function placeholder()
     {

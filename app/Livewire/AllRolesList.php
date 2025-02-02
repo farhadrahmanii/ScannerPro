@@ -14,10 +14,10 @@ class AllRolesList extends Component
         $role = Role::findOrFail($roleId);
         $role->delete();
 
-        
+
         // return redirect()->route('all.roles');
 
-        return $this->redirect('/all/roles', navigate: true);
+        return $this->redirect('/all/roles');
     }
     public function placeholder()
     {

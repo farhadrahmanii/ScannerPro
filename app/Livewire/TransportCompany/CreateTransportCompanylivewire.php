@@ -31,7 +31,7 @@ class CreateTransportCompanyLivewire extends Component
 
         // Show success message
         flash()->success('Transport Company registered successfully!');
-        return $this->redirect(route('all.transportCompany'), navigate: true);
+        return $this->redirect(route('all.transportCompany'));
     }
 
     public function render()

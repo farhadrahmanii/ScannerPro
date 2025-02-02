@@ -17,7 +17,7 @@
                 $currentLocale = app()->getLocale();
                 $languageName = [
                     'en' => 'English',
-                    'fa' => 'فارسی',
+                    'fa' => 'دری',
                     'ps' => 'پشتو'
                 ][$currentLocale];
             @endphp
@@ -32,18 +32,14 @@
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"
                             data-bs-toggle="dropdown"><button class="btn btn-primary">{{ $languageName }}</button>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
+                        <ul class="dropdown-menu dropdown-menu-end text-center">
                             <li><a class="py-2 dropdown-item d-flex align-items-center"
                                     href="{{ route('language.switch', 'en') }}"><span class="ms-2">English</span></a>
                             </li>
                             <li><a class="py-2 dropdown-item d-flex align-items-center rounded"
-                                    href="{{ route('language.switch', 'fa') }}"><img
-                                        src="{{ asset('assets\flags\1x1\af.svg') }}" width="20" alt=""><span
-                                        class="ms-2">فارسی</span></a></li>
+                                    href="{{ route('language.switch', 'fa') }}"><span class="ms-2">دری</span></a></li>
                             <li><a class="py-2 dropdown-item d-flex align-items-center"
-                                    href="{{ route('language.switch', 'ps') }}"><img
-                                        src="{{ asset('assets\flags\1x1\af.svg') }}" width="20" alt=""><span
-                                        class="ms-2">پشتو</span></a></li>
+                                    href="{{ route('language.switch', 'ps') }}"><span class="ms-2">پشتو</span></a></li>
                         </ul>
                     </li>
                     <li class="nav-item dark-mode d-none d-sm-flex">

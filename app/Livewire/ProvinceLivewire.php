@@ -25,7 +25,7 @@ class ProvinceLivewire extends Component
             $site->delete();
             flash()->success('Province deleted successfully!');
         }
-        return $this->redirect('/all/province', navigate: true);
+        return $this->redirect('/all/province');
     }
 
     public function render()

@@ -81,68 +81,20 @@
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 ">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0">{{ __('home_wedgetslivewire.registration_rate') }}</p>
-                            <h5 class="mb-0"></h5>
-                        </div>
-                    </div>
-                    <div class="" id="w-chart3"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card radius-10">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0">{{ __('home_wedgetslivewire.transaction_entry_rate') }}</p>
-                            <h5 class="mb-0">51.46%</h5>
-                        </div>
-                    </div>
-                    <div class="" id="w-chart4"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card radius-10">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0">{{ __('home_wedgetslivewire.vehicle_entry_rate') }}</p>
-                            <h5 class="mb-0">60.45%</h5>
-                        </div>
-                    </div>
-                    <div class="" id="w-chart7"></div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card radius-10">
-                <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0">{{ __('home_wedgetslivewire.drivers_entry_rate') }}</p>
-                            <h5 class="mb-0">21.74%</h5>
-                        </div>
-                    </div>
-                    <div class="" id="w-chart2"></div>
-                </div>
-            </div>
-        </div>
-    </div><!--end row-->
+        </div><!--end row-->
+    </div>
+
+
 
     <!-- Bar Chart -->
     <div class="row mt-4">
-        <div class="col-6">
+        <div class="col-8">
             <div class="card radius-10">
                 <div class="card-header">
                     <h6 class="mb-0">{{ __('home_wedgetslivewire.statistics_overview') }}</h6>
                 </div>
                 <div class="card-body">
-                    <canvas id="chart"></canvas>
+                    <canvas id="barChart"></canvas>
                 </div>
             </div>
         </div>
@@ -159,8 +111,29 @@
     </div>
 
     <!-- Polar Area Chart -->
-    <div class="row mt-4">
-
+    <div class="card radius-10 ">
+        <div class="card-body">
+            <div class="d-flex align-items-center">
+                <div>
+                    <p class="mb-0">{{ __('home_wedgetslivewire.registration_rate') }}</p>
+                    <h5 class="mb-0"></h5>
+                </div>
+            </div>
+            <div class="" id="w-chart3"></div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card radius-10">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <p class="mb-0">{{ __('home_wedgetslivewire.transaction_entry_rate') }}</p>
+                        <h5 class="mb-0"></h5>
+                    </div>
+                </div>
+                <div class="" id="w-chart4"></div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -169,7 +142,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Bar Chart
-        const barCtx = document.getElementById('chart').getContext('2d');
+        const barCtx = document.getElementById('barChart').getContext('2d');
         const barChart = new Chart(barCtx, {
             type: 'bar',
             data: {

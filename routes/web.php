@@ -11,16 +11,11 @@ use App\Http\Controllers\Backend\VehicleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransportCompanyController;
 use App\Http\Middleware\Admin;
+use App\Models\ConsigneeCompany;
 
 use App\Http\Middleware\LanguageMiddleware;
-use App\Livewire\EditUserLivewire;
-use App\Models\ConsigneeCompany;
-use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
-
-
-
 
 Route::middleware([LanguageMiddleware::class])->group(function () {
 
@@ -28,14 +23,10 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
         return view('login');
     });
 
-
-    Route::middleware(admin::class)->group(function () {
+    Route::middleware(Admin::class)->group(function () {
         Route::get('/', function () {
             return view('admin.adminDashboard');
         })->name('dashboard');
-
-
-
 
         // All Transport Company Routes here
         Route::controller(TransportCompanyController::class)->group(function () {
@@ -62,9 +53,6 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('delete/driver/{id}', 'DeleteDriver')->name('delete.driver');
         });
 
-
-
-
         // All Vehicle Routes here
         Route::controller(VehicleController::class)->group(function () {
             Route::get('/all/vehicles', 'AllVehicles')->name('all.vehicles');
@@ -75,8 +63,6 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('/delete/vehicle/{id}', 'DeleteVehicle')->name('delete.vehicle');
             Route::get('/vehicle/card/{id}', 'printIdCard')->name('backend.driver.print-id-card');
         });
-
-
 
         // All Transaction Routes here
         Route::controller(TransactionController::class)->group(function () {
@@ -93,16 +79,9 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
             Route::get('/all/users', 'AllUsers')->name('users.list');
             Route::get('/add/admin/user', 'AddAdminUsers')->name('add.admin.user');
             Route::get('/edit/admin/user/{id}', 'EditAdminUser')->name('edit.admin.user');
-
-            // Route::get('/edit/admin/user/{id}', EditUserLivewire::class);
             Route::post('/update/admin/user', 'UpdateAdminUser')->name('update.admin.user');
-
             Route::get('/get-chart-data', 'getChartData');
-
-
-
         });
-
 
         // All Provinces Users Routes here
         Route::controller(ProvinceSiteController::class)->group(function () {
@@ -124,18 +103,13 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
 
         // Add Roles 
         Route::controller(RoleAndPermissions::class)->group(function () {
-
             Route::get('/add/roles/permission', 'AddRolesPermission')->name('add.roles.permission');
             Route::post('/roles/permission/store', 'RolePermissionStore')->name('role.permission.store');
             Route::get('/all/roles/permissions', 'AllRolePermission')->name('all.roles.permission');
             Route::get('/edit/role/permission/{id}', 'AdminEditRolePermission')->name('edit.rolepermission');
             Route::post('/update/role/permission/{id}', 'AdminUpdateRolePermission')->name('update.rolepermission');
         });
-
-        // Cash Slip Route
-
     });
-
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -150,4 +124,5 @@ Route::middleware([LanguageMiddleware::class])->group(function () {
         return redirect()->back();
     })->name('language.switch');
 });
+
 require __DIR__ . '/auth.php';

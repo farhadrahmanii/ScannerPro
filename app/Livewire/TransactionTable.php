@@ -17,6 +17,12 @@ class TransactionTable extends DataTableComponent
 {
     protected $model = Transaction::class;
 
+
+    public function placeholder()
+    {
+        return view('livewire.loading');
+    }
+
     // Exporting Data Processs start here
     public function bulkActions(): array
     {
@@ -100,7 +106,8 @@ class TransactionTable extends DataTableComponent
     // --------------------------------------------------------- Show Data based on Site Name --------------
     public function builder(): Builder
     {
-        return Transaction::query()->where('transactions.site_id', auth()->user()->site_id);
+        return Transaction::with(['site', 'user', 'vehicle']) // Eager load relationships
+            ->where('transactions.site_id', auth()->user()->site_id);
     }
     // --------------------------------------------------------- Mark As Paid --------------------------------
     public function markAsPaid($transactionId)

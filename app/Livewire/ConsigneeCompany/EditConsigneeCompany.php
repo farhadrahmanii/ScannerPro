@@ -38,7 +38,7 @@ class EditConsigneeCompany extends Component
 
         $this->consigneeCompany->update($validatedData);
 
-        $this->redirect('/consignee/companies', navigate: true);
+        $this->redirect('/consignee/companies');
 
         flash()->success('Consignee Company updated successfully.');
     }

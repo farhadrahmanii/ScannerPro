@@ -26,7 +26,7 @@ class Siteslivewire extends Component
         flash()->addSuccess('Site deleted successfully!');
 
         // Redirect back to the site list page after deletion
-        return $this->redirect('/all/site', navigate: true);  // Adjust route as needed
+        return $this->redirect('/all/site');  // Adjust route as needed
     }
     public function render()
     {

@@ -52,7 +52,7 @@ class CreateVehicle extends Component
             'extended_body_type' => $this->extended_body_type,
         ]);
         flash()->success('Vehicle Registerd Successfully!');
-        return $this->redirect('/all/drivers', navigate: true);
+        return $this->redirect('/all/drivers');
     }
 
     public function placeholder()

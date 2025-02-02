@@ -19,7 +19,7 @@ class AddProvince extends Component
         $province->save();
         flash()->success('The Province is registered Successfully');
         $this->reset();  // Reset input after success
-        return $this->redirect('/all/province', navigate: true);
+        return $this->redirect('/all/province');
 
     }
 

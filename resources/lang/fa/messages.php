@@ -23,5 +23,10 @@ return [
     'Company Name' => 'نام شرکت',
     'Add Transport Company' => 'افزودن شرکت حمل و نقل',
     'Save' => 'ذخیره',
+    'actions' => 'علمه ها',
+    'edit' => 'ویرایش',
+    'add_vehicle' => 'افزودن وسیله نقلیه',
+    'driver_details' => 'جزئیات راننده',
+    'delete' => 'حذف',
     // ...existing code...
 ];

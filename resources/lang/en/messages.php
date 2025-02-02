@@ -23,6 +23,11 @@ return [
     'Permissions' => 'Permissions',
     'Photo' => 'Photo',
     'Photo Preview' => 'Photo Preview',
+    'actions' => 'Actions',
+    'edit' => 'Edit',
+    'add_vehicle' => 'Add Vehicle',
+    'driver_details' => 'Driver Details',
+    'delete' => 'Delete',
     'or may Check the Image size or May Check the Image Type should be | jpg | png | jpeg' => 'or may Check the Image size or May Check the Image Type should be | jpg | png | jpeg',
     // ...existing code...
 ];

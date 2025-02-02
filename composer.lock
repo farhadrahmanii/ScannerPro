@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "115bb528bec39900a69e79fb3e1fdbbb",
+    "content-hash": "5400edad4936ad6e5b5d8a62de648ae0",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -9987,6 +9987,70 @@
             "time": "2022-06-03T18:03:27+00:00"
         },
         {
+            "name": "wire-elements/modal",
+            "version": "2.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wire-elements/modal.git",
+                "reference": "cacff22fda2bffe23dfc6194d6f0ea88165aa15f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wire-elements/modal/zipball/cacff22fda2bffe23dfc6194d6f0ea88165aa15f",
+                "reference": "cacff22fda2bffe23dfc6194d6f0ea88165aa15f",
+                "shasum": ""
+            },
+            "require": {
+                "livewire/livewire": "^3.2.3",
+                "php": "^8.1",
+                "spatie/laravel-package-tools": "^1.9"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.5",
+                "phpunit/phpunit": "^9.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LivewireUI\\Modal\\LivewireModalServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LivewireUI\\Modal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Philo Hermans",
+                    "email": "me@philohermans.com"
+                }
+            ],
+            "description": "Laravel Livewire modal component",
+            "keywords": [
+                "laravel",
+                "livewire",
+                "modal"
+            ],
+            "support": {
+                "issues": "https://github.com/wire-elements/modal/issues",
+                "source": "https://github.com/wire-elements/modal/tree/2.0.12"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/PhiloNL",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-10-14T10:54:05+00:00"
+        },
+        {
             "name": "yoeunes/toastr",
             "version": "v3.1.0",
             "source": {
@@ -13367,12 +13431,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

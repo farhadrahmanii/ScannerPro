@@ -29,7 +29,7 @@ class EditRolelivewire extends Component
 
         session()->flash('success', 'Role updated successfully!');
         // return redirect()->route('all.roles');
-        return $this->redirect('/all/roles', navigate: true);
+        return $this->redirect('/all/roles');
     }
     // Delete Role Method
     public function deleteRole($roleId)
@@ -39,7 +39,7 @@ class EditRolelivewire extends Component
 
         session()->flash('success', 'Role deleted successfully!');
         // return redirect()->route('all.roles');
-        return $this->redirect('/all/roles', navigate: true);
+        return $this->redirect('/all/roles');
     }
     public function placeholder()
     {

@@ -29,7 +29,7 @@ class CreateConsigneeCompany extends Component
 
         $this->reset(['consignee_company_name', 'consignee_company_tin']);
         
-        $this->redirect('/consignee/companies', navigate: true);
+        $this->redirect('/consignee/companies');
 
         flash()->success('Consignee Company created successfully.');
     }

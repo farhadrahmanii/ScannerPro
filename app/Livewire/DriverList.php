@@ -4,16 +4,15 @@ namespace App\Livewire;
 
 use App\Models\Driver;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class DriverList extends Component
 {
-    public function placeholder()
-    {
-        return view('livewire.loading');
-    }
+    use WithPagination;
+
     public function render()
     {
-        $drivers = Driver::all();
+        $drivers = Driver::paginate(10); // Fetch 10 drivers per page
 
         return view('livewire.drivers.driver-list', compact('drivers'));
     }

@@ -39,7 +39,7 @@ class AddSite extends Component
         Site::create($validatedData);
 
         flash()->addSuccess($this->site_name . ' Site added successfully');
-        return $this->redirect('/all/site', navigate: true);
+        return $this->redirect('/all/site');
     }
     public function placeholder()
     {
