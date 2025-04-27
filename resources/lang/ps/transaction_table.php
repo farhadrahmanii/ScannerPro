@@ -1,0 +1,22 @@
+<?php
+return [
+    'export_transactions' => 'صادرات معاملات',
+    'sl' => 'سل',
+    'site' => 'سایټ',
+    'transaction_id' => 'معامله ID',
+    'user' => 'کاروونکی',
+    'vehicle' => 'موټر',
+    'item_name' => 'د توکي نوم',
+    'total_tonnage' => 'ټول ټن',
+    'number_of_items' => 'د توکو شمیر',
+    'scan_status' => 'د سکین حالت',
+    'scanned' => '✅ سکین شوی',
+    'not_scanned' => '❌ سکین نه دی شوی',
+    'payment_status' => 'د تادیې حالت',
+    'no_payment_time' => 'هیڅ تادیه وخت نشته',
+    'payment_time' => 'د تادیې وخت',
+    'fees' => 'فیسونه',
+    'actions' => 'عملونه',
+    'marked_as_paid' => 'معامله د تادیې په توګه نښه شوې.',
+    'marked_as_unpaid' => 'معامله د ناپیژندل شوې په توګه نښه شوې.',
+];
