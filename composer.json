@@ -14,6 +14,7 @@
         "geoip2/geoip2": "^3.1",
         "laravel/breeze": "^2.2",
         "laravel/framework": "^11.31",
+        "laravel/octane": "^2.9",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "maatwebsite/excel": "^3.1",
@@ -21,6 +22,8 @@
         "pharaonic/livewire-select2": "^1.2",
         "rappasoft/laravel-livewire-tables": "^3.5",
         "spatie/laravel-permission": "^6.10",
+        "spiral/roadrunner-cli": "2.6.0",
+        "spiral/roadrunner-http": "3.3.0",
         "tallstackui/tallstackui": "^1.37",
         "torann/geoip": "^3.0",
         "yoeunes/toastr": "^3.1"

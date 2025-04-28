@@ -41,19 +41,37 @@ class CreateUser extends Component
             'selectedPermissions.*' => 'string|exists:permissions,name',
         ]);
         if ($this->photo) {
-            $userEmail = $this->email ?? 'default';
-            $directory = public_path("uploads/images/{$userEmail}");
+            // Delete the previous profile image and its directory if they exist
+            if ($this->photo && file_exists(storage_path('app/public') . $this->photo)) {
+                $previousDirectory = dirname(storage_path('app/public') . $this->photo);
+                unlink(storage_path('app/public') . $this->photo);
 
-            // Create directory if it doesn't exist
-            if (!file_exists($directory)) {
-                mkdir($directory, 0755, true);
+                // Remove the directory if it's empty
+                if (is_dir($previousDirectory) && count(scandir($previousDirectory)) == 2) {
+                    rmdir($previousDirectory);
+                }
             }
 
-            // Store the uploaded image
-            $fileName = uniqid() . '.' . $this->photo->getClientOriginalExtension();
-            $this->photo->storeAs("uploads/images/{$userEmail}", $fileName, 'public');
+            $imageName = time() . '.' . $this->photo->getClientOriginalExtension();
+            $uploadPath = storage_path('app/public/uploads/images/' . rand(1000000000, 9999999999));
 
-            $filePath = "uploads/images/{$userEmail}/{$fileName}";
+            // Create directory if it doesn't exist
+            if (!file_exists($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
+
+            // Ensure directory path uses correct directory separator for the OS
+            $uploadPath = str_replace('/', DIRECTORY_SEPARATOR, $uploadPath);
+
+            // Generate unique filename with timestamp
+            $filename = \Carbon\Carbon::now()->format('Y-m-d-H-i-s') . '-' . $imageName;
+
+            // Store file using Laravel's storage system
+            $filePath = $this->photo->storeAs(
+                'uploads/images/' . rand(1000000000, 9999999999),
+                $filename,
+                'public'
+            );
         }
         // dd($filePath);
         $user = User::create([
